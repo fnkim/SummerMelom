@@ -7,10 +7,8 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u8m4d"]
 size = Vector2(20, 24)
 
-[sub_resource type="NavigationPolygon" id="NavigationPolygon_8gbba"]
-vertices = PackedVector2Array(421.6875, 222.09375, -229.70313, 227.89844, -228.27344, 177.96875, 420.28906, 176.02344)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(-238, 168, 430, 166, 432, 232, -240, 238), PackedVector2Array(144, 72, 144, 102, 274, 103, 272, 70)])
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lns1n"]
+size = Vector2(27, 17)
 
 [node name="Main" type="Node2D" unique_id=358569440]
 
@@ -19,7 +17,6 @@ tile_map_data = PackedByteArray("AAAAAAwAAAAAAAAAAAABAAwAAAAAAAAAAAACAAwAAAAAAAA
 tile_set = ExtResource("1_bo1nx")
 
 [node name="CollisionTilemap" type="TileMapLayer" parent="." unique_id=1069307485]
-visible = false
 tile_map_data = PackedByteArray("AAAMAAkAAAAFAAAAAAANAAkAAAAFAAAAAAAOAAkAAAAFAAAAAAAPAAkAAAAFAAAAAAAAAAwAAAAFAAAAAAABAAwAAAAFAAAAAAACAAwAAAAFAAAAAAADAAwAAAAFAAAAAAAEAAwAAAAFAAAAAAAFAAwAAAAFAAAAAAAGAAwAAAAFAAAAAAAHAAwAAAAFAAAAAAAIAAwAAAAFAAAAAAAJAAwAAAAFAAAAAAAKAAwAAAAFAAAAAAALAAwAAAAFAAAAAAAMAAwAAAAFAAAAAAANAAwAAAAFAAAAAAAOAA0AAAAFAAAAAAAPAA0AAAAFAAAAAAAQAA0AAAAFAAAAAAARAA0AAAAFAAAAAAARAAwAAAAFAAAAAAASAAwAAAAFAAAAAAATAAwAAAAFAAAAAAAQAAwAAAAFAAAAAAAPAAwAAAAFAAAAAAAOAAwAAAAFAAAAAAA=")
 tile_set = ExtResource("1_bo1nx")
 
@@ -35,9 +32,9 @@ shape = SubResource("RectangleShape2D_u8m4d")
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=413907697]
 
-[node name="NavigationRegion2D" type="NavigationRegion2D" parent="." unique_id=1454755457]
-position = Vector2(240, 217)
-navigation_polygon = SubResource("NavigationPolygon_8gbba")
-
 [node name="Enemy" parent="." unique_id=1814088890 instance=ExtResource("3_8gbba")]
 position = Vector2(423, 270)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy" unique_id=751651451]
+position = Vector2(0.5, -1.5)
+shape = SubResource("RectangleShape2D_lns1n")
