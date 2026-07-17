@@ -146,10 +146,14 @@ _data = {
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lns1n"]
 radius = 14.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_u8m4d"]
+radius = 150.0
+
 [node name="Enemy" type="CharacterBody2D" unique_id=1814088890]
 collision_layer = 2
 collision_mask = 9
 script = ExtResource("1_0yp08")
+speed = 100.0
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1482003679]
 texture = ExtResource("2_w4ki3")
@@ -168,6 +172,25 @@ collision_mask = 8
 shape = SubResource("RectangleShape2D_u8m4d")
 disabled = true
 
-[node name="HurtBox" type="CollisionShape2D" parent="." unique_id=1713085558]
+[node name="DetectionBox" type="Area2D" parent="." unique_id=1999632975]
+
+[node name="Collision" type="CollisionShape2D" parent="DetectionBox" unique_id=1713085558]
 position = Vector2(0, 1)
 shape = SubResource("CapsuleShape2D_lns1n")
+
+[node name="Targeting Radius" type="Area2D" parent="." unique_id=333162743]
+collision_layer = 4
+collision_mask = 8
+
+[node name="Target Radius Collider" type="CollisionShape2D" parent="Targeting Radius" unique_id=1064513069]
+unique_name_in_owner = true
+shape = SubResource("CircleShape2D_u8m4d")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=525373093]
+
+[node name="AttackTimer" type="Timer" parent="." unique_id=1532900680]
+one_shot = true
+
+[connection signal="body_entered" from="DetectionBox" to="." method="_on_detection_box_body_entered"]
+[connection signal="body_entered" from="Targeting Radius" to="." method="_on_targeting_radius_body_entered"]
+[connection signal="body_exited" from="Targeting Radius" to="." method="_on_targeting_radius_body_exited"]

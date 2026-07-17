@@ -1,4 +1,6 @@
 extends CharacterBody2D
+class_name Player
+
 
 @export var speed = 300.0
 @export var jump_velocity = -400.0
@@ -9,6 +11,14 @@ var can_attack: bool
 @export var sprite: Sprite2D
 @export var hitbox: Area2D
 @export var anim: AnimationPlayer
+
+func _ready() -> void:
+	pass
+
+
+
+
+
 
 func toggle_color():
 	if GameManager.red_unlocked:
@@ -66,3 +76,8 @@ func attack() -> void:
 func _on_hitbox_body_entered(body: Node2D) -> void:
 	if body is Enemy:
 		body.hit_check()
+
+func damage() -> void:
+	health -= 1
+	if health <= 0:
+		GameManager.player_death()
