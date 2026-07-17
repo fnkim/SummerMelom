@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="Workspace" id="{5bc56d58-51ed-408a-bb68-fd1a14abcdcc}">
+		<property name="builtBanksOutputDirectory">
+			<value>../summer_melom_game/FmodBanks</value>
+		</property>
+		<relationship name="masterEventFolder">
+			<destination>{6116b3a2-6182-4c7a-b5e8-e364d9095f7f}</destination>
+		</relationship>
+		<relationship name="masterTagFolder">
+			<destination>{0f3ab803-2e7a-47b8-b3fe-ef5d13fd2f9e}</destination>
+		</relationship>
+		<relationship name="masterEffectPresetFolder">
+			<destination>{97ea381f-e67b-47c8-9cdf-febc5e26caf8}</destination>
+		</relationship>
+		<relationship name="masterParameterPresetFolder">
+			<destination>{79190e22-d453-4af5-859c-62367b18e688}</destination>
+		</relationship>
+		<relationship name="masterBankFolder">
+			<destination>{233af483-e90b-485d-b211-7274a6881e3e}</destination>
+		</relationship>
+		<relationship name="masterSandboxFolder">
+			<destination>{71039e81-f3cb-418a-b717-1225ef63e51b}</destination>
+		</relationship>
+		<relationship name="masterAssetFolder">
+			<destination>{975d2c29-42c2-4f5d-b9b6-c0605103a0d9}</destination>
+		</relationship>
+		<relationship name="mixer">
+			<destination>{e95ef2be-8952-4c0e-b9e7-e955a10a0267}</destination>
+		</relationship>
+		<relationship name="profilerSessionFolder">
+			<destination>{bbcfbde1-e80d-4257-ad8f-3ab667ee3660}</destination>
+		</relationship>
+		<relationship name="platforms">
+			<destination>{855d6e31-5f16-4f30-913c-391c2c56c0c1}</destination>
+		</relationship>
+	</object>
+</objects>

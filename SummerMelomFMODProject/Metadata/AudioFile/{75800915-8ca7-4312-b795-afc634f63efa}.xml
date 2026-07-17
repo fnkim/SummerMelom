@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="AudioFile" id="{75800915-8ca7-4312-b795-afc634f63efa}">
+		<property name="assetPath">
+			<value>SillyCatVillage.mp3</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>79.986938775510211</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{975d2c29-42c2-4f5d-b9b6-c0605103a0d9}</destination>
+		</relationship>
+	</object>
+</objects>

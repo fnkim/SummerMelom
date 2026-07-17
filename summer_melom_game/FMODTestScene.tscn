@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://bpdw60qvwyw1q"]
+
+[node name="Node3D" type="Node3D" unique_id=1319146624]
+
+[node name="FmodBankLoader" type="FmodBankLoader" parent="." unique_id=860092031]
+bank_paths = ["res://FmodBanks/Desktop/Master.strings.bank", "res://FmodBanks/Desktop/Master.bank", "res://FmodBanks/Desktop/Music.bank"]
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=919740649]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.2321539)
+
+[node name="FmodListener3D" type="FmodListener3D" parent="Camera3D" unique_id=43119836]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.40244853)
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="." unique_id=773594117]
+
+[node name="FmodEventEmitter3D" type="FmodEventEmitter3D" parent="CSGSphere3D" unique_id=1197432468]
+event_name = "event:/BGM/BGM_Test"
+event_guid = "{5d5222cc-c209-4096-9b0b-02b69cefeaf7}"
+autoplay = true

@@ -8,15 +8,28 @@
 
 config_version=5
 
+[Fmod]
+
+General/banks_path="res://FmodBanks/Desktop"
+
 [application]
 
 config/name="SummerMelomGame"
+run/main_scene="uid://bpdw60qvwyw1q"
 config/features=PackedStringArray("4.7")
 config/icon="res://icon.svg"
+
+[autoload]
+
+FmodManager="*uid://cds10pm7hwn3p"
 
 [dotnet]
 
 project/assembly_name="SummerMelomGame"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/fmod/plugin.cfg")
 
 [rendering]
 
