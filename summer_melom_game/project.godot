@@ -31,7 +31,15 @@ project/assembly_name="SummerMelomGame"
 
 enabled=PackedStringArray("res://addons/fmod/plugin.cfg")
 
+[layer_names]
+
+2d_physics/layer_1="Environment"
+2d_physics/layer_2="Enemies"
+2d_physics/layer_3="Hitbox"
+2d_physics/layer_4="Player"
+
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
