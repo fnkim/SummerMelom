@@ -1,13 +1,15 @@
-extends Node2D
+extends CharacterBody2D
 class_name Enemy
 
 enum EnemyState{UNATTACKABLE, ATTACKABLE}
-
+enum EnemyAction{IDLE, MOVING, ATTACKING}
 
 @export var color_queue: Array[ColorManager.ColorState]
 
 var current_color: ColorManager.ColorState
 var current_state: EnemyState
+var current_action: EnemyAction
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
