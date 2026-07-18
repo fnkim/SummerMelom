@@ -15,7 +15,7 @@ enum EnemyAction{IDLE, FOLLOW, ATTACK}
 @export var target_radius_size: float = 150.0
 @export var speed: float = 300.0
 
-
+#hello
 var current_color: ColorManager.ColorState
 var current_state: EnemyState
 var current_action: EnemyAction
