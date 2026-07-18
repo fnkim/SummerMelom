@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="AudioFile" id="{3d924457-9789-4acc-98dc-e1a53c490088}">
+		<property name="assetPath">
+			<value>ConcreteSingelSteps374.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>0.42525000000000002</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{975d2c29-42c2-4f5d-b9b6-c0605103a0d9}</destination>
+		</relationship>
+	</object>
+</objects>

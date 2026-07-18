@@ -15,7 +15,7 @@ General/banks_path="res://FmodBanks/Desktop"
 [application]
 
 config/name="SummerMelomGame"
-run/main_scene="uid://bpdw60qvwyw1q"
+run/main_scene="uid://di0q6rcn6cdax"
 config/features=PackedStringArray("4.7")
 config/icon="res://icon.svg"
 

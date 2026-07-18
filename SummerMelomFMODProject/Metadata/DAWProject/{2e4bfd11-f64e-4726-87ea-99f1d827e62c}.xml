@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="DAWProject" id="{2e4bfd11-f64e-4726-87ea-99f1d827e62c}">
+		<property name="assetPath">
+			<value>SummerMelonJam.rpp.link/</value>
+		</property>
+		<property name="dawProjectPath">
+			<value>C:/Users/15106/Documents/REAPER Media/SummerMelonJam.rpp</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{975d2c29-42c2-4f5d-b9b6-c0605103a0d9}</destination>
+		</relationship>
+	</object>
+</objects>
