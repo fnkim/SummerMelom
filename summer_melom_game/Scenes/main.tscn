@@ -1,5 +1,6 @@
 [gd_scene format=4 uid="uid://di0q6rcn6cdax"]
 
+[ext_resource type="Script" uid="uid://bt4y42v7dl4pp" path="res://Scenes/main.gd" id="1_21xkr"]
 [ext_resource type="TileSet" uid="uid://bdtjsgtxy6f5f" path="res://Scenes/Tiles/test_tileset.tres" id="1_bo1nx"]
 [ext_resource type="PackedScene" uid="uid://bhv3cug7qoi11" path="res://Scenes/Player/player.tscn" id="1_jjgbg"]
 [ext_resource type="Script" uid="uid://u5kehhjcct8f" path="res://Scenes/Tiles/footstep_tilemap.gd" id="2_kry3j"]
@@ -15,6 +16,8 @@ polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Arr
 outlines = Array[PackedVector2Array]([PackedVector2Array(-238, 168, 430, 166, 432, 232, -240, 238), PackedVector2Array(152, 134, 280, 134, 282, 99, 151, 98)])
 
 [node name="Main" type="Node2D" unique_id=358569440]
+script = ExtResource("1_21xkr")
+toggle_colors = true
 
 [node name="FmodBankLoader" type="FmodBankLoader" parent="." unique_id=522601309]
 bank_paths = ["res://FmodBanks/Desktop/Master.strings.bank", "res://FmodBanks/Desktop/Master.bank", "res://FmodBanks/Desktop/Music.bank", "res://FmodBanks/Desktop/SFX.bank"]

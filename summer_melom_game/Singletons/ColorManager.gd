@@ -5,7 +5,7 @@ signal change_color(ColorState)
 
 enum Primaries{RED_TOGGLE, YELLOW_TOGGLE, BLUE_TOGGLE}
 
-enum ColorState{RED, ORANGE, YELLOW, GREEN, BLUE, PURPLE, RAINBOW}
+enum ColorState{RED, ORANGE, YELLOW, GREEN, BLUE, PURPLE, RAINBOW, NONE}
 var equipped_color: ColorState
 
 var red_toggled: bool
@@ -37,7 +37,7 @@ func color_change() -> void:
 				equipped_color = ColorState.YELLOW
 			elif blue_toggled:
 				equipped_color = ColorState.BLUE
-		_:
-			pass
+		0:
+			equipped_color = ColorState.NONE
 	
 	change_color.emit(equipped_color)

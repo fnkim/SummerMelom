@@ -7,17 +7,19 @@ class_name Player
 
 var health: int = 6
 var can_attack: bool = true
+var current_enemy: Enemy
+
 
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var hitbox: Area2D = $Hitbox
 @onready var anim: AnimationPlayer = $AnimationPlayer
 @onready var ray_cast_2d: RayCast2D = $RayCast2D
 
+
+
+
 func _ready() -> void:
 	pass
-
-
-
 
 
 

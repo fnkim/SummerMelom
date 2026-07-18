@@ -110,13 +110,13 @@ func attack() -> void:
 
 func update_state(equipped_color: ColorManager.ColorState) -> void:
 	if current_color == equipped_color:
-		make_attackable()
+		make_attackable(true)
 	else:
-		pass
+		make_attackable(false)
 
-func make_attackable() -> void:
+func make_attackable(is_true: bool) -> void:
 	#add code to change enemy color here
-	current_state = EnemyState.ATTACKABLE
+	current_state = EnemyState.ATTACKABLE if is_true else EnemyState.UNATTACKABLE
 
 
 func death() -> void:
