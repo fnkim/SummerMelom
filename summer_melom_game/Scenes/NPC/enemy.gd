@@ -2,7 +2,7 @@ extends CharacterBody2D
 class_name Enemy
 
 enum EnemyState{UNATTACKABLE, ATTACKABLE}
-enum EnemyAction{IDLE, FOLLOW, ATTACK}
+enum EnemyAction{IDLE, FOLLOW, JUMP, ATTACK}
 
 @onready var target_radius_collider: CollisionShape2D = %"Target Radius Collider"
 @onready var agent: NavigationAgent2D = $NavigationAgent2D
@@ -20,7 +20,13 @@ var current_color: ColorManager.ColorState
 var current_state: EnemyState
 var current_action: EnemyAction
 
+#navigation variables
 var target: Player
+var is_attacking: bool
+var current_link: NavigationLink2D
+
+
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -30,51 +36,68 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
+	if not is_on_floor():
+		velocity += get_gravity() * delta
+		
 	match current_action:
 		EnemyAction.IDLE:
 			pass
 		EnemyAction.FOLLOW:
 			update_target_position()
 			follow()
-		EnemyAction.ATTACK:
-			if global_position.distance_to(target.global_position) < 1:
-				attack_timer.paused = true
+		EnemyAction.JUMP:
+			if is_on_floor():
 				current_action = EnemyAction.FOLLOW
-			else:
-				attack()
+			move_and_slide()
 
 func update_target_position() -> void:
 	agent.set_target_position(target.global_position)
 
 func follow() -> void:
-	if abs(position.x - target.position.x) > 5:
-
+	if abs(position.x - target.position.x) > 25:
 		var cur_loc = global_transform.origin
 		var next_loc = agent.get_next_path_position()
 		var new_vel = (next_loc - cur_loc).normalized() * speed
-		velocity = Vector2(new_vel.x, 0)
-		if velocity.x > 0:
+		velocity = Vector2(new_vel.x, velocity.y)
+		if position.x - target.position.x < 0:
 			sprite.flip_h = true
-			hitbox.position.x = -25
-		elif velocity.x < 0:
-			sprite.flip_h = false
 			hitbox.position.x = 25
+		elif position.x - target.position.x > 0:
+			sprite.flip_h = false
+			hitbox.position.x = -25
 	else:
-		attack_timer.paused = false
-		attack_timer.start(3)
-		current_action = EnemyAction.ATTACK
+		
+		attack()
 	
 
 	move_and_slide()
 
 
+
+func jump(is_top: bool) -> void:
+	var height: float
+	if is_top:
+		height = -100
+	else:
+		height = -550
+
+	velocity.y = height
+	current_action = EnemyAction.JUMP
+
+
+
 func attack() -> void:
-	await attack_timer.timeout
-	print("enemy is attacking")
-	anim.play("attack")
-	await anim.animation_finished
-	anim.play("idle")
-	attack_timer.start(3)
+	if is_attacking:
+		return
+	else:
+		if attack_timer.time_left == 0:
+			is_attacking = true
+			print("enemy is attacking")
+			anim.play("attack")
+			await anim.animation_finished
+			anim.play("idle")
+			attack_timer.start(1)
+			is_attacking = false
 	
 
 
@@ -106,9 +129,9 @@ func get_hit() -> void:
 		current_color = color_queue.front()
 
 
-func _on_detection_box_body_entered(body: Node2D) -> void:
-	if body is Player:
-		body.damage()
+
+
+
 
 
 func _on_targeting_radius_body_entered(body: Node2D) -> void:
@@ -123,3 +146,13 @@ func _on_targeting_radius_body_exited(body: Node2D) -> void:
 	if body is Player:
 		current_action = EnemyAction.IDLE
 		target = null
+
+
+func _on_navigation_agent_2d_link_reached(details: Dictionary) -> void:
+	var current_link = details.owner
+	var distance_to_top = abs(position - current_link.end_position)
+	var distance_to_bottom = abs(position - current_link.start_position)
+	
+	var is_at_top: bool = distance_to_top < distance_to_bottom
+	if is_on_floor():
+		jump(is_at_top)

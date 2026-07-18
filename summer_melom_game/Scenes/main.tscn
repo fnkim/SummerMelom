@@ -3,7 +3,6 @@
 [ext_resource type="TileSet" uid="uid://bdtjsgtxy6f5f" path="res://Scenes/Tiles/test_tileset.tres" id="1_bo1nx"]
 [ext_resource type="PackedScene" uid="uid://bhv3cug7qoi11" path="res://Scenes/Player/player.tscn" id="1_jjgbg"]
 [ext_resource type="PackedScene" uid="uid://bfc4oph040fbb" path="res://Scenes/NPC/enemy.tscn" id="3_8gbba"]
-[ext_resource type="PackedScene" uid="uid://d3n1pufxu0a0b" path="res://Scenes/Environment/ai_jump_point.tscn" id="4_jjvhh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u8m4d"]
 size = Vector2(20, 24)
@@ -25,7 +24,7 @@ tile_map_data = PackedByteArray("AAAMAAkAAAAFAAAAAAANAAkAAAAFAAAAAAAOAAkAAAAFAAA
 tile_set = ExtResource("1_bo1nx")
 
 [node name="Player" parent="." unique_id=1479473842 instance=ExtResource("1_jjgbg")]
-position = Vector2(217, 350)
+position = Vector2(469, 269)
 collision_layer = 8
 collision_mask = 3
 jump_velocity = -600.0
@@ -41,10 +40,9 @@ position = Vector2(232, 154)
 navigation_polygon = SubResource("NavigationPolygon_8gbba")
 
 [node name="Enemy" parent="." unique_id=1814088890 instance=ExtResource("3_8gbba")]
-position = Vector2(424, 279)
+position = Vector2(170, 368)
+target_radius_size = 300.0
 
-[node name="AI Jump Point" parent="." unique_id=912947903 instance=ExtResource("4_jjvhh")]
-position = Vector2(394, 277)
-
-[node name="AI Jump Point2" parent="." unique_id=29521457 instance=ExtResource("4_jjvhh")]
-position = Vector2(505, 277)
+[node name="NavigationLink2D" type="NavigationLink2D" parent="." unique_id=1377719239]
+start_position = Vector2(329, 357)
+end_position = Vector2(401, 273)

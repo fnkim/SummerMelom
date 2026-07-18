@@ -3,7 +3,7 @@ class_name Player
 
 
 @export var speed = 300.0
-@export var jump_velocity = -400.0
+@export var jump_velocity = -300.0
 
 var health: int = 6
 var can_attack: bool
