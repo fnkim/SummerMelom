@@ -2,11 +2,11 @@ extends CharacterBody2D
 class_name Player
 
 
-@export var speed = 300.0
-@export var jump_velocity = -300.0
+@export var speed = 240.0
+@export var jump_velocity = -650.0
 
 var health: int = 6
-var can_attack: bool
+var can_attack: bool = true
 
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var hitbox: Area2D = $Hitbox
@@ -39,16 +39,28 @@ func toggle_color():
 func _physics_process(delta: float) -> void:
 	toggle_color()
 	move(delta)
-	
+	attack()
 	move_and_slide()
 
 func move(delta: float) -> void:
+	
 	if not is_on_floor():
-		velocity += get_gravity() * delta
+		velocity.x = clampf(velocity.x,-150, 150)
+		var current_gravity
+		if velocity.y <= 0:
+			current_gravity = get_gravity() * 2
+		else:
+			current_gravity = get_gravity()
+		velocity += current_gravity * delta
+	
 
 	# Handle jump.
 	if Input.is_action_just_pressed("space") and is_on_floor():
 		velocity.y = jump_velocity
+
+	if Input.is_action_just_released("space") and velocity.y < 0:
+		velocity.y = 0
+	
 
 	var direction := Input.get_axis("left", "right")
 	
@@ -63,10 +75,10 @@ func move(delta: float) -> void:
 	# flip functionality
 	if velocity.x > 0:
 		sprite.flip_h = true
-		hitbox.position.x = -25
+		hitbox.position.x = 25
 	elif velocity.x < 0:
 		sprite.flip_h = false
-		hitbox.position.x = 25
+		hitbox.position.x = -25
 
 func attack() -> void:
 	if !can_attack:

@@ -59,3 +59,7 @@ target_radius_size = 300.0
 [node name="NavigationLink2D" type="NavigationLink2D" parent="." unique_id=1377719239]
 start_position = Vector2(329, 357)
 end_position = Vector2(401, 273)
+
+[node name="NavigationLink2D2" type="NavigationLink2D" parent="." unique_id=1674227844]
+start_position = Vector2(568, 357)
+end_position = Vector2(499, 272)

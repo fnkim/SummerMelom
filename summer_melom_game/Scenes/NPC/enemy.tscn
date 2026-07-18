@@ -153,7 +153,6 @@ size = Vector2(26, 18)
 collision_layer = 2
 collision_mask = 9
 script = ExtResource("1_0yp08")
-speed = 100.0
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1482003679]
 texture = ExtResource("2_w4ki3")
@@ -179,6 +178,7 @@ collision_mask = 8
 [node name="Target Radius Collider" type="CollisionShape2D" parent="Targeting Radius" unique_id=1064513069]
 unique_name_in_owner = true
 shape = SubResource("CircleShape2D_u8m4d")
+debug_color = Color(0, 0.6, 0.69803923, 0)
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=525373093]
 avoidance_enabled = true
@@ -189,6 +189,7 @@ one_shot = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1914581030]
 position = Vector2(0, -1)
 shape = SubResource("RectangleShape2D_lns1n")
+debug_color = Color(0, 0.6, 0.69803923, 0)
 
 [connection signal="body_entered" from="Targeting Radius" to="." method="_on_targeting_radius_body_entered"]
 [connection signal="body_exited" from="Targeting Radius" to="." method="_on_targeting_radius_body_exited"]

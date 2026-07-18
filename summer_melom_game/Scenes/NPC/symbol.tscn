@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://dks7dimo4ti38"]
+
+[ext_resource type="Texture2D" uid="uid://cshiyoxwnqciq" path="res://Scenes/NPC/symbols.png" id="1_2ma1f"]
+
+[node name="Symbol" type="Sprite2D" unique_id=487609979]
+texture = ExtResource("1_2ma1f")
+hframes = 7

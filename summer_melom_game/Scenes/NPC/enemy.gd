@@ -13,7 +13,7 @@ enum EnemyAction{IDLE, FOLLOW, JUMP, ATTACK}
 
 @export var color_queue: Array[ColorManager.ColorState]
 @export var target_radius_size: float = 150.0
-@export var speed: float = 300.0
+@export var speed: float = 100.0
 
 #hello
 var current_color: ColorManager.ColorState
