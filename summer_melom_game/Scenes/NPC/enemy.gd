@@ -10,7 +10,7 @@ enum EnemyAction{IDLE, FOLLOW, ATTACK}
 @onready var anim: AnimationPlayer = $AnimationPlayer
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var hitbox: Area2D = $Hitbox
-
+@onready var raycast: RayCast2D = $RayCast2D
 
 @export var color_queue: Array[ColorManager.ColorState]
 @export var target_radius_size: float = 150.0
@@ -48,22 +48,23 @@ func update_target_position() -> void:
 	agent.set_target_position(target.global_position)
 
 func follow() -> void:
-	if global_position.distance_to(target.global_position) > 1:
+	if abs(position.x - target.position.x) > 5:
+
 		var cur_loc = global_transform.origin
 		var next_loc = agent.get_next_path_position()
 		var new_vel = (next_loc - cur_loc).normalized() * speed
-		velocity = new_vel
+		velocity = Vector2(new_vel.x, 0)
+		if velocity.x > 0:
+			sprite.flip_h = true
+			hitbox.position.x = -25
+		elif velocity.x < 0:
+			sprite.flip_h = false
+			hitbox.position.x = 25
 	else:
 		attack_timer.paused = false
 		attack_timer.start(3)
 		current_action = EnemyAction.ATTACK
 	
-	if velocity.x > 0:
-		sprite.flip_h = true
-		hitbox.position.x = -25
-	elif velocity.x < 0:
-		sprite.flip_h = false
-		hitbox.position.x = 25
 
 	move_and_slide()
 

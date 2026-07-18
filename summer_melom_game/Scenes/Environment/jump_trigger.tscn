@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://c3lb6sqwrkel7"]
+
+[node name="JumpTrigger" type="Area2D" unique_id=179214773]
