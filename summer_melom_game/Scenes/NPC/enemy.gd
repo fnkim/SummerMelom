@@ -10,7 +10,6 @@ enum EnemyAction{IDLE, FOLLOW, ATTACK}
 @onready var anim: AnimationPlayer = $AnimationPlayer
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var hitbox: Area2D = $Hitbox
-@onready var raycast: RayCast2D = $RayCast2D
 
 @export var color_queue: Array[ColorManager.ColorState]
 @export var target_radius_size: float = 150.0

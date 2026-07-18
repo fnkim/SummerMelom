@@ -202,9 +202,6 @@ one_shot = true
 position = Vector2(0, -1)
 shape = SubResource("RectangleShape2D_lns1n")
 
-[node name="RayCast2D" type="RayCast2D" parent="." unique_id=938908606]
-target_position = Vector2(-30, 0)
-
 [connection signal="body_entered" from="DetectionBox" to="." method="_on_detection_box_body_entered"]
 [connection signal="body_entered" from="Targeting Radius" to="." method="_on_targeting_radius_body_entered"]
 [connection signal="body_exited" from="Targeting Radius" to="." method="_on_targeting_radius_body_exited"]
