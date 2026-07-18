@@ -5,6 +5,7 @@ enum EnemyState{UNATTACKABLE, ATTACKABLE}
 enum EnemyAction{IDLE, FOLLOW, ATTACK}
 
 @onready var target_radius_collider: CollisionShape2D = %"Target Radius Collider"
+@onready var agent: NavigationAgent2D = $NavigationAgent2D
 @onready var attack_timer: Timer = $AttackTimer
 @onready var anim: AnimationPlayer = $AnimationPlayer
 @onready var sprite: Sprite2D = $Sprite2D
@@ -13,7 +14,7 @@ enum EnemyAction{IDLE, FOLLOW, ATTACK}
 
 @export var color_queue: Array[ColorManager.ColorState]
 @export var target_radius_size: float = 150.0
-@export var speed: float = 200.0
+@export var speed: float = 300.0
 
 
 var current_color: ColorManager.ColorState
@@ -21,8 +22,6 @@ var current_state: EnemyState
 var current_action: EnemyAction
 
 var target: Player
-var direction: float
-
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -36,6 +35,7 @@ func _physics_process(delta: float) -> void:
 		EnemyAction.IDLE:
 			pass
 		EnemyAction.FOLLOW:
+			update_target_position()
 			follow()
 		EnemyAction.ATTACK:
 			if global_position.distance_to(target.global_position) < 1:
@@ -44,32 +44,26 @@ func _physics_process(delta: float) -> void:
 			else:
 				attack()
 
+func update_target_position() -> void:
+	agent.set_target_position(target.global_position)
 
 func follow() -> void:
-	if position.distance_to(target.position) > 1:
-		if !is_on_floor():
-			velocity.y += 100
-		if velocity.y > 100:
-			velocity.y = 100
-		
-		if target.position.x > position.x:
-			direction = 1
-		elif target.position.x < position.x:
-			direction = -1
-		velocity.x = speed * direction
-		
-		
-		if velocity.x > 0:
-			sprite.flip_h = true
-			hitbox.position.x = 25
-		elif velocity.x < 0:
-			sprite.flip_h = false
-			hitbox.position.x = -25
+	if global_position.distance_to(target.global_position) > 1:
+		var cur_loc = global_transform.origin
+		var next_loc = agent.get_next_path_position()
+		var new_vel = (next_loc - cur_loc).normalized() * speed
+		velocity = new_vel
 	else:
 		attack_timer.paused = false
 		attack_timer.start(3)
 		current_action = EnemyAction.ATTACK
 	
+	if velocity.x > 0:
+		sprite.flip_h = true
+		hitbox.position.x = -25
+	elif velocity.x < 0:
+		sprite.flip_h = false
+		hitbox.position.x = 25
 
 	move_and_slide()
 
