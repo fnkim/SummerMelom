@@ -24,6 +24,7 @@ config/icon="res://icon.svg"
 FmodManager="*uid://cds10pm7hwn3p"
 ColorManager="*uid://cqolld3wdapth"
 GameManager="*uid://bgww6r0s82m0"
+FootstepManager="*uid://bi6jipqxxxjbn"
 
 [display]
 
