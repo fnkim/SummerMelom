@@ -1,34 +1,57 @@
 [gd_scene format=3 uid="uid://desn4ndt3cirx"]
 
 [ext_resource type="Script" uid="uid://bnfhuue2q1u3t" path="res://Scenes/NPC/symbol_grid.gd" id="1_mqo2i"]
+[ext_resource type="Texture2D" uid="uid://cshiyoxwnqciq" path="res://Scenes/NPC/symbols.png" id="2_dpeau"]
 
-[node name="SymbolGrid" type="Node2D" unique_id=1676709472 node_paths=PackedStringArray("mark_pos")]
+[node name="SymbolGrid" type="Node2D" unique_id=1676709472 node_paths=PackedStringArray("all_symbols")]
 script = ExtResource("1_mqo2i")
-mark_pos = [NodePath("BottomRow/0"), NodePath("BottomRow/1"), NodePath("BottomRow/2"), NodePath("BottomRow/3"), NodePath("TopRow/4"), NodePath("TopRow/5"), NodePath("TopRow/6"), NodePath("TopRow/7")]
+all_symbols = [NodePath("BottomRow/0"), NodePath("BottomRow/1"), NodePath("BottomRow/2"), NodePath("BottomRow/3"), NodePath("TopRow/4"), NodePath("TopRow/5"), NodePath("TopRow/6"), NodePath("TopRow/7")]
+
+[node name="Indicator" type="Sprite2D" parent="." unique_id=1403961553]
+position = Vector2(50, 0)
+texture = ExtResource("2_dpeau")
+hframes = 8
+frame = 6
 
 [node name="BottomRow" type="Marker2D" parent="." unique_id=728616010]
 
-[node name="3" type="Marker2D" parent="BottomRow" unique_id=1889939917]
-position = Vector2(-25, 0)
-
-[node name="2" type="Marker2D" parent="BottomRow" unique_id=1327470560]
-
-[node name="1" type="Marker2D" parent="BottomRow" unique_id=236945638]
-position = Vector2(25, 0)
-
-[node name="0" type="Marker2D" parent="BottomRow" unique_id=194240100]
+[node name="0" type="Sprite2D" parent="BottomRow" unique_id=1602388504]
 position = Vector2(50, 0)
+texture = ExtResource("2_dpeau")
+hframes = 8
+
+[node name="1" type="Sprite2D" parent="BottomRow" unique_id=968346213]
+position = Vector2(25, 0)
+texture = ExtResource("2_dpeau")
+hframes = 8
+
+[node name="2" type="Sprite2D" parent="BottomRow" unique_id=1775291660]
+texture = ExtResource("2_dpeau")
+hframes = 8
+
+[node name="3" type="Sprite2D" parent="BottomRow" unique_id=898844175]
+position = Vector2(-25, 0)
+texture = ExtResource("2_dpeau")
+hframes = 8
 
 [node name="TopRow" type="Marker2D" parent="." unique_id=1945400]
 position = Vector2(0, -22)
 
-[node name="4" type="Marker2D" parent="TopRow" unique_id=2047479341]
-position = Vector2(48, 0)
-
-[node name="5" type="Marker2D" parent="TopRow" unique_id=1582569960]
-position = Vector2(23, 0)
-
-[node name="6" type="Marker2D" parent="TopRow" unique_id=514675210]
-
-[node name="7" type="Marker2D" parent="TopRow" unique_id=455383211]
+[node name="7" type="Sprite2D" parent="TopRow" unique_id=1843370901]
 position = Vector2(-25, 0)
+texture = ExtResource("2_dpeau")
+hframes = 8
+
+[node name="6" type="Sprite2D" parent="TopRow" unique_id=1145405791]
+texture = ExtResource("2_dpeau")
+hframes = 8
+
+[node name="5" type="Sprite2D" parent="TopRow" unique_id=1920085369]
+position = Vector2(23, 0)
+texture = ExtResource("2_dpeau")
+hframes = 8
+
+[node name="4" type="Sprite2D" parent="TopRow" unique_id=817778507]
+position = Vector2(48, 0)
+texture = ExtResource("2_dpeau")
+hframes = 8

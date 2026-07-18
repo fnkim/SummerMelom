@@ -39,6 +39,14 @@ func update_color(color: ColorManager.ColorState) -> void:
 			label.text = "Current: Nothing :("
 	
 
-	red.show() if ColorManager.red_toggled else red.hide()
-	blue.show() if ColorManager.blue_toggled else blue.hide()
-	yellow.show() if ColorManager.yellow_toggled else yellow.hide()
+	if ColorManager.red_toggled:
+		red.show() 
+	else: red.hide()
+	
+	if ColorManager.blue_toggled:
+		blue.show()
+	else: blue.hide()
+	
+	if ColorManager.yellow_toggled:
+		yellow.show()
+	else: yellow.hide()

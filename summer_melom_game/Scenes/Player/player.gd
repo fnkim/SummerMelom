@@ -94,6 +94,9 @@ func attack() -> void:
 func _on_hitbox_body_entered(body: Node2D) -> void:
 	if body is Enemy:
 		body.hit_check()
+		print("hit check")
+
+
 
 func damage() -> void:
 	health -= 1

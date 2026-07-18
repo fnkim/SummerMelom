@@ -13,11 +13,10 @@ enum EnemyAction{IDLE, FOLLOW, JUMP, ATTACK}
 @onready var symbol_grid: Node2D = $SymbolGrid
 
 
-
 @export var color_queue: Array[ColorManager.ColorState]
 @export var target_radius_size: float = 150.0
 @export var speed: float = 100.0
-
+@export var hurtbox: NPCHurtBox
 
 
 #hello
@@ -38,7 +37,7 @@ func _ready() -> void:
 	target_radius_collider.shape.radius = target_radius_size
 	symbol_grid.update_grid(color_queue)
 	ColorManager.change_color.connect(update_state)
-
+	hurtbox.hittable.connect(hit_check)
 
 
 func _physics_process(delta: float) -> void:
@@ -109,30 +108,26 @@ func attack() -> void:
 
 
 func update_state(equipped_color: ColorManager.ColorState) -> void:
-	if current_color == equipped_color:
-		make_attackable(true)
-	else:
-		make_attackable(false)
-
-func make_attackable(is_true: bool) -> void:
-	#add code to change enemy color here
-	current_state = EnemyState.ATTACKABLE if is_true else EnemyState.UNATTACKABLE
+	var same_color: bool = current_color == equipped_color
+	current_state = EnemyState.ATTACKABLE if same_color else EnemyState.UNATTACKABLE
 
 
 func death() -> void:
 	queue_free()
 
 func hit_check() -> void:
+	print("hitcheck")
 	if current_state == EnemyState.ATTACKABLE:
+		
 		get_hit()
 
 func get_hit() -> void:
-	symbol_grid.update_grid(color_queue)
 	color_queue.erase(color_queue.front())
-	if color_queue ==[null]:
+	if color_queue.size() == 0:
 		death()
 		return
 	else:
+		symbol_grid.update_grid(color_queue)
 		current_color = color_queue.front()
 
 

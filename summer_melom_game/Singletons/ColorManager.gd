@@ -29,7 +29,7 @@ func color_change() -> void:
 			if red_toggled:
 				equipped_color = ColorState.ORANGE if yellow_toggled else ColorState.PURPLE
 			else:
-				equipped_color = ColorState.PURPLE
+				equipped_color = ColorState.GREEN
 		1:
 			if red_toggled:
 				equipped_color = ColorState.RED

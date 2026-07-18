@@ -2,14 +2,16 @@ extends Node2D
 
 var symbol = preload("uid://dks7dimo4ti38")
 
-@export var mark_pos: Array[Marker2D]
+@export var all_symbols: Array[Sprite2D]
 
-var current_markers: Array[Marker2D]
+var current_symbols: Array[Sprite2D]
 var centered: bool
 
 
 @onready var top_row: Marker2D = $TopRow
 @onready var bottom_row: Marker2D = $BottomRow
+@onready var indicator: Sprite2D = $Indicator
+
 
 var center2: float = -12
 var center1: float = 0
@@ -24,47 +26,47 @@ func _process(delta: float) -> void:
 	pass
 
 
-
-
 func update_grid(symbol_array: Array[ColorManager.ColorState]) -> void:
+	if symbol_array.size() == 0:
+		hide()
+		return
 	var symbol_count: int = symbol_array.size()
 	recenter_top(true) 
 	recenter_bottom(true) 
 	match symbol_count:
 		7:
-			current_markers = [mark_pos[0], mark_pos[1], mark_pos[2], mark_pos[3], mark_pos[5], mark_pos[6], mark_pos[7]]
+			current_symbols = [all_symbols[7], all_symbols[6], all_symbols[5], all_symbols[3], all_symbols[2], all_symbols[1], all_symbols[0]]
 			recenter_bottom(false)
 		6:
-			current_markers = [mark_pos[1], mark_pos[2], mark_pos[3], mark_pos[5], mark_pos[6], mark_pos[7]]
+			current_symbols = [all_symbols[7], all_symbols[6], all_symbols[5], all_symbols[3], all_symbols[2], all_symbols[1]]
+			
 		5:
-			current_markers = [mark_pos[1], mark_pos[2], mark_pos[3], mark_pos[5], mark_pos[6]]
+			current_symbols = [all_symbols[6], all_symbols[5], all_symbols[3], all_symbols[2], all_symbols[1]]
 			recenter_top(false) 
 		4:
-			current_markers = [mark_pos[0], mark_pos[1], mark_pos[2], mark_pos[3]]
+			current_symbols = [all_symbols[3], all_symbols[2], all_symbols[1], all_symbols[0]]
 			
 		3:
-			current_markers = [mark_pos[1], mark_pos[2], mark_pos[3]]
+			current_symbols = [all_symbols[3], all_symbols[2], all_symbols[1]]
 		2:
-			current_markers = [mark_pos[1], mark_pos[2]]
+			current_symbols = [all_symbols[2], all_symbols[1]]
 			recenter_bottom(false)
 		1:
-			current_markers = [mark_pos[2]]
+			current_symbols = [all_symbols[2]]
+			
+	indicator.position = current_symbols.front().position
 	
-	instantiate_symbols(symbol_array)
+	for i in current_symbols.size():
+		current_symbols[i].frame = get_frame_index(symbol_array[i])
+		
+	for a in all_symbols:
+		a.hide()
+	for s in current_symbols:
+		s.show()
+	
 
 
-func instantiate_symbols(symbol_array: Array[ColorManager.ColorState]) -> void:
-	for i in current_markers.size():
-		var new_symbol: Sprite2D = symbol.instantiate()
-		new_symbol.frame = get_frame_index(symbol_array[i])
-		new_symbol.position = current_markers[i].position
-		add_child(new_symbol)
-	
-	var indicator: Sprite2D = symbol.instantiate()
-	indicator.frame = 6
-	indicator.position = current_markers.back().position
-	add_child(indicator)
-	
+
 
 func get_frame_index(color_state: ColorManager.ColorState) -> int:
 	var index: int
@@ -81,6 +83,8 @@ func get_frame_index(color_state: ColorManager.ColorState) -> int:
 			index = 4
 		ColorManager.ColorState.PURPLE:
 			index = 5
+		_:
+			index = 7
 	return index
 
 
