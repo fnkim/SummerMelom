@@ -15,6 +15,9 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(-238, 168, 430, 166, 43
 
 [node name="Main" type="Node2D" unique_id=358569440]
 
+[node name="FmodBankLoader" type="FmodBankLoader" parent="." unique_id=522601309]
+bank_paths = ["res://FmodBanks/Desktop/Master.strings.bank", "res://FmodBanks/Desktop/Master.bank", "res://FmodBanks/Desktop/Music.bank", "res://FmodBanks/Desktop/SFX.bank"]
+
 [node name="CollisionTilemap" type="TileMapLayer" parent="." unique_id=1069307485]
 visible = false
 tile_map_data = PackedByteArray("AAAMAAkAAAAFAAAAAAANAAkAAAAFAAAAAAAOAAkAAAAFAAAAAAAPAAkAAAAFAAAAAAAAAAwAAAAFAAAAAAABAAwAAAAFAAAAAAACAAwAAAAFAAAAAAADAAwAAAAFAAAAAAAEAAwAAAAFAAAAAAAFAAwAAAAFAAAAAAAGAAwAAAAFAAAAAAAHAAwAAAAFAAAAAAAIAAwAAAAFAAAAAAAJAAwAAAAFAAAAAAAKAAwAAAAFAAAAAAALAAwAAAAFAAAAAAAMAAwAAAAFAAAAAAANAAwAAAAFAAAAAAAOAA0AAAAFAAAAAAAPAA0AAAAFAAAAAAAQAA0AAAAFAAAAAAARAA0AAAAFAAAAAAARAAwAAAAFAAAAAAASAAwAAAAFAAAAAAATAAwAAAAFAAAAAAAQAAwAAAAFAAAAAAAPAAwAAAAFAAAAAAAOAAwAAAAFAAAAAAA=")
@@ -28,13 +31,22 @@ script = ExtResource("2_kry3j")
 position = Vector2(469, 269)
 collision_layer = 8
 collision_mask = 3
-jump_velocity = -600.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=1389396877]
 position = Vector2(0, 2)
 shape = SubResource("RectangleShape2D_u8m4d")
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=413907697]
+
+[node name="FmodListener2D" type="FmodListener2D" parent="Player/Camera2D" unique_id=189024052]
+
+[node name="FmodEventEmitter2D" type="FmodEventEmitter2D" parent="Player" unique_id=368353808]
+event_name = "event:/SFX/Player_Footsteps"
+event_guid = "{935ee275-4af6-4e06-b12c-c694ddbe4fa1}"
+"fmod_parameters/Surface Material/id" = 5666494123659064376
+"fmod_parameters/Surface Material" = "Grass"
+"fmod_parameters/Surface Material/labels" = PackedStringArray("Grass", "Concrete", "Rock")
+"fmod_parameters/Surface Material/variant_type" = 4
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="." unique_id=1454755457]
 position = Vector2(232, 154)

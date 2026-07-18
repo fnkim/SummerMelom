@@ -13,9 +13,6 @@ var can_attack: bool
 @onready var anim: AnimationPlayer = $AnimationPlayer
 @onready var ray_cast_2d: RayCast2D = $RayCast2D
 
-
-
-
 func _ready() -> void:
 	pass
 
@@ -59,7 +56,7 @@ func move(delta: float) -> void:
 		velocity.x = direction * speed
 		if ray_cast_2d.is_colliding():
 			var raycast_position = ray_cast_2d.get_collision_point()
-			FootstepManager.play_footstep(raycast_position)
+			FootstepManager.play_footstep(raycast_position, $FmodEventEmitter2D)
 	else:
 		velocity.x = move_toward(velocity.x, 0, speed)
 	
