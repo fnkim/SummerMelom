@@ -91,10 +91,6 @@ func attack() -> void:
 		anim.play("idle")
 		can_attack = true
 
-func _on_hitbox_body_entered(body: Node2D) -> void:
-	if body is Enemy:
-		body.hit_check()
-		print("hit check")
 
 
 

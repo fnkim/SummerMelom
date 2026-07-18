@@ -58,7 +58,7 @@ navigation_polygon = SubResource("NavigationPolygon_8gbba")
 
 [node name="Enemy" parent="." unique_id=1814088890 instance=ExtResource("3_8gbba")]
 position = Vector2(170, 368)
-color_queue = Array[int]([0, 0, 1, 4, 3, 5])
+color_queue = Array[int]([0, 0, 1, 5, 3, 5])
 target_radius_size = 300.0
 
 [node name="NavigationLink2D" type="NavigationLink2D" parent="." unique_id=1377719239]

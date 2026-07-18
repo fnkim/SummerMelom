@@ -1,7 +1,5 @@
 extends Node2D
 
-var symbol = preload("uid://dks7dimo4ti38")
-
 @export var all_symbols: Array[Sprite2D]
 
 var current_symbols: Array[Sprite2D]
@@ -39,7 +37,6 @@ func update_grid(symbol_array: Array[ColorManager.ColorState]) -> void:
 			recenter_bottom(false)
 		6:
 			current_symbols = [all_symbols[7], all_symbols[6], all_symbols[5], all_symbols[3], all_symbols[2], all_symbols[1]]
-			
 		5:
 			current_symbols = [all_symbols[6], all_symbols[5], all_symbols[3], all_symbols[2], all_symbols[1]]
 			recenter_top(false) 
@@ -53,8 +50,7 @@ func update_grid(symbol_array: Array[ColorManager.ColorState]) -> void:
 			recenter_bottom(false)
 		1:
 			current_symbols = [all_symbols[2]]
-			
-	indicator.position = current_symbols.front().position
+	
 	
 	for i in current_symbols.size():
 		current_symbols[i].frame = get_frame_index(symbol_array[i])
@@ -63,9 +59,10 @@ func update_grid(symbol_array: Array[ColorManager.ColorState]) -> void:
 		a.hide()
 	for s in current_symbols:
 		s.show()
+
+	indicator.global_position = current_symbols.front().global_position
+
 	
-
-
 
 
 func get_frame_index(color_state: ColorManager.ColorState) -> int:

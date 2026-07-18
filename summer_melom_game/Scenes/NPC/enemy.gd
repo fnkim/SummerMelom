@@ -2,7 +2,7 @@ extends CharacterBody2D
 class_name Enemy
 
 enum EnemyState{UNATTACKABLE, ATTACKABLE}
-enum EnemyAction{IDLE, FOLLOW, JUMP, ATTACK}
+enum EnemyAction{IDLE, FOLLOW, JUMP, ATTACK, KNOCKED_BACK}
 
 @onready var target_radius_collider: CollisionShape2D = %"Target Radius Collider"
 @onready var agent: NavigationAgent2D = $NavigationAgent2D
@@ -28,7 +28,7 @@ var current_action: EnemyAction
 var target: Player
 var is_attacking: bool
 var current_link: NavigationLink2D
-
+var is_hurt: bool
 
 
 
@@ -47,6 +47,8 @@ func _physics_process(delta: float) -> void:
 	match current_action:
 		EnemyAction.IDLE:
 			pass
+		EnemyAction.KNOCKED_BACK:
+			move_and_slide()
 		EnemyAction.FOLLOW:
 			update_target_position()
 			follow()
@@ -118,19 +120,27 @@ func death() -> void:
 func hit_check() -> void:
 	print("hitcheck")
 	if current_state == EnemyState.ATTACKABLE:
-		
 		get_hit()
 
 func get_hit() -> void:
+	current_action = EnemyAction.KNOCKED_BACK
+	knockback()
 	color_queue.erase(color_queue.front())
+	await get_tree().create_timer(0.7).timeout
 	if color_queue.size() == 0:
 		death()
 		return
 	else:
 		symbol_grid.update_grid(color_queue)
 		current_color = color_queue.front()
+		
+		current_action = EnemyAction.FOLLOW
 
-
+func knockback():
+	var kb_direction = global_position.direction_to(target.position).normalized() * 100
+	velocity = -kb_direction
+	velocity.y -= 340
+	
 
 func _on_targeting_radius_body_entered(body: Node2D) -> void:
 	print(body)
