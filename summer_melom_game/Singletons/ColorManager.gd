@@ -39,4 +39,5 @@ func color_change() -> void:
 				equipped_color = ColorState.BLUE
 		_:
 			pass
+	
 	change_color.emit(equipped_color)

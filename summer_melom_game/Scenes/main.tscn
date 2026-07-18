@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bhv3cug7qoi11" path="res://Scenes/Player/player.tscn" id="1_jjgbg"]
 [ext_resource type="Script" uid="uid://u5kehhjcct8f" path="res://Scenes/Tiles/footstep_tilemap.gd" id="2_kry3j"]
 [ext_resource type="PackedScene" uid="uid://bfc4oph040fbb" path="res://Scenes/NPC/enemy.tscn" id="3_8gbba"]
+[ext_resource type="PackedScene" uid="uid://bdqwhvgfcxpf" path="res://Scenes/UI/hotbar.tscn" id="5_kry3j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u8m4d"]
 size = Vector2(20, 24)
@@ -54,6 +55,7 @@ navigation_polygon = SubResource("NavigationPolygon_8gbba")
 
 [node name="Enemy" parent="." unique_id=1814088890 instance=ExtResource("3_8gbba")]
 position = Vector2(170, 368)
+color_queue = Array[int]([0, 0, 0])
 target_radius_size = 300.0
 
 [node name="NavigationLink2D" type="NavigationLink2D" parent="." unique_id=1377719239]
@@ -63,3 +65,5 @@ end_position = Vector2(401, 273)
 [node name="NavigationLink2D2" type="NavigationLink2D" parent="." unique_id=1674227844]
 start_position = Vector2(568, 357)
 end_position = Vector2(499, 272)
+
+[node name="Hotbar" parent="." unique_id=943630936 instance=ExtResource("5_kry3j")]

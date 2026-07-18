@@ -10,10 +10,15 @@ enum EnemyAction{IDLE, FOLLOW, JUMP, ATTACK}
 @onready var anim: AnimationPlayer = $AnimationPlayer
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var hitbox: Area2D = $Hitbox
+@onready var symbol_grid: Node2D = $SymbolGrid
+
+
 
 @export var color_queue: Array[ColorManager.ColorState]
 @export var target_radius_size: float = 150.0
 @export var speed: float = 100.0
+
+
 
 #hello
 var current_color: ColorManager.ColorState
@@ -31,6 +36,7 @@ var current_link: NavigationLink2D
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	target_radius_collider.shape.radius = target_radius_size
+	symbol_grid.update_grid(color_queue)
 	ColorManager.change_color.connect(update_state)
 
 
@@ -121,16 +127,13 @@ func hit_check() -> void:
 		get_hit()
 
 func get_hit() -> void:
+	symbol_grid.update_grid(color_queue)
 	color_queue.erase(color_queue.front())
 	if color_queue ==[null]:
 		death()
 		return
 	else:
 		current_color = color_queue.front()
-
-
-
-
 
 
 

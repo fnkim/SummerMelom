@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://b330bpoxxd6ec" path="res://Scenes/NPC/enemy.gd" id="1_0yp08"]
 [ext_resource type="Texture2D" uid="uid://cwuh60lcvfu7v" path="res://Scenes/Tiles/spritesheet.png" id="2_w4ki3"]
+[ext_resource type="PackedScene" uid="uid://desn4ndt3cirx" path="res://Scenes/NPC/symbol_grid.tscn" id="3_qng13"]
 
 [sub_resource type="Animation" id="Animation_qng13"]
 length = 0.001
@@ -153,6 +154,7 @@ size = Vector2(26, 18)
 collision_layer = 2
 collision_mask = 9
 script = ExtResource("1_0yp08")
+color_queue = Array[int]([0, 0, 2])
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1482003679]
 texture = ExtResource("2_w4ki3")
@@ -190,6 +192,10 @@ one_shot = true
 position = Vector2(0, -1)
 shape = SubResource("RectangleShape2D_lns1n")
 debug_color = Color(0, 0.6, 0.69803923, 0)
+
+[node name="SymbolGrid" parent="." unique_id=1676709472 instance=ExtResource("3_qng13")]
+position = Vector2(0, -23)
+scale = Vector2(0.8, 0.8)
 
 [connection signal="body_entered" from="Targeting Radius" to="." method="_on_targeting_radius_body_entered"]
 [connection signal="body_exited" from="Targeting Radius" to="." method="_on_targeting_radius_body_exited"]

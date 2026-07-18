@@ -2,21 +2,21 @@
 
 [ext_resource type="Script" uid="uid://bnfhuue2q1u3t" path="res://Scenes/NPC/symbol_grid.gd" id="1_mqo2i"]
 
-[node name="SymbolGrid" type="Node2D" unique_id=1676709472 node_paths=PackedStringArray("marks")]
+[node name="SymbolGrid" type="Node2D" unique_id=1676709472 node_paths=PackedStringArray("mark_pos")]
 script = ExtResource("1_mqo2i")
-marks = [NodePath("BottomRow/0"), NodePath("BottomRow/1"), NodePath("BottomRow/2"), NodePath("BottomRow/3"), NodePath("TopRow/4"), NodePath("TopRow/5"), NodePath("TopRow/6"), NodePath("TopRow/7")]
+mark_pos = [NodePath("BottomRow/0"), NodePath("BottomRow/1"), NodePath("BottomRow/2"), NodePath("BottomRow/3"), NodePath("TopRow/4"), NodePath("TopRow/5"), NodePath("TopRow/6"), NodePath("TopRow/7")]
 
 [node name="BottomRow" type="Marker2D" parent="." unique_id=728616010]
 
-[node name="0" type="Marker2D" parent="BottomRow" unique_id=1889939917]
+[node name="3" type="Marker2D" parent="BottomRow" unique_id=1889939917]
 position = Vector2(-25, 0)
 
-[node name="1" type="Marker2D" parent="BottomRow" unique_id=1327470560]
+[node name="2" type="Marker2D" parent="BottomRow" unique_id=1327470560]
 
-[node name="2" type="Marker2D" parent="BottomRow" unique_id=236945638]
+[node name="1" type="Marker2D" parent="BottomRow" unique_id=236945638]
 position = Vector2(25, 0)
 
-[node name="3" type="Marker2D" parent="BottomRow" unique_id=194240100]
+[node name="0" type="Marker2D" parent="BottomRow" unique_id=194240100]
 position = Vector2(50, 0)
 
 [node name="TopRow" type="Marker2D" parent="." unique_id=1945400]
