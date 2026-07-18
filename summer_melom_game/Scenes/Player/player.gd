@@ -8,9 +8,13 @@ class_name Player
 var health: int = 6
 var can_attack: bool
 
-@export var sprite: Sprite2D
-@export var hitbox: Area2D
-@export var anim: AnimationPlayer
+@onready var sprite: Sprite2D = $Sprite2D
+@onready var hitbox: Area2D = $Hitbox
+@onready var anim: AnimationPlayer = $AnimationPlayer
+@onready var ray_cast_2d: RayCast2D = $RayCast2D
+
+
+
 
 func _ready() -> void:
 	pass
@@ -53,6 +57,9 @@ func move(delta: float) -> void:
 	
 	if direction:
 		velocity.x = direction * speed
+		if ray_cast_2d.is_colliding():
+			var raycast_position = ray_cast_2d.get_collision_point()
+			FootstepManager.play_footstep(raycast_position)
 	else:
 		velocity.x = move_toward(velocity.x, 0, speed)
 	

@@ -1,16 +1,18 @@
 extends Node
 
 
-var tilemaps:Array[TileMapLayer] = []
+var tilemaps: Array[TileMapLayer] = []
+var current_tile_type
+
 
 const footstep_sounds = {
-	"Grass":[
+	"grass":[
 		
 	],
-	"Concrete":[
+	"concrete":[
 		
 	],
-	"Rock":[
+	"rock":[
 		
 	]
 }
@@ -21,11 +23,10 @@ func play_footstep(position: Vector2):
 			var tile_position = tilemap.local_to_map(position)
 			var data = tilemap.get_cell_tile_data(tile_position)
 			if data:
-				tile_data.push_back(data)
+				current_tile_type = data.get_custom_data("footstep_sound")
+				print(current_tile_type)
+				print("Playing footstep")
 				
-		if tile_data.size() > 0:
-			var tile_type = tile_data.back().get_custom_data("footstep_sound")
-			print("Playing footstep")
 			#if footstep_sounds.has(tile_type):
 				#print(tile_type)
 				
