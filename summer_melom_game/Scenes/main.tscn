@@ -8,9 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://ce3rf7ivifk8t" path="res://Scenes/Small Monster/small_monster.tscn" id="7_6bp64"]
 [ext_resource type="Script" uid="uid://kiojxb4wf2sc" path="res://Scenes/testMusic.gd" id="8_344ge"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_u8m4d"]
-size = Vector2(20, 24)
-
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_8gbba"]
 vertices = PackedVector2Array(421.6875, 222.09375, -229.70313, 227.89844, -228.27344, 177.96875, 420.28906, 176.02344, 271.42188, 108.90625, 270.5625, 124, 161.72656, 124, 161.28125, 108.07031)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 5, 6, 7)])
@@ -40,10 +37,6 @@ color_queue = Array[int]([0, 1])
 position = Vector2(469, 251)
 collision_layer = 8
 collision_mask = 3
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=1389396877]
-position = Vector2(0, 12)
-shape = SubResource("RectangleShape2D_u8m4d")
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=413907697]
 

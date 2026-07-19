@@ -1,7 +1,7 @@
 extends CharacterBody2D
 class_name Player
 
-enum PlayerState{IDLE, JUMP, FALL, WALK, ATTACK}
+enum PlayerState{IDLE, JUMP, FALL, WALK, ATTACK, HURT}
 @export var speed = 240.0
 @export var jump_velocity = -700.0
 @export var swapper: PaletteSwapper
@@ -12,18 +12,24 @@ var health: int = 6
 var can_attack: bool = true
 var current_enemy: Enemy
 var current_state: PlayerState = PlayerState.WALK
+var touching_enemy: bool
+
+
+@onready var collider: CollisionShape2D = $CollisionShape2D
 
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var hitbox: Area2D = $Hitbox
 @onready var anim: AnimationPlayer = $AnimationPlayer
 @onready var ray_cast_2d: RayCast2D = $RayCast2D
 @onready var fmod_event_emitter = $FmodEventEmitter2D
+@onready var hurtbox: NPCHurtBox = $Hurtbox
+@onready var invincible_timer: Timer = $"Invincible Timer"
 
 
 
 func _ready() -> void:
 	ColorManager.change_color.connect(palette_change)
-
+	hurtbox.hurt_player.connect(damage)
 
 
 func toggle_color():
@@ -45,9 +51,14 @@ func toggle_color():
 	
 
 func _physics_process(delta: float) -> void:
+	attack()
 	match current_state:
 		PlayerState.IDLE:
-			pass
+			move(delta)
+			anim.play("idle")
+			var direction := Input.get_axis("left", "right")
+			if direction:
+				current_state = PlayerState.WALK
 		PlayerState.WALK:
 			if Input.is_action_pressed("space") and is_on_floor():
 				anim.play("jump")
@@ -58,13 +69,15 @@ func _physics_process(delta: float) -> void:
 					anim.play("walk")
 				else:
 					anim.play("idle")
+			
 			move(delta)
+		PlayerState.HURT:
+			attack()
 		PlayerState.JUMP:
 			jump(delta)
 		PlayerState.ATTACK:
 			pass
 	toggle_color()
-	attack()
 	move_and_slide()
 
 func land():
@@ -103,16 +116,17 @@ func move(delta: float) -> void:
 		if ray_cast_2d.is_colliding():
 			var raycast_position = ray_cast_2d.get_collision_point()
 			FootstepManager.play_footstep(raycast_position, fmod_event_emitter)
+		# flip functionality
+		if velocity.x > 0:
+			sprite.scale.x = 1
+			hitbox.position.x = 25
+		elif velocity.x < 0:
+			sprite.scale.x = -1
+			hitbox.position.x = -25
 	else:
 		velocity.x = move_toward(velocity.x, 0, speed)
 	
-	# flip functionality
-	if velocity.x > 0:
-		sprite.scale.x = 1
-		hitbox.position.x = 25
-	elif velocity.x < 0:
-		sprite.scale.x = -1
-		hitbox.position.x = -25
+
 
 func attack() -> void:
 	if !can_attack:
@@ -125,10 +139,20 @@ func attack() -> void:
 		can_attack = true
 		current_state = PlayerState.WALK
 
-func damage() -> void:
+func damage(enemy: Node2D) -> void:
+	current_state = PlayerState.HURT
+	invincible_timer.start(1.2)
 	health -= 1
+	var kb_direction = position.direction_to(enemy.position).normalized() * 200
+	var x = -kb_direction.x
+	velocity = Vector2(x, -100)
+	anim.play("hurt")
+	await anim.animation_finished
+	current_state = PlayerState.IDLE
 	if health <= 0:
 		GameManager.player_death()
+		return
+
 
 func palette_change(color: ColorManager.ColorState) -> void:
 	var new_color: String
@@ -150,3 +174,27 @@ func palette_change(color: ColorManager.ColorState) -> void:
 		ColorManager.ColorState.NONE:
 			new_color = "original"
 	swapper.swap(new_color)
+
+
+
+
+
+func _on_collision_hurtbox_body_entered(body: Node2D) -> void:
+	touching_enemy = true
+	current_enemy = body
+	if invincible_timer.time_left != 0:
+		return
+	if body is Enemy:
+		damage(body)
+
+
+
+func _on_collision_hurtbox_body_exited(body: Node2D) -> void:
+	touching_enemy = false
+	current_enemy = null
+
+
+func _on_invincible_timer_timeout() -> void:
+	if touching_enemy == true:
+		if current_enemy != null:
+			damage(current_enemy)

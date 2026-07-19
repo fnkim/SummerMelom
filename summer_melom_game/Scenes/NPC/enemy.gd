@@ -15,9 +15,9 @@ enum EnemyAction{IDLE, FOLLOW, JUMP, ATTACK, KNOCKED_BACK, STUNNED}
 
 @export var color_queue: Array[ColorManager.ColorState]
 @export var target_radius_size: float = 150.0
-@export var speed: float = 100.0
+@export var speed: float = 70.0
 @export var hurtbox: NPCHurtBox
-
+@export var dash_multiplier: float = 250
 
 #hello
 var current_color: ColorManager.ColorState
@@ -60,10 +60,11 @@ func _physics_process(delta: float) -> void:
 			move_and_slide()
 
 func update_target_position() -> void:
-	agent.set_target_position(target.global_position)
+	if agent:
+		agent.set_target_position(target.global_position)
 
 func follow() -> void:
-	if abs(hitbox.global_position.x - target.position.x) > 25:
+	if abs(hitbox.global_position.x - target.position.x) > 50:
 		is_attacking = false
 		var cur_loc = global_transform.origin
 		var next_loc = agent.get_next_path_position()
@@ -103,9 +104,13 @@ func attack() -> void:
 		if attack_timer.time_left == 0:
 			is_attacking = true
 			anim.play("attack")
+			var lunge_dir = global_position.direction_to(target.position).normalized() * dash_multiplier
+			velocity = lunge_dir
+
 			await anim.animation_finished
 			anim.play("idle")
-			attack_timer.start(1)
+			is_attacking = false
+			attack_timer.start(2)
 	
 
 
@@ -117,7 +122,7 @@ func update_state(equipped_color: ColorManager.ColorState) -> void:
 		var color_string = get_color(current_color)
 		swapper.swap(color_string)
 	else:
-		EnemyState.UNATTACKABLE
+		current_state = EnemyState.UNATTACKABLE
 		swapper.swap("original")
 
 func get_color(color: ColorManager.ColorState) -> String:
@@ -151,12 +156,12 @@ func get_hit() -> void:
 	current_action = EnemyAction.KNOCKED_BACK
 	knockback()
 	color_queue.erase(color_queue.front())
+	symbol_grid.update_grid(color_queue)
 	await get_tree().create_timer(0.7).timeout
 	if color_queue.size() == 0:
 		death()
 		return
 	else:
-		symbol_grid.update_grid(color_queue)
 		current_color = color_queue.front()
 		update_state(ColorManager.equipped_color)
 		current_action = EnemyAction.STUNNED
