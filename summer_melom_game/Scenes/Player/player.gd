@@ -24,6 +24,7 @@ var touching_enemy: bool
 @onready var fmod_event_emitter = $FmodEventEmitter2D
 @onready var hurtbox: NPCHurtBox = $Hurtbox
 @onready var invincible_timer: Timer = $"Invincible Timer"
+@onready var invin_anim: AnimationPlayer = $InvinAnim
 
 
 
@@ -119,10 +120,10 @@ func move(delta: float) -> void:
 		# flip functionality
 		if velocity.x > 0:
 			sprite.scale.x = 1
-			hitbox.position.x = 25
+			hitbox.position.x = 30
 		elif velocity.x < 0:
 			sprite.scale.x = -1
-			hitbox.position.x = -25
+			hitbox.position.x = -30
 	else:
 		velocity.x = move_toward(velocity.x, 0, speed)
 	
@@ -141,12 +142,12 @@ func attack() -> void:
 
 func damage(enemy: Node2D) -> void:
 	current_state = PlayerState.HURT
-	invincible_timer.start(1.2)
+	invincible_timer.start(1)
+	anim.play("hurt")
 	health -= 1
 	var kb_direction = position.direction_to(enemy.position).normalized() * 200
 	var x = -kb_direction.x
-	velocity = Vector2(x, -100)
-	anim.play("hurt")
+	velocity = Vector2(x, -80)
 	await anim.animation_finished
 	current_state = PlayerState.IDLE
 	if health <= 0:
@@ -180,11 +181,12 @@ func palette_change(color: ColorManager.ColorState) -> void:
 
 
 func _on_collision_hurtbox_body_entered(body: Node2D) -> void:
-	touching_enemy = true
-	current_enemy = body
 	if invincible_timer.time_left != 0:
 		return
 	if body is Enemy:
+		return
+		touching_enemy = true
+		current_enemy = body
 		damage(body)
 
 
@@ -195,6 +197,8 @@ func _on_collision_hurtbox_body_exited(body: Node2D) -> void:
 
 
 func _on_invincible_timer_timeout() -> void:
+	invin_anim.play("normal")
 	if touching_enemy == true:
 		if current_enemy != null:
+			print("ouch")
 			damage(current_enemy)

@@ -353,6 +353,9 @@ hframes = 7
 vframes = 4
 frame = 0
 
+[node name="HurtBox" parent="Sprite2D" index="0" unique_id=1214907404]
+collision_mask = 9
+
 [node name="AnimationPlayer" parent="." index="1" unique_id=158364619]
 libraries/ = SubResource("AnimationLibrary_i7808")
 

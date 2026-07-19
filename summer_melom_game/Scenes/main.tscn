@@ -30,12 +30,11 @@ tile_set = ExtResource("1_bo1nx")
 script = ExtResource("2_kry3j")
 
 [node name="Small Monster" parent="." unique_id=1814088890 instance=ExtResource("7_6bp64")]
-position = Vector2(129, 363)
-color_queue = Array[int]([0, 1])
+position = Vector2(440, 242)
+color_queue = Array[int]([0, 0, 1, 1])
 
 [node name="Player" parent="." unique_id=1479473842 instance=ExtResource("1_jjgbg")]
-position = Vector2(469, 251)
-collision_layer = 8
+position = Vector2(129, 342)
 collision_mask = 3
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=413907697]

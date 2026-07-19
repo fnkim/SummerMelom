@@ -2,7 +2,7 @@ extends Area2D
 class_name NPCHurtBox
 
 signal hittable
-signal hurt_player(enemy: Node2D)
+signal hurt_player(enemy: Enemy)
 @export var is_player: bool
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -13,9 +13,11 @@ func _process(delta: float) -> void:
 	pass
 
 func _on_area_entered(hitbox: Area2D) -> void:
+	print("out")
 	if hitbox == null:
 		return
-	var monster = hitbox.get_parent
+
+	var monster = hitbox.get_parent()
 	if is_player and monster is Enemy:
 		hurt_player.emit(monster)
 	else:

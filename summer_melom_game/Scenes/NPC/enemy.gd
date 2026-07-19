@@ -13,6 +13,9 @@ enum EnemyAction{IDLE, FOLLOW, JUMP, ATTACK, KNOCKED_BACK, STUNNED}
 @onready var symbol_grid: Node2D = $SymbolGrid
 @onready var swapper: PaletteSwapper = $"Palette Swapper"
 
+
+
+
 @export var color_queue: Array[ColorManager.ColorState]
 @export var target_radius_size: float = 150.0
 @export var speed: float = 70.0
@@ -29,15 +32,17 @@ var target: Player
 var is_attacking: bool
 var current_link: NavigationLink2D
 var is_hurt: bool
-
+var is_invincible: bool
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	
 	target_radius_collider.shape.radius = target_radius_size
 	symbol_grid.update_grid(color_queue)
 	ColorManager.change_color.connect(update_state)
 	hurtbox.hittable.connect(hit_check)
+
 
 
 func _physics_process(delta: float) -> void:
@@ -99,6 +104,8 @@ func jump(is_top: bool) -> void:
 
 func attack() -> void:
 	if is_attacking:
+		return
+	if is_invincible:
 		return
 	else:
 		if attack_timer.time_left == 0:

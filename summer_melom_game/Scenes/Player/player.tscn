@@ -243,7 +243,7 @@ tracks/3/keys = {
 
 [sub_resource type="Animation" id="Animation_jlvik"]
 resource_name = "hurt"
-length = 0.3333416766010225
+length = 0.16667500496730212
 step = 0.083333336
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -304,18 +304,6 @@ tracks/4/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(0, 0)]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Sprite2D:modulate")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0, 0.16666667, 0.33333334),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.69411767), Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_xpcdj"]
@@ -543,6 +531,18 @@ tracks/3/keys = {
 "update": 1,
 "values": [ExtResource("5_0u5uq")]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Sprite2D:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_mtuoh"]
 _data = {
@@ -557,6 +557,7 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u8m4d"]
+size = Vector2(39.5, 36)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lns1n"]
 size = Vector2(20, 47)
@@ -566,9 +567,80 @@ radius = 6.0
 height = 32.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s5i16"]
-size = Vector2(24, 52)
+size = Vector2(24, 50)
+
+[sub_resource type="Animation" id="Animation_r5xpd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ks1b7"]
+resource_name = "dash"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.654902)]
+}
+
+[sub_resource type="Animation" id="Animation_hnuln"]
+resource_name = "hurt"
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.654902), Color(1, 1, 1, 0.36862746), Color(1, 1, 1, 0.654902), Color(1, 1, 1, 0.36862746), Color(1, 1, 1, 0.654902)]
+}
+
+[sub_resource type="Animation" id="Animation_aqm4k"]
+resource_name = "normal"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rcvs5"]
+_data = {
+&"RESET": SubResource("Animation_r5xpd"),
+&"dash": SubResource("Animation_ks1b7"),
+&"hurt": SubResource("Animation_hnuln"),
+&"normal": SubResource("Animation_aqm4k")
+}
 
 [node name="Player" type="CharacterBody2D" unique_id=1479473842 node_paths=PackedStringArray("swapper")]
+collision_layer = 8
+wall_min_slide_angle = 0.16406095
 script = ExtResource("1_a3d8c")
 swapper = NodePath("Palette Swapper")
 
@@ -582,7 +654,7 @@ hframes = 2
 libraries/ = SubResource("AnimationLibrary_mtuoh")
 
 [node name="Hitbox" type="Area2D" parent="." unique_id=602554581]
-position = Vector2(25, 0)
+position = Vector2(30, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=299771455]
 shape = SubResource("RectangleShape2D_u8m4d")
@@ -607,7 +679,8 @@ position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_lns1n")
 
 [node name="Hurtbox" type="Area2D" parent="." unique_id=682372968]
-collision_mask = 3
+collision_layer = 0
+collision_mask = 4
 script = ExtResource("16_r5xpd")
 is_player = true
 
@@ -616,14 +689,18 @@ position = Vector2(0, 2)
 shape = SubResource("CapsuleShape2D_s5i16")
 
 [node name="Collision Hurtbox" type="Area2D" parent="." unique_id=1236641820]
-collision_layer = 4
+collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Collision Hurtbox" unique_id=1015126586]
+position = Vector2(0, -1)
 shape = SubResource("RectangleShape2D_s5i16")
 
 [node name="Invincible Timer" type="Timer" parent="." unique_id=1334018715]
 one_shot = true
+
+[node name="InvinAnim" type="AnimationPlayer" parent="." unique_id=1493958349]
+libraries/ = SubResource("AnimationLibrary_rcvs5")
 
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
 [connection signal="body_entered" from="Collision Hurtbox" to="." method="_on_collision_hurtbox_body_entered"]
