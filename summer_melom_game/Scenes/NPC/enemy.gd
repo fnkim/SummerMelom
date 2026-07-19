@@ -11,7 +11,7 @@ enum EnemyAction{IDLE, FOLLOW, JUMP, ATTACK, KNOCKED_BACK, STUNNED}
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var hitbox: Area2D = $Hitbox
 @onready var symbol_grid: Node2D = $SymbolGrid
-
+@onready var swapper: PaletteSwapper = $"Palette Swapper"
 
 @export var color_queue: Array[ColorManager.ColorState]
 @export var target_radius_size: float = 150.0
@@ -112,7 +112,31 @@ func attack() -> void:
 
 func update_state(equipped_color: ColorManager.ColorState) -> void:
 	var same_color: bool = current_color == equipped_color
-	current_state = EnemyState.ATTACKABLE if same_color else EnemyState.UNATTACKABLE
+	if same_color:
+		current_state = EnemyState.ATTACKABLE
+		var color_string = get_color(current_color)
+		swapper.swap(color_string)
+	else:
+		EnemyState.UNATTACKABLE
+		swapper.swap("original")
+
+func get_color(color: ColorManager.ColorState) -> String:
+	match color:
+		ColorManager.ColorState.RED:
+			return "red"
+		ColorManager.ColorState.ORANGE:
+			return "orange"
+		ColorManager.ColorState.YELLOW:
+			return "yellow"
+		ColorManager.ColorState.GREEN:
+			return "green"
+		ColorManager.ColorState.BLUE:
+			return "blue"
+		ColorManager.ColorState.PURPLE:
+			return "purple"
+		_:
+			return "original"
+
 
 
 func death() -> void:
@@ -134,6 +158,7 @@ func get_hit() -> void:
 	else:
 		symbol_grid.update_grid(color_queue)
 		current_color = color_queue.front()
+		update_state(ColorManager.equipped_color)
 		current_action = EnemyAction.STUNNED
 		stunned()
 	

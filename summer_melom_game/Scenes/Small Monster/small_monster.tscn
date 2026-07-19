@@ -1,7 +1,22 @@
 [gd_scene format=3 uid="uid://ce3rf7ivifk8t"]
 
 [ext_resource type="PackedScene" uid="uid://bfc4oph040fbb" path="res://Scenes/NPC/enemy.tscn" id="1_b0e82"]
+[ext_resource type="Shader" uid="uid://b6soepi8y8wl3" path="res://Scenes/Player/Palettes/palette_swap.tres" id="2_qhlp5"]
 [ext_resource type="Texture2D" uid="uid://cy8koepiogabg" path="res://Scenes/Small Monster/small monster sheet.png" id="2_yjqat"]
+[ext_resource type="PackedScene" uid="uid://dongsf20y3vtk" path="res://Scenes/Helpers/palette_swapper.tscn" id="3_pd5ug"]
+[ext_resource type="Texture2D" uid="uid://cvkco1n08au8g" path="res://Scenes/Small Monster/Palettes/red_palette.png" id="4_qhlp5"]
+[ext_resource type="Texture2D" uid="uid://ct6nsvcugiyb" path="res://Scenes/Small Monster/Palettes/orange_palette.png" id="5_aax1n"]
+[ext_resource type="Texture2D" uid="uid://5jr0nm12w246" path="res://Scenes/Small Monster/Palettes/yellow_palette.png" id="6_oyrhm"]
+[ext_resource type="Texture2D" uid="uid://drwmh472op5th" path="res://Scenes/Small Monster/Palettes/green_palette.png" id="7_eutgo"]
+[ext_resource type="Texture2D" uid="uid://dcd5on75jrlk4" path="res://Scenes/Small Monster/Palettes/blue_palette.png" id="8_j2lu7"]
+[ext_resource type="Texture2D" uid="uid://du4ecbeh3lwxy" path="res://Scenes/Small Monster/Palettes/purple_palette.png" id="9_jvff3"]
+[ext_resource type="Texture2D" uid="uid://p2p1yhbieoeh" path="res://Scenes/Small Monster/Palettes/og_palette.png" id="10_1ybtv"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_y54nl"]
+shader = ExtResource("2_qhlp5")
+shader_parameter/original_palette = ExtResource("10_1ybtv")
+shader_parameter/new_palette = ExtResource("10_1ybtv")
+shader_parameter/colors_count = 11
 
 [sub_resource type="Animation" id="Animation_7tps5"]
 length = 0.001
@@ -331,6 +346,7 @@ size = Vector2(33, 23)
 [node name="Small Monster" unique_id=1814088890 instance=ExtResource("1_b0e82")]
 
 [node name="Sprite2D" parent="." index="0" unique_id=1482003679]
+material = SubResource("ShaderMaterial_y54nl")
 position = Vector2(-4.768165, 0)
 texture = ExtResource("2_yjqat")
 hframes = 7
@@ -349,3 +365,13 @@ position = Vector2(-6, 0)
 [node name="Collision" type="CollisionShape2D" parent="." index="7" unique_id=2090406589]
 position = Vector2(-4.5, 3.5)
 shape = SubResource("RectangleShape2D_u8m4d")
+
+[node name="Palette Swapper" parent="." index="8" unique_id=242073123 node_paths=PackedStringArray("sprite") instance=ExtResource("3_pd5ug")]
+red = ExtResource("4_qhlp5")
+orange = ExtResource("5_aax1n")
+yellow = ExtResource("6_oyrhm")
+green = ExtResource("7_eutgo")
+blue = ExtResource("8_j2lu7")
+purple = ExtResource("9_jvff3")
+original = ExtResource("10_1ybtv")
+sprite = NodePath("../Sprite2D")
