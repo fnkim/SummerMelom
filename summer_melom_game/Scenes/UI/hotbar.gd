@@ -9,10 +9,11 @@ extends Control
 
 
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	ColorManager.change_color.connect(update_color)
-
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -41,12 +42,15 @@ func update_color(color: ColorManager.ColorState) -> void:
 
 	if ColorManager.red_toggled:
 		red.show() 
-	else: red.hide()
-	
+	else: 
+		red.hide()
 	if ColorManager.blue_toggled:
 		blue.show()
-	else: blue.hide()
-	
+	else: 
+		blue.hide()
 	if ColorManager.yellow_toggled:
 		yellow.show()
-	else: yellow.hide()
+	else: 
+		yellow.hide()
+	
+	

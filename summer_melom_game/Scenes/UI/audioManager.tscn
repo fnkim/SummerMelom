@@ -5,3 +5,11 @@
 [node name="Node" type="Node" unique_id=54661380]
 script = ExtResource("1_mcfac")
 bgmTracks = Array[String](["event:/BGM/BGM_Test", "event:/BGM/BGM_Test_2", "event:/BGM/BGM_Test_3"])
+
+[node name="SwitchColor" type="FmodEventEmitter2D" parent="." unique_id=1167028850]
+event_name = "event:/SFX/Switch_Color"
+event_guid = "{bf741af1-b5e4-4ce5-94a0-723adf8b77a0}"
+"fmod_parameters/Primary Color/id" = 8886334206533775068
+"fmod_parameters/Primary Color" = "Red"
+"fmod_parameters/Primary Color/labels" = PackedStringArray("Red", "Blue", "Yellow")
+"fmod_parameters/Primary Color/variant_type" = 4

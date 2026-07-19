@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="AudioFile" id="{2a1285d5-f6b3-4773-b8aa-a75d414da8ee}">
+		<property name="assetPath">
+			<value>BlueSwitch-001.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>0.72800453514739227</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{975d2c29-42c2-4f5d-b9b6-c0605103a0d9}</destination>
+		</relationship>
+	</object>
+</objects>

@@ -4,12 +4,12 @@ extends Node
 var currentMusicEvent:String
 var currentEventInstance
 var transitionEventInstance
-
+@onready var prim_color = $SwitchColor
 
 func _ready() -> void:
 	if bgmTracks.size() > 0:
 		currentMusicEvent = bgmTracks[0]
-
+	
 func IsPlaying() -> bool:
 	return currentEventInstance != null && currentEventInstance.is_valid()
 
@@ -78,6 +78,15 @@ func _on_crossfade_complete(nextTrack : String):
 	currentEventInstance = transitionEventInstance
 	currentMusicEvent = nextTrack
 	transitionEventInstance = null
+	
+func _play_color(on:bool, color:String):
+	if on:
+		prim_color.set_parameter("Primary Color", color)
+		prim_color.play()
+		print("Playing colors")
+	
+	
+
 	
 	
 	

@@ -27,15 +27,15 @@ func toggle_color():
 	if GameManager.red_unlocked:
 		if Input.is_action_just_pressed("red"):
 			ColorManager.red_toggled = !ColorManager.red_toggled
-	
+			AudioManager._play_color(ColorManager.red_toggled, "Red")
 	if GameManager.yellow_unlocked:
 		if Input.is_action_just_pressed("yellow"):
 			ColorManager.yellow_toggled = !ColorManager.yellow_toggled
-	
+			AudioManager._play_color(ColorManager.yellow_toggled, "Yellow")
 	if GameManager.blue_unlocked:
 		if Input.is_action_just_pressed("blue"):
 			ColorManager.blue_toggled = !ColorManager.blue_toggled
-	
+			AudioManager._play_color(ColorManager.blue_toggled, "Blue")
 	ColorManager.color_change()
 
 func _physics_process(delta: float) -> void:

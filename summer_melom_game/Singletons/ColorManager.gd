@@ -33,6 +33,7 @@ func color_change() -> void:
 		1:
 			if red_toggled:
 				equipped_color = ColorState.RED
+				
 			elif yellow_toggled:
 				equipped_color = ColorState.YELLOW
 			elif blue_toggled:
