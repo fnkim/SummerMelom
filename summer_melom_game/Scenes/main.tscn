@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://u5kehhjcct8f" path="res://Scenes/Tiles/footstep_tilemap.gd" id="2_kry3j"]
 [ext_resource type="PackedScene" uid="uid://bfc4oph040fbb" path="res://Scenes/NPC/enemy.tscn" id="3_8gbba"]
 [ext_resource type="PackedScene" uid="uid://bdqwhvgfcxpf" path="res://Scenes/UI/hotbar.tscn" id="5_kry3j"]
+[ext_resource type="Script" uid="uid://dggeelwhhcgf0" path="res://Singletons/audio_manager.gd" id="7_6bp64"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u8m4d"]
 size = Vector2(20, 24)
@@ -70,3 +71,6 @@ start_position = Vector2(568, 357)
 end_position = Vector2(499, 272)
 
 [node name="Hotbar" parent="." unique_id=943630936 instance=ExtResource("5_kry3j")]
+
+[node name="AudioManager" type="Node" parent="." unique_id=851934926]
+script = ExtResource("7_6bp64")
