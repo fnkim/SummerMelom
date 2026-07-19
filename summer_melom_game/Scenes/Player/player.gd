@@ -1,25 +1,28 @@
 extends CharacterBody2D
 class_name Player
 
-
+enum PlayerState{IDLE, JUMP, FALL, WALK, ATTACK}
 @export var speed = 240.0
-@export var jump_velocity = -650.0
+@export var jump_velocity = -700.0
+@export var swapper: PaletteSwapper
+
+
 
 var health: int = 6
 var can_attack: bool = true
 var current_enemy: Enemy
-
+var current_state: PlayerState = PlayerState.WALK
 
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var hitbox: Area2D = $Hitbox
 @onready var anim: AnimationPlayer = $AnimationPlayer
 @onready var ray_cast_2d: RayCast2D = $RayCast2D
-
+@onready var fmod_event_emitter = $FmodEventEmitter2D
 
 
 
 func _ready() -> void:
-	pass
+	ColorManager.change_color.connect(palette_change)
 
 
 
@@ -28,41 +31,70 @@ func toggle_color():
 		if Input.is_action_just_pressed("red"):
 			ColorManager.red_toggled = !ColorManager.red_toggled
 			AudioManager._play_color(ColorManager.red_toggled, "Red")
+			ColorManager.color_change()
 	if GameManager.yellow_unlocked:
 		if Input.is_action_just_pressed("yellow"):
 			ColorManager.yellow_toggled = !ColorManager.yellow_toggled
 			AudioManager._play_color(ColorManager.yellow_toggled, "Yellow")
+			ColorManager.color_change()
 	if GameManager.blue_unlocked:
 		if Input.is_action_just_pressed("blue"):
 			ColorManager.blue_toggled = !ColorManager.blue_toggled
 			AudioManager._play_color(ColorManager.blue_toggled, "Blue")
-	ColorManager.color_change()
+			ColorManager.color_change()
+	
 
 func _physics_process(delta: float) -> void:
+	match current_state:
+		PlayerState.IDLE:
+			pass
+		PlayerState.WALK:
+			if Input.is_action_pressed("space") and is_on_floor():
+				anim.play("jump")
+				velocity.y = jump_velocity
+				current_state = PlayerState.JUMP
+			else:
+				if velocity.x != 0:
+					anim.play("walk")
+				else:
+					anim.play("idle")
+			move(delta)
+		PlayerState.JUMP:
+			jump(delta)
+		PlayerState.ATTACK:
+			pass
 	toggle_color()
-	move(delta)
 	attack()
 	move_and_slide()
 
-func move(delta: float) -> void:
-	
-	if not is_on_floor():
-		velocity.x = clampf(velocity.x,-150, 150)
-		var current_gravity
-		if velocity.y <= 0:
-			current_gravity = get_gravity() * 2
-		else:
-			current_gravity = get_gravity()
-		velocity += current_gravity * delta
-	
+func land():
+	print("landing")
+	anim.play("land")
+	await anim.animation_finished
+	current_state = PlayerState.WALK
 
-	# Handle jump.
-	if Input.is_action_just_pressed("space") and is_on_floor():
-		velocity.y = jump_velocity
 
+func jump(delta: float):
+	move(delta)
 	if Input.is_action_just_released("space") and velocity.y < 0:
-		velocity.y = 0
+		velocity.y = velocity.y * 0.5
 	
+	velocity.x = clampf(velocity.x,-130, 130)
+	var current_gravity
+	if velocity.y <= 0:
+		current_gravity = get_gravity() * 0.8
+	else:
+		current_gravity = get_gravity() * 1.5
+	
+	if is_on_floor():
+		land()
+		current_state = PlayerState.FALL
+	velocity += current_gravity * delta
+	
+
+func move(delta: float) -> void:
+	velocity += get_gravity() * delta
+	# Handle jump.
 
 	var direction := Input.get_axis("left", "right")
 	
@@ -70,31 +102,51 @@ func move(delta: float) -> void:
 		velocity.x = direction * speed
 		if ray_cast_2d.is_colliding():
 			var raycast_position = ray_cast_2d.get_collision_point()
-			FootstepManager.play_footstep(raycast_position, $FmodEventEmitter2D)
+			FootstepManager.play_footstep(raycast_position, fmod_event_emitter)
 	else:
 		velocity.x = move_toward(velocity.x, 0, speed)
 	
 	# flip functionality
 	if velocity.x > 0:
-		sprite.flip_h = true
+		sprite.scale.x = 1
 		hitbox.position.x = 25
 	elif velocity.x < 0:
-		sprite.flip_h = false
+		sprite.scale.x = -1
 		hitbox.position.x = -25
 
 func attack() -> void:
 	if !can_attack:
 		return
 	if Input.is_action_just_pressed("attack"):
+		current_state = PlayerState.ATTACK
 		anim.play("attack")
 		await anim.animation_finished
 		anim.play("idle")
 		can_attack = true
-
-
-
+		current_state = PlayerState.WALK
 
 func damage() -> void:
 	health -= 1
 	if health <= 0:
 		GameManager.player_death()
+
+func palette_change(color: ColorManager.ColorState) -> void:
+	var new_color: String
+	match color:
+		ColorManager.ColorState.RAINBOW:
+			new_color = "rainbow"
+		ColorManager.ColorState.RED:
+			new_color = "red"
+		ColorManager.ColorState.ORANGE:
+			new_color = "orange"
+		ColorManager.ColorState.YELLOW:
+			new_color = "yellow"
+		ColorManager.ColorState.GREEN:
+			new_color = "green"
+		ColorManager.ColorState.BLUE:
+			new_color = "blue"
+		ColorManager.ColorState.PURPLE:
+			new_color = "purple"
+		ColorManager.ColorState.NONE:
+			new_color = "original"
+	swapper.swap(new_color)

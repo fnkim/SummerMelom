@@ -2,7 +2,7 @@ extends CharacterBody2D
 class_name Enemy
 
 enum EnemyState{UNATTACKABLE, ATTACKABLE}
-enum EnemyAction{IDLE, FOLLOW, JUMP, ATTACK, KNOCKED_BACK}
+enum EnemyAction{IDLE, FOLLOW, JUMP, ATTACK, KNOCKED_BACK, STUNNED}
 
 @onready var target_radius_collider: CollisionShape2D = %"Target Radius Collider"
 @onready var agent: NavigationAgent2D = $NavigationAgent2D
@@ -22,7 +22,7 @@ enum EnemyAction{IDLE, FOLLOW, JUMP, ATTACK, KNOCKED_BACK}
 #hello
 var current_color: ColorManager.ColorState
 var current_state: EnemyState
-var current_action: EnemyAction
+var current_action: EnemyAction = EnemyAction.IDLE
 
 #navigation variables
 var target: Player
@@ -46,9 +46,11 @@ func _physics_process(delta: float) -> void:
 		
 	match current_action:
 		EnemyAction.IDLE:
-			pass
+			anim.play("idle")
 		EnemyAction.KNOCKED_BACK:
 			move_and_slide()
+		EnemyAction.STUNNED:
+			pass
 		EnemyAction.FOLLOW:
 			update_target_position()
 			follow()
@@ -61,19 +63,20 @@ func update_target_position() -> void:
 	agent.set_target_position(target.global_position)
 
 func follow() -> void:
-	if abs(position.x - target.position.x) > 25:
+	if abs(hitbox.global_position.x - target.position.x) > 25:
+		is_attacking = false
 		var cur_loc = global_transform.origin
 		var next_loc = agent.get_next_path_position()
 		var new_vel = (next_loc - cur_loc).normalized() * speed
 		velocity = Vector2(new_vel.x, velocity.y)
+		anim.play("walk")
 		if position.x - target.position.x < 0:
-			sprite.flip_h = true
+			sprite.scale.x = -1
 			hitbox.position.x = 25
 		elif position.x - target.position.x > 0:
-			sprite.flip_h = false
+			sprite.scale.x = 1
 			hitbox.position.x = -25
 	else:
-		
 		attack()
 	
 
@@ -99,12 +102,10 @@ func attack() -> void:
 	else:
 		if attack_timer.time_left == 0:
 			is_attacking = true
-			print("enemy is attacking")
 			anim.play("attack")
 			await anim.animation_finished
 			anim.play("idle")
 			attack_timer.start(1)
-			is_attacking = false
 	
 
 
@@ -133,8 +134,15 @@ func get_hit() -> void:
 	else:
 		symbol_grid.update_grid(color_queue)
 		current_color = color_queue.front()
-		
-		current_action = EnemyAction.FOLLOW
+		current_action = EnemyAction.STUNNED
+		stunned()
+	
+
+func stunned():
+	anim.play("stun")
+	await get_tree().create_timer(1).timeout
+	current_action = EnemyAction.FOLLOW
+
 
 func knockback():
 	var kb_direction = global_position.direction_to(target.position).normalized() * 100

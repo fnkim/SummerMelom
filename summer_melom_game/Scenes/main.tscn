@@ -4,8 +4,8 @@
 [ext_resource type="TileSet" uid="uid://bdtjsgtxy6f5f" path="res://Scenes/Tiles/test_tileset.tres" id="1_bo1nx"]
 [ext_resource type="PackedScene" uid="uid://bhv3cug7qoi11" path="res://Scenes/Player/player.tscn" id="1_jjgbg"]
 [ext_resource type="Script" uid="uid://u5kehhjcct8f" path="res://Scenes/Tiles/footstep_tilemap.gd" id="2_kry3j"]
-[ext_resource type="PackedScene" uid="uid://bfc4oph040fbb" path="res://Scenes/NPC/enemy.tscn" id="3_8gbba"]
 [ext_resource type="PackedScene" uid="uid://bdqwhvgfcxpf" path="res://Scenes/UI/hotbar.tscn" id="5_kry3j"]
+[ext_resource type="PackedScene" uid="uid://ce3rf7ivifk8t" path="res://Scenes/Small Monster/small_monster.tscn" id="7_6bp64"]
 [ext_resource type="Script" uid="uid://kiojxb4wf2sc" path="res://Scenes/testMusic.gd" id="8_344ge"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u8m4d"]
@@ -32,13 +32,17 @@ tile_map_data = PackedByteArray("AAACAAwAAQAAAAAAAAAOAAwAAQABAAAAAAAMAAkAAQABAAA
 tile_set = ExtResource("1_bo1nx")
 script = ExtResource("2_kry3j")
 
+[node name="Small Monster" parent="." unique_id=1814088890 instance=ExtResource("7_6bp64")]
+position = Vector2(129, 363)
+color_queue = Array[int]([0, 1])
+
 [node name="Player" parent="." unique_id=1479473842 instance=ExtResource("1_jjgbg")]
-position = Vector2(469, 269)
+position = Vector2(469, 251)
 collision_layer = 8
 collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=1389396877]
-position = Vector2(0, 2)
+position = Vector2(0, 12)
 shape = SubResource("RectangleShape2D_u8m4d")
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=413907697]
@@ -56,11 +60,6 @@ event_guid = "{935ee275-4af6-4e06-b12c-c694ddbe4fa1}"
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="." unique_id=1454755457]
 position = Vector2(232, 154)
 navigation_polygon = SubResource("NavigationPolygon_8gbba")
-
-[node name="Enemy" parent="." unique_id=1814088890 instance=ExtResource("3_8gbba")]
-position = Vector2(170, 368)
-color_queue = Array[int]([0, 0, 1, 5, 3, 5])
-target_radius_size = 300.0
 
 [node name="NavigationLink2D" type="NavigationLink2D" parent="." unique_id=1377719239]
 start_position = Vector2(329, 357)

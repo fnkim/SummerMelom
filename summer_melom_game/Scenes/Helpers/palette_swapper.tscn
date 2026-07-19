@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://dongsf20y3vtk"]
+
+[ext_resource type="Script" uid="uid://dof6ofmjlx4nf" path="res://Scenes/Helpers/palette_swapper.gd" id="1_wcqw6"]
+
+[node name="Palette Swapper" type="Node2D" unique_id=242073123]
+script = ExtResource("1_wcqw6")
+
+[node name="Timer" type="Timer" parent="." unique_id=1161233562]
+one_shot = true

@@ -1,0 +1,72 @@
+[gd_resource type="VisualShader" format=3 uid="uid://b6soepi8y8wl3"]
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_m4fjm"]
+input_name = "texture"
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_h2p4m"]
+source = 5
+
+[sub_resource type="VisualShaderNodeTexture2DParameter" id="VisualShaderNodeTexture2DParameter_rn128"]
+parameter_name = "original_palette"
+
+[sub_resource type="VisualShaderNodeTexture2DParameter" id="VisualShaderNodeTexture2DParameter_q0rqt"]
+parameter_name = "new_palette"
+
+[sub_resource type="VisualShaderNodeIntParameter" id="VisualShaderNodeIntParameter_v1cco"]
+parameter_name = "colors_count"
+
+[sub_resource type="VisualShaderNodeExpression" id="VisualShaderNodeExpression_3qins"]
+size = Vector2(1580, 1100)
+expression = "vec2 new_uv = vec2(0, 0);
+
+for (int i = 0; i < colors_count; i++) {
+	float u = (float(i) + 0.5) / float(colors_count);
+	float v = 0.5;
+	vec2 uv = vec2(u,v);
+	vec4 original_palette_color = texture(original_palette, uv);
+	float dist = distance(color, original_palette_color);
+	
+	if (dist == 0.0){
+		new_uv = uv;
+		break;
+	}
+}
+
+new_color = texture(new_palette, new_uv);"
+
+[resource]
+mode = 1
+flags/light_only = false
+nodes/fragment/0/position = Vector2(1622.8572, 251.42857)
+nodes/fragment/2/node = SubResource("VisualShaderNodeInput_m4fjm")
+nodes/fragment/2/position = Vector2(-251.42857, -114.28571)
+nodes/fragment/3/node = SubResource("VisualShaderNodeTexture_h2p4m")
+nodes/fragment/3/position = Vector2(114.28571, -217.14285)
+nodes/fragment/4/node = SubResource("VisualShaderNodeTexture2DParameter_rn128")
+nodes/fragment/4/position = Vector2(34.285713, 68.57143)
+nodes/fragment/5/node = SubResource("VisualShaderNodeTexture2DParameter_q0rqt")
+nodes/fragment/5/position = Vector2(-34.285713, 422.85715)
+nodes/fragment/6/node = SubResource("VisualShaderNodeIntParameter_v1cco")
+nodes/fragment/6/position = Vector2(0, 891.4286)
+nodes/fragment/7/node = SubResource("VisualShaderNodeExpression_3qins")
+nodes/fragment/7/position = Vector2(617.1429, 274.2857)
+nodes/fragment/7/size = Vector2(1580, 1100)
+nodes/fragment/7/input_ports = "0,5,color;1,8,original_palette;2,8,new_palette;3,1,colors_count;"
+nodes/fragment/7/output_ports = "0,5,new_color;"
+nodes/fragment/7/expression = "vec2 new_uv = vec2(0, 0);
+
+for (int i = 0; i < colors_count; i++) {
+	float u = (float(i) + 0.5) / float(colors_count);
+	float v = 0.5;
+	vec2 uv = vec2(u,v);
+	vec4 original_palette_color = texture(original_palette, uv);
+	float dist = distance(color, original_palette_color);
+	
+	if (dist == 0.0){
+		new_uv = uv;
+		break;
+	}
+}
+
+new_color = texture(new_palette, new_uv);"
+nodes/fragment/connections = PackedInt32Array(4, 0, 7, 1, 5, 0, 7, 2, 6, 0, 7, 3, 3, 0, 7, 0, 7, 0, 0, 0, 2, 0, 3, 2)
