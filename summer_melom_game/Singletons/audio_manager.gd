@@ -1,22 +1,21 @@
 extends Node
 
-#im about to hard code the events in oml
-
-var bgmTracks: Array[FmodEvent] = []
-var currentMusicEvent
+@export var bgmTracks: Array[String] = []
+var currentMusicEvent:String
 var currentEventInstance
 var transitionEventInstance
 
 
 func _ready() -> void:
-	currentMusicEvent = bgmTracks[0]
+	if bgmTracks.size() > 0:
+		currentMusicEvent = bgmTracks[0]
 
 func IsPlaying() -> bool:
-	return currentEventInstance.isValid() && currentEventInstance!=null
+	return currentEventInstance != null && currentEventInstance.is_valid()
 
 func play_music() :
 	
-	if(!currentEventInstance.isValid()):
+	if(!IsPlaying()):
 		currentEventInstance = FmodServer.create_event_instance(currentMusicEvent)
 	
 	currentEventInstance.start()
@@ -28,7 +27,7 @@ func stop_music():
 		currentEventInstance.release()
 
 	
-func change_music(chosenBGM:FmodEvent, duration: float = 1.0):
+func change_music(chosenBGM:String, duration: float = 1.0):
 #	
 	if((currentMusicEvent == chosenBGM) && IsPlaying()):
 		return
@@ -41,10 +40,10 @@ func change_music(chosenBGM:FmodEvent, duration: float = 1.0):
 		doCrossFade(chosenBGM,duration)
 #
 	
-func doCrossFade(nextTrack:FmodEvent, duration:float):
+func doCrossFade(nextTrack:String, duration:float):
 	currentEventInstance.stop(FmodServer.FMOD_STUDIO_STOP_ALLOWFADEOUT)
 	currentEventInstance.release()
-	transitionEventInstance = FmodServer.create_event_instance(nextTrack.guid)
+	transitionEventInstance = FmodServer.create_event_instance(nextTrack)
 	transitionEventInstance.set_volume(0.0)
 	transitionEventInstance.start()
 	
@@ -71,7 +70,7 @@ func doCrossFade(nextTrack:FmodEvent, duration:float):
 	tween.chain().tween_callback(_on_crossfade_complete.bind(nextTrack))
 	
 	
-func _on_crossfade_complete(nextTrack : FmodEvent):
+func _on_crossfade_complete(nextTrack : String):
 	if(IsPlaying()):
 		currentEventInstance.stop(FmodServer.FMOD_STUDIO_STOP_IMMEDIATE)
 		currentEventInstance.release()

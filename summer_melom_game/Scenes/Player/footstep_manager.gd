@@ -31,12 +31,12 @@ func play_footstep(position: Vector2, emitter:FmodEventEmitter2D):
 					"grass":
 							emitter.set_parameter("Surface Material", "Grass")
 							
-							print("grass")
+							
 					"concrete":
 							emitter.set_parameter("Surface Material", "Concrete")
-							print("concrete")
+							
 					"rock":
 							emitter.set_parameter("Surface Material", "Rock")
-							print("rock")
+							
 				emitter.play()
 				

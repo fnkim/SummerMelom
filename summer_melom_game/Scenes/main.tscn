@@ -6,7 +6,7 @@
 [ext_resource type="Script" uid="uid://u5kehhjcct8f" path="res://Scenes/Tiles/footstep_tilemap.gd" id="2_kry3j"]
 [ext_resource type="PackedScene" uid="uid://bfc4oph040fbb" path="res://Scenes/NPC/enemy.tscn" id="3_8gbba"]
 [ext_resource type="PackedScene" uid="uid://bdqwhvgfcxpf" path="res://Scenes/UI/hotbar.tscn" id="5_kry3j"]
-[ext_resource type="Script" uid="uid://dggeelwhhcgf0" path="res://Singletons/audio_manager.gd" id="7_6bp64"]
+[ext_resource type="Script" uid="uid://kiojxb4wf2sc" path="res://Scenes/testMusic.gd" id="8_344ge"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u8m4d"]
 size = Vector2(20, 24)
@@ -72,5 +72,41 @@ end_position = Vector2(499, 272)
 
 [node name="Hotbar" parent="." unique_id=943630936 instance=ExtResource("5_kry3j")]
 
-[node name="AudioManager" type="Node" parent="." unique_id=851934926]
-script = ExtResource("7_6bp64")
+[node name="TitleMusic" type="Button" parent="." unique_id=432359084]
+offset_left = 196.0
+offset_top = 152.0
+offset_right = 286.0
+offset_bottom = 183.0
+focus_mode = 0
+action_mode = 0
+text = "Play Music"
+script = ExtResource("8_344ge")
+
+[node name="BattleMusic" type="Button" parent="." unique_id=1025712698]
+offset_left = 357.0
+offset_top = 151.0
+offset_right = 447.0
+offset_bottom = 182.0
+focus_mode = 0
+action_mode = 0
+text = "Battle Music"
+script = ExtResource("8_344ge")
+current_state = 1
+
+[node name="CreditMusic" type="Button" parent="." unique_id=1443891064]
+offset_left = 579.0
+offset_top = 151.0
+offset_right = 689.0
+offset_bottom = 182.0
+focus_mode = 0
+action_mode = 0
+text = "Ending Music"
+script = ExtResource("8_344ge")
+current_state = 2
+
+[connection signal="gui_input" from="TitleMusic" to="TitleMusic" method="_on_gui_input"]
+[connection signal="pressed" from="TitleMusic" to="TitleMusic" method="_on_pressed"]
+[connection signal="gui_input" from="BattleMusic" to="BattleMusic" method="_on_gui_input"]
+[connection signal="pressed" from="BattleMusic" to="BattleMusic" method="_on_pressed"]
+[connection signal="gui_input" from="CreditMusic" to="CreditMusic" method="_on_gui_input"]
+[connection signal="pressed" from="CreditMusic" to="CreditMusic" method="_on_pressed"]

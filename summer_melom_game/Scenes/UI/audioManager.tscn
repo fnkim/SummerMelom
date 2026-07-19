@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://di65ax8jk0hyv"]
+
+[ext_resource type="Script" uid="uid://dggeelwhhcgf0" path="res://Singletons/audio_manager.gd" id="1_mcfac"]
+
+[node name="Node" type="Node" unique_id=54661380]
+script = ExtResource("1_mcfac")
+bgmTracks = Array[String](["event:/BGM/BGM_Test", "event:/BGM/BGM_Test_2", "event:/BGM/BGM_Test_3"])
