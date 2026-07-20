@@ -16,7 +16,7 @@ signal game_started
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	AudioManager.change_music(AudioManager.bgmTracks[0])
+	pass
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

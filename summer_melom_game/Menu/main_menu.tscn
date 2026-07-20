@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://5b2i53w1ft24" path="res://Menu/Start button.png" id="2_dtkyu"]
 [ext_resource type="Texture2D" uid="uid://bsgan765isn1a" path="res://Menu/CreditsButton.png" id="3_fw3rq"]
 [ext_resource type="Texture2D" uid="uid://4rk0p82g5inp" path="res://Menu/credits.png" id="5_rw3mj"]
+[ext_resource type="Script" uid="uid://kiojxb4wf2sc" path="res://Scenes/testMusic.gd" id="6_rw3mj"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_u8m4d"]
 
@@ -111,6 +112,7 @@ theme_override_styles/pressed = SubResource("StyleBoxEmpty_lns1n")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_s5i16")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_dotrb")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_285ys")
+script = ExtResource("6_rw3mj")
 
 [node name="CreditsButton" type="Button" parent="Control/CanvasLayer" unique_id=1339852494]
 offset_left = 84.71427
@@ -135,6 +137,10 @@ color = Color(0, 0, 0, 0)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1700683674]
 libraries/ = SubResource("AnimationLibrary_vv7ca")
+
+[node name="FmodEventEmitter2D" type="FmodEventEmitter2D" parent="." unique_id=1302980231]
+event_name = "event:/SFX/ButtonUI"
+event_guid = "{cbb66cdc-9e21-47ba-99c4-9b387741701c}"
 
 [connection signal="pressed" from="Control/CanvasLayer/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="Control/CanvasLayer/CreditsButton" to="." method="_on_credits_button_pressed"]

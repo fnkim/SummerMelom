@@ -97,10 +97,14 @@
 	<object class="MixerBusEffectChain" id="{322159a4-fbcb-4c4f-98e9-1efa79f22b25}">
 		<relationship name="effects">
 			<destination>{645dd141-ccdd-4e16-aefa-418d31b8a8a6}</destination>
+			<destination>{86e35e3e-40fb-47c2-87df-a613248b7ada}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{e019d963-49c6-4d3a-9426-0a7247f9168b}" />
 	<object class="SingleSound" id="{d28630f4-7d0c-4201-9130-306d6b0cc198}">
+		<property name="volume">
+			<value>-12.5</value>
+		</property>
 		<relationship name="modulators">
 			<destination>{5dee9487-7d45-4fd2-9b32-e36753f332e8}</destination>
 		</relationship>
@@ -111,6 +115,7 @@
 	<object class="SingleSound" id="{4cbd4c23-02e7-4299-bd1e-0177a7cc87eb}" />
 	<object class="MixerBusFader" id="{1066ff35-d699-4852-bf47-07c9040a5aeb}" />
 	<object class="MixerBusFader" id="{645dd141-ccdd-4e16-aefa-418d31b8a8a6}" />
+	<object class="LoudnessMeter" id="{86e35e3e-40fb-47c2-87df-a613248b7ada}" />
 	<object class="RandomizerModulator" id="{5dee9487-7d45-4fd2-9b32-e36753f332e8}">
 		<property name="nameOfPropertyBeingModulated">
 			<value>pitch</value>

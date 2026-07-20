@@ -8,6 +8,7 @@ var credits_on: bool
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	AudioManager.play_music()
 	pass # Replace with function body.
 
 
@@ -22,13 +23,16 @@ func _process(delta: float) -> void:
 
 
 func _on_start_button_pressed() -> void:
+	$FmodEventEmitter2D.play_one_shot()
 	animation_player.play("fade to black")
 	await animation_player.animation_finished
+	AudioManager.change_music(AudioManager.bgmTracks[1])
 	GameManager.game_started.emit()
 	queue_free()
 
 
 func _on_credits_button_pressed() -> void:
+	$FmodEventEmitter2D.play_one_shot()
 	credits.show()
 	start_button.disabled = true
 	credits_on = true
