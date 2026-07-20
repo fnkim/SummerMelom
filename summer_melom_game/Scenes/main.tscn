@@ -9,9 +9,9 @@
 [ext_resource type="Script" uid="uid://kiojxb4wf2sc" path="res://Scenes/testMusic.gd" id="8_344ge"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_8gbba"]
-vertices = PackedVector2Array(421.6875, 222.09375, -229.70313, 227.89844, -228.27344, 177.96875, 420.28906, 176.02344, 271.42188, 108.90625, 270.5625, 124, 161.72656, 124, 161.28125, 108.07031)
+vertices = PackedVector2Array(421.6875, 222.09375, -229.70313, 227.89844, -228.27344, 177.96875, 420.28906, 176.02344, 294.28906, 123.10156, 137.89844, 124.86719, 139.17969, 110, 294.6875, 110)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 5, 6, 7)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(-238, 168, 430, 166, 432, 232, -240, 238), PackedVector2Array(152, 134, 280, 134, 282, 99, 151, 98)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-238, 168, 430, 166, 432, 232, -240, 238), PackedVector2Array(127, 135, 304, 133, 305, 100, 130, 100)])
 
 [node name="Main" type="Node2D" unique_id=358569440]
 script = ExtResource("1_21xkr")
@@ -55,11 +55,11 @@ navigation_polygon = SubResource("NavigationPolygon_8gbba")
 
 [node name="NavigationLink2D" type="NavigationLink2D" parent="." unique_id=1377719239]
 start_position = Vector2(329, 357)
-end_position = Vector2(401, 273)
+end_position = Vector2(396, 276)
 
 [node name="NavigationLink2D2" type="NavigationLink2D" parent="." unique_id=1674227844]
 start_position = Vector2(568, 357)
-end_position = Vector2(499, 272)
+end_position = Vector2(501, 274)
 
 [node name="Hotbar" parent="." unique_id=943630936 instance=ExtResource("5_kry3j")]
 

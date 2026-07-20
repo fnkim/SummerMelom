@@ -80,3 +80,8 @@ func rainbow():
 	if is_rainbow == false:
 		return
 	rainbow()
+
+func flash() -> void:
+	mat.set_shader_parameter("Flash", true)
+	await get_tree().create_timer(0.2).timeout
+	mat.set_shader_parameter("Flash", false)

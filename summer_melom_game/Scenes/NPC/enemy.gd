@@ -18,9 +18,9 @@ enum EnemyAction{IDLE, FOLLOW, JUMP, ATTACK, KNOCKED_BACK, STUNNED}
 
 @export var color_queue: Array[ColorManager.ColorState]
 @export var target_radius_size: float = 150.0
-@export var speed: float = 70.0
+@export var speed: float = 70
 @export var hurtbox: NPCHurtBox
-@export var dash_multiplier: float = 250
+@export var dash_multiplier: float = 200
 
 #hello
 var current_color: ColorManager.ColorState
@@ -52,10 +52,13 @@ func _physics_process(delta: float) -> void:
 	match current_action:
 		EnemyAction.IDLE:
 			anim.play("idle")
+			move_and_slide()
 		EnemyAction.KNOCKED_BACK:
 			move_and_slide()
 		EnemyAction.STUNNED:
 			pass
+			velocity.x = 0
+			move_and_slide()
 		EnemyAction.FOLLOW:
 			update_target_position()
 			follow()
@@ -65,10 +68,12 @@ func _physics_process(delta: float) -> void:
 			move_and_slide()
 
 func update_target_position() -> void:
-	if agent:
+	if target:
 		agent.set_target_position(target.global_position)
 
 func follow() -> void:
+	if target == null:
+		return
 	if abs(hitbox.global_position.x - target.position.x) > 50:
 		is_attacking = false
 		var cur_loc = global_transform.origin
@@ -93,7 +98,7 @@ func follow() -> void:
 func jump(is_top: bool) -> void:
 	var height: float
 	if is_top:
-		height = -100
+		height = -200
 	else:
 		height = -550
 
@@ -115,9 +120,10 @@ func attack() -> void:
 			velocity = lunge_dir
 
 			await anim.animation_finished
+			velocity = Vector2(0,0)
 			anim.play("idle")
 			is_attacking = false
-			attack_timer.start(2)
+			attack_timer.start(1.5)
 	
 
 
@@ -162,9 +168,10 @@ func hit_check() -> void:
 func get_hit() -> void:
 	current_action = EnemyAction.KNOCKED_BACK
 	knockback()
+	swapper.flash()
 	color_queue.erase(color_queue.front())
 	symbol_grid.update_grid(color_queue)
-	await get_tree().create_timer(0.7).timeout
+	await get_tree().create_timer(0.3).timeout
 	if color_queue.size() == 0:
 		death()
 		return
@@ -184,7 +191,7 @@ func stunned():
 func knockback():
 	var kb_direction = global_position.direction_to(target.position).normalized() * 100
 	velocity = -kb_direction
-	velocity.y -= 340
+	velocity.y = -200
 	
 
 func _on_targeting_radius_body_entered(body: Node2D) -> void:

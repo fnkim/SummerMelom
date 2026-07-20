@@ -58,35 +58,11 @@ tracks/3/keys = {
 "update": 1,
 "values": [4]
 }
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Hitbox/CollisionShape2D:disabled")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
 
 [sub_resource type="Animation" id="Animation_y54nl"]
 resource_name = "attack"
 length = 0.3333416766010225
 step = 0.083333336
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Hitbox/CollisionShape2D:disabled")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.083333336, 0.25),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [true, false, true]
-}
 
 [sub_resource type="Animation" id="Animation_oyjcg"]
 resource_name = "idle"
@@ -146,8 +122,6 @@ _data = {
 &"idle": SubResource("Animation_oyjcg")
 }
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_u8m4d"]
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_u8m4d"]
 radius = 150.0
 
@@ -155,7 +129,11 @@ radius = 150.0
 collision_layer = 2
 collision_mask = 9
 script = ExtResource("1_0yp08")
+color_queue = null
+target_radius_size = null
+speed = null
 hurtbox = NodePath("Sprite2D/HurtBox")
+dash_multiplier = null
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1482003679]
 texture = ExtResource("2_w4ki3")
@@ -176,11 +154,7 @@ position = Vector2(29, 0)
 collision_layer = 4
 collision_mask = 8
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1332015221]
-shape = SubResource("RectangleShape2D_u8m4d")
-disabled = true
-
-[node name="Targeting Radius" type="Area2D" parent="." unique_id=333162743]
+[node name="Targeting Radius" type="Area2D" parent="." unique_id=333162743 groups=["other"]]
 collision_layer = 4
 collision_mask = 8
 

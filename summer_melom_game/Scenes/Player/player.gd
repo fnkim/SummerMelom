@@ -142,12 +142,12 @@ func attack() -> void:
 
 func damage(enemy: Node2D) -> void:
 	current_state = PlayerState.HURT
-	invincible_timer.start(1)
+	invincible_timer.start(0.5)
 	anim.play("hurt")
 	health -= 1
-	var kb_direction = position.direction_to(enemy.position).normalized() * 200
+	var kb_direction = position.direction_to(enemy.position).normalized() * 300
 	var x = -kb_direction.x
-	velocity = Vector2(x, -80)
+	velocity = Vector2(x, -120)
 	await anim.animation_finished
 	current_state = PlayerState.IDLE
 	if health <= 0:
@@ -180,20 +180,7 @@ func palette_change(color: ColorManager.ColorState) -> void:
 
 
 
-func _on_collision_hurtbox_body_entered(body: Node2D) -> void:
-	if invincible_timer.time_left != 0:
-		return
-	if body is Enemy:
-		return
-		touching_enemy = true
-		current_enemy = body
-		damage(body)
 
-
-
-func _on_collision_hurtbox_body_exited(body: Node2D) -> void:
-	touching_enemy = false
-	current_enemy = null
 
 
 func _on_invincible_timer_timeout() -> void:

@@ -41,6 +41,10 @@ project/assembly_name="SummerMelomGame"
 
 enabled=PackedStringArray("res://addons/fmod/plugin.cfg")
 
+[global_group]
+
+other=""
+
 [input]
 
 red={
