@@ -118,9 +118,6 @@ func move(delta: float) -> void:
 	
 	if direction:
 		velocity.x = direction * speed
-		if ray_cast_2d.is_colliding():
-			var raycast_position = ray_cast_2d.get_collision_point()
-			FootstepManager.play_footstep(raycast_position, fmod_event_emitter)
 		# flip functionality
 		if velocity.x > 0:
 			sprite.scale.x = 1
@@ -185,7 +182,12 @@ func _jump_sfx():
 	$JumpSFX.play()
 
 func _hurt_sfx():
-	$hurtSFX.play()
+	$HurtSFX.play()
+
+func _play_footstep():
+	if ray_cast_2d.is_colliding():
+			var raycast_position = ray_cast_2d.get_collision_point()
+			FootstepManager.play_footstep(raycast_position, fmod_event_emitter)
 
 func _on_invincible_timer_timeout() -> void:
 	invin_anim.play("normal")
