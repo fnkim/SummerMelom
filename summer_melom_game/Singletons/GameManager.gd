@@ -10,7 +10,8 @@ var last_unlocked_blue: bool
 
 var last_checkpoint: Vector2
 var player: Player
-
+signal drop_blue_spark
+signal drop_final_spark
 
 
 # Called when the node enters the scene tree for the first time.
@@ -28,3 +29,12 @@ func player_death() -> void:
 	#yellow_unlocked = last_unlocked_yellow
 	player.health = 6
 	player.position = last_checkpoint
+
+func drop_blue():
+	drop_blue_spark.emit()
+
+func drop_final():
+	drop_final_spark.emit()
+
+func end():
+	pass

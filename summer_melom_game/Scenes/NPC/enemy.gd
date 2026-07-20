@@ -21,7 +21,8 @@ enum EnemyAction{IDLE, FOLLOW, JUMP, ATTACK, KNOCKED_BACK, STUNNED}
 @export var dash_multiplier: float = 200
 @export var medium: bool
 @export var attack_dist: float = 50
-
+@export var blue_boss: bool
+@export var final_boss: bool
 #hello
 var current_color: ColorManager.ColorState
 var current_state: EnemyState
@@ -165,6 +166,10 @@ func get_color(color: ColorManager.ColorState) -> String:
 
 
 func death() -> void:
+	if blue_boss:
+		GameManager.drop_blue()
+	if final_boss:
+		GameManager.drop_final()
 	queue_free()
 
 func hit_check() -> void:

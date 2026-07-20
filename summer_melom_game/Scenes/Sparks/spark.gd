@@ -4,10 +4,22 @@ extends Sprite2D
 @export var label: Label
 
 var can_collect: bool
+var final_unlocked: bool
+var blue_unlocked: bool
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	GameManager.drop_blue_spark.connect(show_blue)
+	GameManager.drop_final_spark.connect(show_final)
 
+func show_final():
+	if spark_type == "final":
+		final_unlocked = true
+		show()
+
+func show_blue():
+	if spark_type == "blue":
+		blue_unlocked = true
+		show()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -19,6 +31,10 @@ func _process(delta: float) -> void:
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body is Player:
+		if spark_type == "blue" and !blue_unlocked:
+			return
+		if spark_type == "final" and !final_unlocked:
+			return
 		can_collect = true
 		label.show()
 
@@ -37,6 +53,8 @@ func collect():
 			GameManager.yellow_unlocked = true
 		"blue":
 			GameManager.blue_unlocked = true
+		"final":
+			GameManager.end()
 		_:
 			pass
 			
