@@ -78,6 +78,7 @@ func follow() -> void:
 	if target == null:
 		return
 	if abs(hitbox.global_position.x - target.position.x) > attack_dist and !is_attacking:
+		
 		is_attacking = false
 		var cur_loc = global_transform.origin
 		var next_loc = agent.get_next_path_position()
@@ -93,6 +94,7 @@ func follow() -> void:
 			if !medium:
 				hitbox.position.x = -25
 	else:
+		
 		attack()
 
 	
@@ -121,6 +123,7 @@ func attack() -> void:
 		return
 	else:
 		if attack_timer.time_left == 0:
+			print("attacking")
 			is_attacking = true
 			anim.play("attack")
 			var lunge_dir = global_position.direction_to(target.position).normalized() * dash_multiplier
