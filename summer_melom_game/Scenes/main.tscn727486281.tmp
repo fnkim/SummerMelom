@@ -164,6 +164,11 @@ tile_set = SubResource("TileSet_u8m4d")
 [node name="Small Monster" parent="." unique_id=1814088890 instance=ExtResource("7_6bp64")]
 position = Vector2(440, 125)
 color_queue = Array[int]([0, 0, 1, 1])
+target_radius_size = 300.0
+speed = 70.0
+dash_multiplier = 200.0
+medium = false
+attack_dist = 50.0
 
 [node name="ChompSFX" type="FmodEventEmitter2D" parent="Small Monster" unique_id=1788979305]
 event_name = "event:/SFX/Enemy_Chomp"
@@ -262,6 +267,11 @@ current_state = 2
 [node name="Small Monster2" parent="." unique_id=69459922 instance=ExtResource("7_6bp64")]
 position = Vector2(1413, 359)
 color_queue = Array[int]([3, 0, 4])
+target_radius_size = 300.0
+speed = 70.0
+dash_multiplier = 200.0
+medium = false
+attack_dist = 50.0
 
 [node name="ChompSFX" type="FmodEventEmitter2D" parent="Small Monster2" unique_id=522746715]
 event_name = "event:/SFX/Enemy_Chomp"

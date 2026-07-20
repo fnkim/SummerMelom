@@ -172,6 +172,20 @@ tracks/5/keys = {
 "update": 1,
 "values": [Vector2(0, 0), Vector2(0.44, 0), Vector2(0, 0), Vector2(-3.215, 0), Vector2(-4, 0), Vector2(-0.14, 0), Vector2(0, 0)]
 }
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath(".")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.16666667),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_atk_sfx"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_h0atr"]
 resource_name = "idle"
@@ -304,6 +318,20 @@ tracks/4/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_hurt_sfx"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_b0e82"]
 resource_name = "walk"
@@ -369,6 +397,23 @@ tracks/4/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.16666667, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"_play_footstep"
+}, {
+"args": [],
+"method": &"_play_footstep"
+}]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_i7808"]
@@ -436,3 +481,6 @@ blue = ExtResource("8_j2lu7")
 purple = ExtResource("9_jvff3")
 original = ExtResource("10_1ybtv")
 sprite = NodePath("../Sprite2D")
+
+[node name="RayCast2D" type="RayCast2D" parent="." index="10" unique_id=1065130614]
+target_position = Vector2(0, 30)

@@ -227,6 +227,7 @@ func _on_navigation_agent_2d_link_reached(details: Dictionary) -> void:
 
 func _atk_sfx():
 	$ChompSFX.play()
+	print("CHOMP")
 	
 func _jump_sfx():
 	$JumpSFX.play()
