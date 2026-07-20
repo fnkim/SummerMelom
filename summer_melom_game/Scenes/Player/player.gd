@@ -56,7 +56,8 @@ func _physics_process(delta: float) -> void:
 	match current_state:
 		PlayerState.IDLE:
 			move(delta)
-			anim.play("idle")
+			if can_attack:
+				anim.play("idle")
 			var direction := Input.get_axis("left", "right")
 			if direction:
 				current_state = PlayerState.WALK
@@ -66,14 +67,17 @@ func _physics_process(delta: float) -> void:
 				velocity.y = jump_velocity
 				current_state = PlayerState.JUMP
 			else:
-				if velocity.x != 0:
-					anim.play("walk")
+				if !can_attack:
+					pass
 				else:
-					anim.play("idle")
+					if velocity.x != 0:
+						anim.play("walk")
+					else:
+						anim.play("idle")
 			
 			move(delta)
 		PlayerState.HURT:
-			attack()
+			pass
 		PlayerState.JUMP:
 			jump(delta)
 		PlayerState.ATTACK:
@@ -133,12 +137,10 @@ func attack() -> void:
 	if !can_attack:
 		return
 	if Input.is_action_just_pressed("attack"):
-		current_state = PlayerState.ATTACK
+		can_attack = false
 		anim.play("attack")
 		await anim.animation_finished
-		anim.play("idle")
 		can_attack = true
-		current_state = PlayerState.WALK
 
 func damage(enemy: Node2D) -> void:
 	current_state = PlayerState.HURT
