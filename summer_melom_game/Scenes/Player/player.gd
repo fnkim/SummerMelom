@@ -176,12 +176,14 @@ func palette_change(color: ColorManager.ColorState) -> void:
 			new_color = "original"
 	swapper.swap(new_color)
 
+func _atk_sfx():
+	$AtkSFX.play()
+	
+func _jump_sfx():
+	$JumpSFX.play()
 
-
-
-
-
-
+func _hurt_sfx():
+	$hurtSFX.play()
 
 func _on_invincible_timer_timeout() -> void:
 	invin_anim.play("normal")
