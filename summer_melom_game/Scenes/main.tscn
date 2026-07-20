@@ -141,9 +141,9 @@ texture = ExtResource("2_344ge")
 sources/0 = SubResource("TileSetAtlasSource_ynf5e")
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_8gbba"]
-vertices = PackedVector2Array(421.6875, 222.09375, -229.70313, 227.89844, -228.27344, 177.96875, 420.28906, 176.02344, 277.90625, 111.859375, 278.9922, 123.07031, 159.92188, 123.921875, 161.14063, 110.13281)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 5, 6, 7)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(-238, 168, 430, 166, 432, 232, -240, 238), PackedVector2Array(149, 134, 290, 133, 287, 102, 152, 100)])
+vertices = PackedVector2Array(421.6875, 222.09375, -229.70313, 227.89844, -228.27344, 177.96875, 420.28906, 176.02344, 1514.4297, 128.89063, 1518.5313, 219, 1090.0938, 219, 1090.9063, 124.109375, 277.90625, 111.859375, 278.9922, 123.07031, 159.92188, 123.921875, 161.14063, 110.13281, 1068.2969, 61.90625, 971.15625, 61.078125, 971.84375, 20.65625, 1069.6719, 17.351563)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 5, 6, 7), PackedInt32Array(8, 9, 10, 11), PackedInt32Array(12, 13, 14, 15)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-238, 168, 430, 166, 432, 232, -240, 238), PackedVector2Array(149, 134, 290, 133, 287, 102, 152, 100), PackedVector2Array(1524, 119, 1529, 229, 1080, 229, 1081, 114), PackedVector2Array(962, 11, 961, 71, 1078, 72, 1080, 7)])
 
 [node name="Main" type="Node2D" unique_id=358569440]
 script = ExtResource("1_21xkr")
@@ -217,7 +217,7 @@ event_name = "event:/SFX/Player_Hurt"
 event_guid = "{dd9a9fd3-3d78-4a4a-870c-4c93c07daa55}"
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="." unique_id=1454755457]
-position = Vector2(234, 205)
+position = Vector2(232, 154)
 navigation_polygon = SubResource("NavigationPolygon_8gbba")
 
 [node name="NavigationLink2D" type="NavigationLink2D" parent="." unique_id=1377719239]
@@ -261,6 +261,10 @@ action_mode = 0
 text = "Ending Music"
 script = ExtResource("8_344ge")
 current_state = 2
+
+[node name="Small Monster2" parent="." unique_id=69459922 instance=ExtResource("7_6bp64")]
+position = Vector2(1413, 359)
+color_queue = Array[int]([3, 0, 4])
 
 [connection signal="gui_input" from="TitleMusic" to="TitleMusic" method="_on_gui_input"]
 [connection signal="pressed" from="TitleMusic" to="TitleMusic" method="_on_pressed"]

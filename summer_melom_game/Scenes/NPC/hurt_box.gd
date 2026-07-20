@@ -13,13 +13,16 @@ func _process(delta: float) -> void:
 	pass
 
 func _on_area_entered(hitbox: Area2D) -> void:
-	print("out")
+	
 	if hitbox == null:
 		return
 	if hitbox.is_in_group("other"):
 		return
-	var monster = hitbox.get_parent()
-	if is_player and monster is Enemy:
-		hurt_player.emit(monster)
-	else:
+	var parent = hitbox.get_parent()
+	if parent is Player:
 		hittable.emit()
+	
+	if is_player and parent is Enemy:
+		hurt_player.emit(parent)
+		print("hurt")
+	

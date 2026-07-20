@@ -12,6 +12,9 @@
 [ext_resource type="Texture2D" uid="uid://du4ecbeh3lwxy" path="res://Scenes/Small Monster/Palettes/purple_palette.png" id="9_jvff3"]
 [ext_resource type="Texture2D" uid="uid://p2p1yhbieoeh" path="res://Scenes/Small Monster/Palettes/og_palette.png" id="10_1ybtv"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_lns1n"]
+radius = 19.026299
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_y54nl"]
 shader = ExtResource("2_qhlp5")
 shader_parameter/Flash = false
@@ -169,20 +172,6 @@ tracks/5/keys = {
 "update": 1,
 "values": [Vector2(0, 0), Vector2(0.44, 0), Vector2(0, 0), Vector2(-3.215, 0), Vector2(-4, 0), Vector2(-0.14, 0), Vector2(0, 0)]
 }
-tracks/6/type = "method"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath(".")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0.083333336),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"_atk_sfx"
-}]
-}
 
 [sub_resource type="Animation" id="Animation_h0atr"]
 resource_name = "idle"
@@ -315,20 +304,6 @@ tracks/4/keys = {
 "update": 1,
 "values": [true]
 }
-tracks/5/type = "method"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath(".")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"_hurt_sfx"
-}]
-}
 
 [sub_resource type="Animation" id="Animation_b0e82"]
 resource_name = "walk"
@@ -395,23 +370,6 @@ tracks/4/keys = {
 "update": 1,
 "values": [true]
 }
-tracks/5/type = "method"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath(".")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0.16666667, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"values": [{
-"args": [],
-"method": &"_play_footstep"
-}, {
-"args": [],
-"method": &"_play_footstep"
-}]
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_i7808"]
 _data = {
@@ -423,16 +381,21 @@ _data = {
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_u8m4d"]
-radius = 20.22375
+radius = 16.03122
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u8m4d"]
 size = Vector2(33, 23)
 
 [node name="Small Monster" unique_id=1814088890 instance=ExtResource("1_b0e82")]
+collision_mask = 1
 
-[node name="RayCast2D" type="RayCast2D" parent="." index="0" unique_id=1735753768]
-position = Vector2(-4.768165, 0)
-target_position = Vector2(0, 25)
+[node name="Hitbox2" type="Area2D" parent="." index="0" unique_id=1608254733]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox2" index="0" unique_id=1692570312]
+position = Vector2(-5, 2)
+shape = SubResource("CircleShape2D_lns1n")
 
 [node name="Sprite2D" parent="." index="1" unique_id=1482003679]
 material = SubResource("ShaderMaterial_y54nl")
@@ -443,8 +406,8 @@ vframes = 4
 frame = 0
 
 [node name="HurtBox" parent="Sprite2D" index="0" unique_id=1214907404]
-collision_layer = 0
-collision_mask = 9
+collision_layer = 2
+collision_mask = 4
 
 [node name="AnimationPlayer" parent="." index="2" unique_id=158364619]
 libraries/ = SubResource("AnimationLibrary_i7808")
