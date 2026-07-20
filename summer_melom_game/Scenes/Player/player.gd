@@ -5,7 +5,7 @@ enum PlayerState{IDLE, JUMP, FALL, WALK, ATTACK, HURT}
 @export var speed = 240.0
 @export var jump_velocity = -700.0
 @export var swapper: PaletteSwapper
-
+@export var hotbar: Control
 
 
 var health: int = 6
@@ -29,6 +29,7 @@ var touching_enemy: bool
 
 
 func _ready() -> void:
+	GameManager.player = self
 	ColorManager.change_color.connect(palette_change)
 	hurtbox.hurt_player.connect(damage)
 
@@ -144,13 +145,14 @@ func damage(enemy: Node2D) -> void:
 	invincible_timer.start(0.5)
 	anim.play("hurt")
 	health -= 1
+	hotbar.lose_heart(health)
 	var kb_direction = position.direction_to(enemy.position).normalized() * 300
 	var x = -kb_direction.x
 	velocity = Vector2(x, -120)
 	await anim.animation_finished
 	current_state = PlayerState.IDLE
 	if health <= 0:
-		GameManager.player_death()
+		hotbar.death()
 		return
 
 

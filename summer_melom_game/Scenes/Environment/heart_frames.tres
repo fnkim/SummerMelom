@@ -1,0 +1,42 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://bew87xkcetf3h"]
+
+[ext_resource type="Texture2D" uid="uid://crtbujmn1jth" path="res://Scenes/UI/Heart.png" id="1_aqbfc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aqbfc"]
+atlas = ExtResource("1_aqbfc")
+region = Rect2(61, 27, 1, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b0642"]
+atlas = ExtResource("1_aqbfc")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vyqcp"]
+atlas = ExtResource("1_aqbfc")
+region = Rect2(32, 0, 32, 32)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aqbfc")
+}],
+"loop": 1,
+"name": &"empty",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b0642")
+}],
+"loop": 1,
+"name": &"full",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vyqcp")
+}],
+"loop": 1,
+"name": &"half",
+"speed": 5.0
+}]

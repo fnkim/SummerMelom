@@ -4,6 +4,15 @@ var red_unlocked: bool
 var yellow_unlocked: bool
 var blue_unlocked: bool
 
+var last_unlocked_red: bool
+var last_unlocked_yellow: bool
+var last_unlocked_blue: bool
+
+var last_checkpoint: Vector2
+var player: Player
+
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	AudioManager.change_music(AudioManager.bgmTracks[0])
@@ -14,5 +23,8 @@ func _process(delta: float) -> void:
 	pass
 
 func player_death() -> void:
-	pass
-	
+	#red_unlocked = last_unlocked_red
+	#blue_unlocked = last_unlocked_blue
+	#yellow_unlocked = last_unlocked_yellow
+	player.health = 6
+	player.position = last_checkpoint
