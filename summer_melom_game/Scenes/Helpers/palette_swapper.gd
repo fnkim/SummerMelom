@@ -46,6 +46,8 @@ func swap(color: String) -> void:
 		_:
 			pass
 	is_rainbow = false
+	
+	
 	mat.set_shader_parameter("new_palette", new_palette)
 	
 func rainbow():

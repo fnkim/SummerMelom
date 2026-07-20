@@ -4,6 +4,7 @@
 [ext_resource type="TileSet" uid="uid://bdtjsgtxy6f5f" path="res://Scenes/Tiles/test_tileset.tres" id="1_bo1nx"]
 [ext_resource type="PackedScene" uid="uid://bhv3cug7qoi11" path="res://Scenes/Player/player.tscn" id="1_jjgbg"]
 [ext_resource type="Texture2D" uid="uid://b7kv14oamlsdt" path="res://Scenes/Environment/GroundPitPlatformGrass.png" id="2_344ge"]
+[ext_resource type="Script" uid="uid://jhw2nesahooc" path="res://Scenes/Helpers/tile_color_swapper.gd" id="2_fevyy"]
 [ext_resource type="Script" uid="uid://u5kehhjcct8f" path="res://Scenes/Tiles/footstep_tilemap.gd" id="2_kry3j"]
 [ext_resource type="Texture2D" uid="uid://lrxay8c1d0a8" path="res://Scenes/Environment/env_red.png" id="3_b3802"]
 [ext_resource type="Texture2D" uid="uid://k5loov780d2" path="res://Scenes/Environment/env_palette.png" id="4_fevyy"]
@@ -204,12 +205,15 @@ vertices = PackedVector2Array(138.79688, 216.27344, -229.6875, 227.67188, -228.2
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 5, 6, 7), PackedInt32Array(8, 9, 10, 11), PackedInt32Array(12, 13, 14, 15), PackedInt32Array(16, 17, 18, 19)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-238, 168, 153, 168, 148, 226, -240, 238), PackedVector2Array(153, 2, 276, 6, 274, -35, 148, -41), PackedVector2Array(1524, 119, 1529, 229, 1080, 229, 1081, 114), PackedVector2Array(962, 11, 961, 71, 1078, 72, 1080, 7), PackedVector2Array(287, 163, 288, 225, 943, 226, 945, 148)])
 
-[node name="Main" type="Node2D" unique_id=358569440]
+[node name="Main" type="Node2D" unique_id=358569440 groups=["blue", "green", "orange", "purple", "red", "yellow"]]
 script = ExtResource("1_21xkr")
 toggle_colors = true
 
 [node name="FmodBankLoader" type="FmodBankLoader" parent="." unique_id=522601309]
 bank_paths = ["res://FmodBanks/Desktop/Master.strings.bank", "res://FmodBanks/Desktop/Master.bank", "res://FmodBanks/Desktop/Music.bank", "res://FmodBanks/Desktop/SFX.bank"]
+
+[node name="TileColorSwapper" type="Node2D" parent="." unique_id=1246480235]
+script = ExtResource("2_fevyy")
 
 [node name="Red" type="TileMapLayer" parent="." unique_id=611723197]
 material = SubResource("ShaderMaterial_u8m4d")

@@ -21,7 +21,7 @@ func _ready() -> void:
 
 func color_change() -> void:
 	var total_toggled = int(red_toggled) + int(yellow_toggled) + int(blue_toggled)
-	
+	var color: String
 	match total_toggled:
 		3:
 			equipped_color = ColorState.RAINBOW
@@ -40,5 +40,4 @@ func color_change() -> void:
 				equipped_color = ColorState.BLUE
 		0:
 			equipped_color = ColorState.NONE
-	
 	change_color.emit(equipped_color)
