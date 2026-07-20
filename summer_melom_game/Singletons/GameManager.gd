@@ -1,8 +1,8 @@
 extends Node
 
-var red_unlocked: bool
-var yellow_unlocked: bool
-var blue_unlocked: bool
+var red_unlocked: bool = true
+var yellow_unlocked: bool = true
+var blue_unlocked: bool = true
 
 var last_unlocked_red: bool
 var last_unlocked_yellow: bool

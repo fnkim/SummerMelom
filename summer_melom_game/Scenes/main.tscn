@@ -482,7 +482,7 @@ event_guid = "{647b6c33-340e-43d5-93b9-65967ec3c77d}"
 "fmod_parameters/Surface Material/variant_type" = 4
 
 [node name="Player" parent="." unique_id=1479473842 node_paths=PackedStringArray("hotbar") instance=ExtResource("1_jjgbg")]
-position = Vector2(105, 321)
+position = Vector2(45, 366)
 collision_mask = 3
 hotbar = NodePath("../Hotbar")
 
@@ -957,6 +957,10 @@ event_guid = "{647b6c33-340e-43d5-93b9-65967ec3c77d}"
 [node name="Large Monster2" parent="." unique_id=262799659 instance=ExtResource("27_6vcvc")]
 position = Vector2(9497, 347)
 color_queue = Array[int]([5, 1, 0, 2, 3, 4])
+target_radius_size = 800.0
+speed = 100.0
+dash_multiplier = 400.0
+attack_dist = 100.0
 final_boss = true
 
 [node name="Sprite2D" parent="Large Monster2" index="0" unique_id=1482003679]
@@ -1020,15 +1024,17 @@ event_guid = "{647b6c33-340e-43d5-93b9-65967ec3c77d}"
 [node name="RayCast2D" type="RayCast2D" parent="Medium Monster7" unique_id=42314426]
 target_position = Vector2(0, 30)
 
-[node name="FinalSpark" type="Sprite2D" parent="." unique_id=327072442 node_paths=PackedStringArray("label")]
+[node name="FinalSpark" type="Sprite2D" parent="." unique_id=327072442 node_paths=PackedStringArray("label", "hotbar")]
 visible = false
 position = Vector2(10073, 346)
 texture = ExtResource("29_6vcvc")
 script = ExtResource("21_ee4r6")
 spark_type = "final"
 label = NodePath("Label")
+hotbar = NodePath("../Hotbar")
 
 [node name="Label" type="Label" parent="FinalSpark" unique_id=747618319]
+visible = false
 offset_left = -76.0
 offset_top = -49.0
 offset_right = 87.0
@@ -1099,6 +1105,10 @@ position = Vector2(8800, 350)
 [connection signal="body_exited" from="RedSpark/Area2D" to="RedSpark" method="_on_area_2d_body_exited"]
 [connection signal="body_entered" from="YellowSpark/Area2D" to="YellowSpark" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="YellowSpark/Area2D" to="YellowSpark" method="_on_area_2d_body_exited"]
+[connection signal="body_entered" from="BlueSpark/Area2D" to="BlueSpark" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="BlueSpark/Area2D" to="BlueSpark" method="_on_area_2d_body_exited"]
+[connection signal="body_entered" from="FinalSpark/Area2D" to="FinalSpark" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="FinalSpark/Area2D" to="FinalSpark" method="_on_area_2d_body_exited"]
 [connection signal="body_entered" from="DeathBarrier" to="DeathBarrier" method="_on_body_entered"]
 
 [editable path="Small Monster"]

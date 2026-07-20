@@ -435,6 +435,7 @@ _data = {
 radius = 97.32934
 
 [node name="Large Monster" unique_id=1814088890 instance=ExtResource("1_wtn0m")]
+medium = true
 
 [node name="Sprite2D" parent="." index="0" unique_id=1482003679]
 material = SubResource("ShaderMaterial_7qej4")

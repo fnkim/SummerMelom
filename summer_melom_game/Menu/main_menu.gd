@@ -2,6 +2,8 @@ extends Node2D
 @onready var credits: TextureRect = $Control/CanvasLayer/TextureRect2
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
+@onready var start_button: Button = $Control/CanvasLayer/StartButton
+
 var credits_on: bool
 
 # Called when the node enters the scene tree for the first time.
@@ -15,6 +17,7 @@ func _process(delta: float) -> void:
 	if credits_on:
 		if Input.is_action_pressed("esc"):
 			credits.hide()
+			start_button.disabled = false
 			credits_on = false
 
 
@@ -31,5 +34,6 @@ func _on_start_button_pressed() -> void:
 func _on_credits_button_pressed() -> void:
 	$FmodEventEmitter2D.play_one_shot()
 	credits.show()
+	start_button.disabled = true
 	credits_on = true
 	
