@@ -17,7 +17,7 @@ enum EnemyAction{IDLE, FOLLOW, JUMP, ATTACK, KNOCKED_BACK, STUNNED}
 
 
 @export var color_queue: Array[ColorManager.ColorState]
-@export var target_radius_size: float = 150.0
+@export var target_radius_size: float = 300.0
 @export var speed: float = 70
 @export var hurtbox: NPCHurtBox
 @export var dash_multiplier: float = 200
@@ -51,6 +51,7 @@ func _physics_process(delta: float) -> void:
 		
 	match current_action:
 		EnemyAction.IDLE:
+			velocity.x = 0
 			anim.play("idle")
 			move_and_slide()
 		EnemyAction.KNOCKED_BACK:

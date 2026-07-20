@@ -129,11 +129,7 @@ radius = 150.0
 collision_layer = 2
 collision_mask = 9
 script = ExtResource("1_0yp08")
-color_queue = null
-target_radius_size = null
-speed = null
 hurtbox = NodePath("Sprite2D/HurtBox")
-dash_multiplier = null
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1482003679]
 texture = ExtResource("2_w4ki3")
