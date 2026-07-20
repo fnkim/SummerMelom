@@ -12,6 +12,9 @@
 [ext_resource type="Texture2D" uid="uid://du4ecbeh3lwxy" path="res://Scenes/Small Monster/Palettes/purple_palette.png" id="9_jvff3"]
 [ext_resource type="Texture2D" uid="uid://p2p1yhbieoeh" path="res://Scenes/Small Monster/Palettes/og_palette.png" id="10_1ybtv"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_lns1n"]
+radius = 19.026299
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_y54nl"]
 shader = ExtResource("2_qhlp5")
 shader_parameter/Flash = false
@@ -378,14 +381,23 @@ _data = {
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_u8m4d"]
-radius = 20.22375
+radius = 16.03122
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u8m4d"]
 size = Vector2(33, 23)
 
 [node name="Small Monster" unique_id=1814088890 instance=ExtResource("1_b0e82")]
+collision_mask = 1
 
-[node name="Sprite2D" parent="." index="0" unique_id=1482003679]
+[node name="Hitbox2" type="Area2D" parent="." index="0" unique_id=1608254733]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox2" index="0" unique_id=1692570312]
+position = Vector2(-5, 2)
+shape = SubResource("CircleShape2D_lns1n")
+
+[node name="Sprite2D" parent="." index="1" unique_id=1482003679]
 material = SubResource("ShaderMaterial_y54nl")
 position = Vector2(-4.768165, 0)
 texture = ExtResource("2_yjqat")
@@ -394,13 +406,13 @@ vframes = 4
 frame = 0
 
 [node name="HurtBox" parent="Sprite2D" index="0" unique_id=1214907404]
-collision_layer = 0
-collision_mask = 9
+collision_layer = 2
+collision_mask = 4
 
-[node name="AnimationPlayer" parent="." index="1" unique_id=158364619]
+[node name="AnimationPlayer" parent="." index="2" unique_id=158364619]
 libraries/ = SubResource("AnimationLibrary_i7808")
 
-[node name="Hitbox" parent="." index="2" unique_id=1407554946]
+[node name="Hitbox" parent="." index="3" unique_id=1407554946]
 position = Vector2(0, 0)
 collision_mask = 0
 
@@ -411,11 +423,11 @@ disabled = true
 [node name="Target Radius Collider" parent="Targeting Radius" parent_id_path=PackedInt32Array(333162743) index="0" unique_id=1064513069]
 position = Vector2(-6, 0)
 
-[node name="Collision" type="CollisionShape2D" parent="." index="7" unique_id=2090406589]
+[node name="Collision" type="CollisionShape2D" parent="." index="8" unique_id=2090406589]
 position = Vector2(-4.5, 3.5)
 shape = SubResource("RectangleShape2D_u8m4d")
 
-[node name="Palette Swapper" parent="." index="8" unique_id=242073123 node_paths=PackedStringArray("sprite") instance=ExtResource("3_pd5ug")]
+[node name="Palette Swapper" parent="." index="9" unique_id=242073123 node_paths=PackedStringArray("sprite") instance=ExtResource("3_pd5ug")]
 red = ExtResource("4_qhlp5")
 orange = ExtResource("5_aax1n")
 yellow = ExtResource("6_oyrhm")

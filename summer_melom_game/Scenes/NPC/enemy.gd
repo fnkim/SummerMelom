@@ -21,6 +21,8 @@ enum EnemyAction{IDLE, FOLLOW, JUMP, ATTACK, KNOCKED_BACK, STUNNED}
 @export var speed: float = 70
 @export var hurtbox: NPCHurtBox
 @export var dash_multiplier: float = 200
+@export var medium: bool
+@export var attack_dist: float = 50
 
 #hello
 var current_color: ColorManager.ColorState
@@ -37,7 +39,7 @@ var is_invincible: bool
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	
+	current_color = color_queue.front()
 	target_radius_collider.shape.radius = target_radius_size
 	symbol_grid.update_grid(color_queue)
 	ColorManager.change_color.connect(update_state)
@@ -75,7 +77,7 @@ func update_target_position() -> void:
 func follow() -> void:
 	if target == null:
 		return
-	if abs(hitbox.global_position.x - target.position.x) > 50:
+	if abs(hitbox.global_position.x - target.position.x) > attack_dist and !is_attacking:
 		is_attacking = false
 		var cur_loc = global_transform.origin
 		var next_loc = agent.get_next_path_position()
@@ -84,12 +86,15 @@ func follow() -> void:
 		anim.play("walk")
 		if position.x - target.position.x < 0:
 			sprite.scale.x = -1
-			hitbox.position.x = 25
+			if !medium:
+				hitbox.position.x = 25
 		elif position.x - target.position.x > 0:
 			sprite.scale.x = 1
-			hitbox.position.x = -25
+			if !medium:
+				hitbox.position.x = -25
 	else:
 		attack()
+
 	
 
 	move_and_slide()
@@ -119,7 +124,8 @@ func attack() -> void:
 			anim.play("attack")
 			var lunge_dir = global_position.direction_to(target.position).normalized() * dash_multiplier
 			velocity = lunge_dir
-
+			if medium:
+				velocity.y = -300
 			await anim.animation_finished
 			velocity = Vector2(0,0)
 			anim.play("idle")
