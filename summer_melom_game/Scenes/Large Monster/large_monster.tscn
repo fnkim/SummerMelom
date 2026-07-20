@@ -69,6 +69,18 @@ tracks/3/keys = {
 "update": 1,
 "values": [5]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Hitbox/CollisionShape2D:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_7qej4"]
 resource_name = "attack"
@@ -135,6 +147,18 @@ tracks/4/keys = {
 "args": [],
 "method": &"_atk_sfx"
 }]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Hitbox/CollisionShape2D:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.3636199, 0.7760373),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
 }
 
 [sub_resource type="Animation" id="Animation_xh5ci"]
@@ -407,6 +431,9 @@ _data = {
 &"walk": SubResource("Animation_ug73o")
 }
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_u8m4d"]
+radius = 97.32934
+
 [node name="Large Monster" unique_id=1814088890 instance=ExtResource("1_wtn0m")]
 
 [node name="Sprite2D" parent="." index="0" unique_id=1482003679]
@@ -416,8 +443,17 @@ hframes = 7
 vframes = 5
 frame = 0
 
+[node name="HurtBox" parent="Sprite2D" index="0" unique_id=1214907404]
+collision_layer = 2
+collision_mask = 4
+
 [node name="AnimationPlayer" parent="." index="1" unique_id=158364619]
 libraries/ = SubResource("AnimationLibrary_xh5ci")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" parent_id_path=PackedInt32Array(1407554946) index="0" unique_id=1998852749]
+position = Vector2(-19, 0)
+shape = SubResource("CircleShape2D_u8m4d")
+disabled = true
 
 [node name="SymbolGrid" parent="." index="6" unique_id=1676709472]
 position = Vector2(0.99999994, -59.999996)

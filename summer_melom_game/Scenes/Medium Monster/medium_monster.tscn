@@ -345,7 +345,7 @@ frame = 0
 
 [node name="HurtBox" parent="Sprite2D" index="0" unique_id=1214907404]
 collision_layer = 2
-collision_mask = 8
+collision_mask = 4
 
 [node name="AnimationPlayer" parent="." index="1" unique_id=158364619]
 libraries/ = SubResource("AnimationLibrary_xbmbg")
