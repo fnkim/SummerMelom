@@ -332,6 +332,7 @@ radius = 23.021729
 size = Vector2(46, 49)
 
 [node name="Medium Monster" unique_id=1814088890 instance=ExtResource("1_iqj2f")]
+collision_layer = 0
 collision_mask = 1
 medium = true
 attack_dist = 100.0
@@ -344,7 +345,7 @@ vframes = 4
 frame = 0
 
 [node name="HurtBox" parent="Sprite2D" index="0" unique_id=1214907404]
-collision_layer = 2
+collision_layer = 0
 collision_mask = 4
 
 [node name="AnimationPlayer" parent="." index="1" unique_id=158364619]
@@ -352,9 +353,13 @@ libraries/ = SubResource("AnimationLibrary_xbmbg")
 
 [node name="Hitbox" parent="." index="2" unique_id=1407554946]
 position = Vector2(0, 0)
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" index="0" unique_id=2114320568]
 shape = SubResource("CircleShape2D_u8m4d")
+
+[node name="Targeting Radius" parent="." index="3" unique_id=333162743]
+collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="7" unique_id=218214167]
 position = Vector2(-2, 2.5)

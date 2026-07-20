@@ -12,7 +12,7 @@ var last_checkpoint: Vector2
 var player: Player
 signal drop_blue_spark
 signal drop_final_spark
-
+signal game_started
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

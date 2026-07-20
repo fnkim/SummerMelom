@@ -1,7 +1,7 @@
 extends CharacterBody2D
 class_name Player
 
-enum PlayerState{IDLE, JUMP, FALL, WALK, ATTACK, HURT}
+enum PlayerState{IDLE, JUMP, FALL, WALK, ATTACK, HURT, STOPPED}
 @export var speed = 240.0
 @export var jump_velocity = -700.0
 @export var swapper: PaletteSwapper
@@ -11,7 +11,7 @@ enum PlayerState{IDLE, JUMP, FALL, WALK, ATTACK, HURT}
 var health: int = 6
 var can_attack: bool = true
 var current_enemy: Enemy
-var current_state: PlayerState = PlayerState.WALK
+var current_state: PlayerState = PlayerState.STOPPED
 var touching_enemy: bool
 
 
@@ -31,7 +31,11 @@ var touching_enemy: bool
 func _ready() -> void:
 	GameManager.player = self
 	ColorManager.change_color.connect(palette_change)
+	GameManager.game_started.connect(start_game)
 	hurtbox.hurt_player.connect(damage)
+
+func start_game():
+	current_state = PlayerState.WALK
 
 
 func toggle_color():

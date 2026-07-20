@@ -21,6 +21,7 @@ func _process(delta: float) -> void:
 func _on_start_button_pressed() -> void:
 	animation_player.play("fade to black")
 	await animation_player.animation_finished
+	GameManager.game_started.emit()
 	queue_free()
 
 
