@@ -4,7 +4,7 @@
 
 [node name="Node" type="Node" unique_id=54661380]
 script = ExtResource("1_mcfac")
-bgmTracks = Array[String](["event:/BGM/BGM_Test", "event:/BGM/BGM_Test_2", "event:/BGM/BGM_Test_3"])
+bgmTracks = Array[String](["event:/BGM/TitleScreen", "event:/BGM/GameplayTrack"])
 
 [node name="SwitchColor" type="FmodEventEmitter2D" parent="." unique_id=1167028850]
 event_name = "event:/SFX/Switch_Color"
