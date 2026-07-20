@@ -14,7 +14,6 @@ enum EnemyAction{IDLE, FOLLOW, JUMP, ATTACK, KNOCKED_BACK, STUNNED}
 @onready var swapper: PaletteSwapper = $"Palette Swapper"
 @onready var footstep_emitter = $FootstepSFX
 
-
 @export var color_queue: Array[ColorManager.ColorState]
 @export var target_radius_size: float = 300.0
 @export var speed: float = 70
@@ -38,6 +37,7 @@ var is_invincible: bool
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	
 	current_color = color_queue.front()
 	target_radius_collider.shape.radius = target_radius_size
 	symbol_grid.update_grid(color_queue)
