@@ -29,6 +29,8 @@
 [ext_resource type="PackedScene" uid="uid://cmfw3v2bh0u7h" path="res://Scenes/Large Monster/large_monster.tscn" id="27_6vcvc"]
 [ext_resource type="Texture2D" uid="uid://5gu5443acr7u" path="res://Scenes/Sparks/blue spark.png" id="28_ueoa1"]
 [ext_resource type="Texture2D" uid="uid://d034qhok2obe4" path="res://Scenes/Sparks/final spark.png" id="29_6vcvc"]
+[ext_resource type="PackedScene" uid="uid://b7v3y5exlke2i" path="res://Menu/main_menu.tscn" id="30_7k868"]
+[ext_resource type="Script" uid="uid://bfs3sel8mfalx" path="res://Scenes/death_barrier.gd" id="31_hpc6h"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_u8m4d"]
 shader = ExtResource("10_ee4r6")
@@ -388,6 +390,9 @@ shader_parameter/Flash = false
 shader_parameter/original_palette = ExtResource("26_ueoa1")
 shader_parameter/new_palette = ExtResource("26_ueoa1")
 shader_parameter/colors_count = 14
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lns1n"]
+size = Vector2(10916, 88)
 
 [node name="Main" type="Node2D" unique_id=358569440 groups=["blue", "green", "orange", "purple", "red", "yellow"]]
 script = ExtResource("1_21xkr")
@@ -1043,10 +1048,58 @@ shape = SubResource("CircleShape2D_u8m4d")
 libraries/ = SubResource("AnimationLibrary_cbgmd")
 autoplay = &"float"
 
+[node name="MainMenu" parent="." unique_id=148916217 instance=ExtResource("30_7k868")]
+
+[node name="DeathBarrier" type="Area2D" parent="." unique_id=1408963072]
+collision_layer = 0
+collision_mask = 8
+script = ExtResource("31_hpc6h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DeathBarrier" unique_id=1212205418]
+position = Vector2(5167, 542)
+shape = SubResource("RectangleShape2D_lns1n")
+
+[node name="Checkpoint3" parent="." unique_id=327618239 instance=ExtResource("24_3pmx8")]
+position = Vector2(81, 362)
+
+[node name="Checkpoint4" parent="." unique_id=899317885 instance=ExtResource("24_3pmx8")]
+position = Vector2(608, 353)
+
+[node name="Checkpoint5" parent="." unique_id=131117225 instance=ExtResource("24_3pmx8")]
+position = Vector2(1367, 350)
+
+[node name="Checkpoint6" parent="." unique_id=1047439598 instance=ExtResource("24_3pmx8")]
+position = Vector2(1821, 44)
+
+[node name="Checkpoint7" parent="." unique_id=29734824 instance=ExtResource("24_3pmx8")]
+position = Vector2(2241, 354)
+
+[node name="Checkpoint8" parent="." unique_id=1457402075 instance=ExtResource("24_3pmx8")]
+position = Vector2(3675, 350)
+
+[node name="Checkpoint9" parent="." unique_id=716695092 instance=ExtResource("24_3pmx8")]
+position = Vector2(4934, 352)
+
+[node name="Checkpoint10" parent="." unique_id=1426987321 instance=ExtResource("24_3pmx8")]
+position = Vector2(5883, 199)
+
+[node name="Checkpoint11" parent="." unique_id=101180671 instance=ExtResource("24_3pmx8")]
+position = Vector2(6933, 350)
+
+[node name="Checkpoint12" parent="." unique_id=529023190 instance=ExtResource("24_3pmx8")]
+position = Vector2(8145, 347)
+
+[node name="Checkpoint13" parent="." unique_id=1103850559 instance=ExtResource("24_3pmx8")]
+position = Vector2(8378, 188)
+
+[node name="Checkpoint14" parent="." unique_id=777610944 instance=ExtResource("24_3pmx8")]
+position = Vector2(8800, 350)
+
 [connection signal="body_entered" from="RedSpark/Area2D" to="RedSpark" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="RedSpark/Area2D" to="RedSpark" method="_on_area_2d_body_exited"]
 [connection signal="body_entered" from="YellowSpark/Area2D" to="YellowSpark" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="YellowSpark/Area2D" to="YellowSpark" method="_on_area_2d_body_exited"]
+[connection signal="body_entered" from="DeathBarrier" to="DeathBarrier" method="_on_body_entered"]
 
 [editable path="Small Monster"]
 [editable path="Medium Monster"]

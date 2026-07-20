@@ -2,6 +2,7 @@ extends Sprite2D
 
 @export var spark_type: String
 @export var label: Label
+@export var hotbar: Control
 
 var can_collect: bool
 var final_unlocked: bool
@@ -54,7 +55,8 @@ func collect():
 		"blue":
 			GameManager.blue_unlocked = true
 		"final":
-			GameManager.end()
+			if hotbar:
+				hotbar.end()
 		_:
 			pass
 			

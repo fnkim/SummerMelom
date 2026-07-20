@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://pq1eemyao3vl" path="res://Scenes/UI/yellow spark (1).png" id="3_ss4vx"]
 [ext_resource type="Texture2D" uid="uid://0b1hjxymrjmf" path="res://Scenes/UI/blue spark (1).png" id="4_cxdlu"]
 [ext_resource type="SpriteFrames" uid="uid://bew87xkcetf3h" path="res://Scenes/Environment/heart_frames.tres" id="5_ss4vx"]
+[ext_resource type="FontFile" uid="uid://bv4s2x18ug4du" path="res://Scenes/Sparks/PixelOperator.ttf" id="6_cxdlu"]
 
 [sub_resource type="Animation" id="Animation_ss4vx"]
 length = 0.001
@@ -19,6 +20,46 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(0, 0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/EndLabel:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_f8l3h"]
+resource_name = "fade_end"
+length = 1.9666667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/EndLabel:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_cxdlu"]
@@ -56,6 +97,7 @@ tracks/0/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_f8l3h"]
 _data = {
 &"RESET": SubResource("Animation_ss4vx"),
+&"fade_end": SubResource("Animation_f8l3h"),
 &"fade_in": SubResource("Animation_cxdlu"),
 &"fade_out": SubResource("Animation_m86u8")
 }
@@ -110,6 +152,16 @@ animation = &"full"
 offset_right = 656.0
 offset_bottom = 331.0
 color = Color(0, 0, 0, 0)
+
+[node name="EndLabel" type="Label" parent="CanvasLayer" unique_id=1852472677]
+modulate = Color(1, 1, 1, 0)
+offset_left = 273.0
+offset_top = 143.0
+offset_right = 368.0
+offset_bottom = 174.0
+theme_override_fonts/font = ExtResource("6_cxdlu")
+theme_override_font_sizes/font_size = 30
+text = "The End!"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=224498837]
 libraries/ = SubResource("AnimationLibrary_f8l3h")

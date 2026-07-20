@@ -1,0 +1,140 @@
+[gd_scene format=3 uid="uid://b7v3y5exlke2i"]
+
+[ext_resource type="Texture2D" uid="uid://bs5bycvcb4a0r" path="res://Menu/TitleWithoutStars.png" id="1_ci1se"]
+[ext_resource type="Script" uid="uid://dsnjbyyqarwff" path="res://Menu/main_menu.gd" id="1_dtkyu"]
+[ext_resource type="Texture2D" uid="uid://5b2i53w1ft24" path="res://Menu/Start button.png" id="2_dtkyu"]
+[ext_resource type="Texture2D" uid="uid://bsgan765isn1a" path="res://Menu/CreditsButton.png" id="3_fw3rq"]
+[ext_resource type="Texture2D" uid="uid://4rk0p82g5inp" path="res://Menu/credits.png" id="5_rw3mj"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_u8m4d"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lns1n"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_s5i16"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dotrb"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_285ys"]
+
+[sub_resource type="Animation" id="Animation_fw3rq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/CanvasLayer/ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_cn2sd"]
+resource_name = "fade to black"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/CanvasLayer/ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vv7ca"]
+_data = {
+&"RESET": SubResource("Animation_fw3rq"),
+&"fade to black": SubResource("Animation_cn2sd")
+}
+
+[node name="MainMenu" type="Node2D" unique_id=148916217]
+script = ExtResource("1_dtkyu")
+
+[node name="Control" type="Control" parent="." unique_id=700234893]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Control" unique_id=26867573]
+
+[node name="TextureRect" type="TextureRect" parent="Control/CanvasLayer" unique_id=1956714781]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_ci1se")
+
+[node name="TextureRect" type="TextureRect" parent="Control/CanvasLayer/TextureRect" unique_id=918013385]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_fw3rq")
+
+[node name="TextureRect2" type="TextureRect" parent="Control/CanvasLayer/TextureRect" unique_id=1340793644]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_dtkyu")
+
+[node name="TextureRect2" type="TextureRect" parent="Control/CanvasLayer" unique_id=541058780]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_rw3mj")
+
+[node name="StartButton" type="Button" parent="Control/CanvasLayer" unique_id=2105720505]
+offset_left = 488.00003
+offset_top = 244.0
+offset_right = 631.3361
+offset_bottom = 319.17358
+rotation = -0.7853982
+theme_override_styles/normal = SubResource("StyleBoxEmpty_u8m4d")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_lns1n")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_s5i16")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_dotrb")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_285ys")
+
+[node name="CreditsButton" type="Button" parent="Control/CanvasLayer" unique_id=1339852494]
+offset_left = 84.71427
+offset_top = 170.28574
+offset_right = 228.05035
+offset_bottom = 245.45932
+rotation = 0.7853982
+theme_override_styles/normal = SubResource("StyleBoxEmpty_u8m4d")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_lns1n")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_s5i16")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_dotrb")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_285ys")
+
+[node name="ColorRect" type="ColorRect" parent="Control/CanvasLayer" unique_id=206009845]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1700683674]
+libraries/ = SubResource("AnimationLibrary_vv7ca")
+
+[connection signal="pressed" from="Control/CanvasLayer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="Control/CanvasLayer/CreditsButton" to="." method="_on_credits_button_pressed"]

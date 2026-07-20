@@ -11,6 +11,7 @@ extends Control
 @onready var heart3: AnimatedSprite2D = $CanvasLayer/Heart3
 
 @onready var anim: AnimationPlayer = $AnimationPlayer
+@onready var end_label: Label = $CanvasLayer/EndLabel
 
 
 # Called when the node enters the scene tree for the first time.
@@ -88,3 +89,7 @@ func death():
 	reset_heart()
 	GameManager.player_death()
 	anim.play("fade_in")
+
+func end():
+	anim.play("fade_end")
+	get_tree().quit()
