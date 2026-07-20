@@ -585,12 +585,58 @@ color_queue = Array[int]([0, 1, 2, 0])
 [node name="Sprite2D" parent="Medium Monster" index="0" unique_id=1482003679]
 material = SubResource("ShaderMaterial_7k868")
 
+[node name="RayCast2D" type="RayCast2D" parent="Medium Monster" unique_id=1771993570]
+target_position = Vector2(0, 30)
+
+[node name="ChompSFX" type="FmodEventEmitter2D" parent="Medium Monster" unique_id=1265510229]
+event_name = "event:/SFX/Enemy_Chomp"
+event_guid = "{0ea14f92-91a1-4bab-86c7-61fb239c370e}"
+
+[node name="JumpSFX" type="FmodEventEmitter2D" parent="Medium Monster" unique_id=1077388927]
+event_name = "event:/SFX/Enemy_Jump"
+event_guid = "{c9d282c7-7abb-4191-b845-d21f39a7550c}"
+
+[node name="HurtSFX" type="FmodEventEmitter2D" parent="Medium Monster" unique_id=2122196805]
+event_name = "event:/SFX/Enemy_Hurt"
+event_guid = "{b1b0a3c9-df84-49ce-95c2-852eac409b5a}"
+
+[node name="FootstepSFX" type="FmodEventEmitter2D" parent="Medium Monster" unique_id=953343592]
+event_name = "event:/SFX/Enemy_Footsteps"
+event_guid = "{647b6c33-340e-43d5-93b9-65967ec3c77d}"
+"fmod_parameters/Surface Material/id" = 5666494123659064376
+"fmod_parameters/Surface Material" = "Grass"
+"fmod_parameters/Surface Material/labels" = PackedStringArray("Grass", "Concrete", "Rock")
+"fmod_parameters/Surface Material/variant_type" = 4
+
 [node name="Medium Monster2" parent="." unique_id=2054138633 instance=ExtResource("25_1w6v2")]
 position = Vector2(3772, 351)
 color_queue = Array[int]([0, 1, 1, 2])
 
 [node name="Sprite2D" parent="Medium Monster2" index="0" unique_id=1482003679]
 material = SubResource("ShaderMaterial_hpc6h")
+
+[node name="RayCast2D" type="RayCast2D" parent="Medium Monster2" unique_id=229748939]
+target_position = Vector2(0, 30)
+
+[node name="ChompSFX" type="FmodEventEmitter2D" parent="Medium Monster2" unique_id=1695657781]
+event_name = "event:/SFX/Enemy_Chomp"
+event_guid = "{0ea14f92-91a1-4bab-86c7-61fb239c370e}"
+
+[node name="JumpSFX" type="FmodEventEmitter2D" parent="Medium Monster2" unique_id=420933392]
+event_name = "event:/SFX/Enemy_Jump"
+event_guid = "{c9d282c7-7abb-4191-b845-d21f39a7550c}"
+
+[node name="HurtSFX" type="FmodEventEmitter2D" parent="Medium Monster2" unique_id=2002038441]
+event_name = "event:/SFX/Enemy_Hurt"
+event_guid = "{b1b0a3c9-df84-49ce-95c2-852eac409b5a}"
+
+[node name="FootstepSFX" type="FmodEventEmitter2D" parent="Medium Monster2" unique_id=1423771103]
+event_name = "event:/SFX/Enemy_Footsteps"
+event_guid = "{647b6c33-340e-43d5-93b9-65967ec3c77d}"
+"fmod_parameters/Surface Material/id" = 5666494123659064376
+"fmod_parameters/Surface Material" = "Grass"
+"fmod_parameters/Surface Material/labels" = PackedStringArray("Grass", "Concrete", "Rock")
+"fmod_parameters/Surface Material/variant_type" = 4
 
 [node name="Medium Monster3" parent="." unique_id=110710852 instance=ExtResource("25_1w6v2")]
 position = Vector2(4224, 354)
@@ -599,6 +645,29 @@ color_queue = Array[int]([1, 0, 2, 0])
 [node name="Sprite2D" parent="Medium Monster3" index="0" unique_id=1482003679]
 material = SubResource("ShaderMaterial_kltya")
 
+[node name="RayCast2D" type="RayCast2D" parent="Medium Monster3" unique_id=696641789]
+target_position = Vector2(0, 30)
+
+[node name="ChompSFX" type="FmodEventEmitter2D" parent="Medium Monster3" unique_id=180737123]
+event_name = "event:/SFX/Enemy_Chomp"
+event_guid = "{0ea14f92-91a1-4bab-86c7-61fb239c370e}"
+
+[node name="JumpSFX" type="FmodEventEmitter2D" parent="Medium Monster3" unique_id=1991338347]
+event_name = "event:/SFX/Enemy_Jump"
+event_guid = "{c9d282c7-7abb-4191-b845-d21f39a7550c}"
+
+[node name="HurtSFX" type="FmodEventEmitter2D" parent="Medium Monster3" unique_id=1164416571]
+event_name = "event:/SFX/Enemy_Hurt"
+event_guid = "{b1b0a3c9-df84-49ce-95c2-852eac409b5a}"
+
+[node name="FootstepSFX" type="FmodEventEmitter2D" parent="Medium Monster3" unique_id=548404914]
+event_name = "event:/SFX/Enemy_Footsteps"
+event_guid = "{647b6c33-340e-43d5-93b9-65967ec3c77d}"
+"fmod_parameters/Surface Material/id" = 5666494123659064376
+"fmod_parameters/Surface Material" = "Grass"
+"fmod_parameters/Surface Material/labels" = PackedStringArray("Grass", "Concrete", "Rock")
+"fmod_parameters/Surface Material/variant_type" = 4
+
 [node name="Small Monster2" parent="." unique_id=1343344112 instance=ExtResource("7_6bp64")]
 position = Vector2(4007, 364)
 color_queue = Array[int]([0, 2])
@@ -606,12 +675,52 @@ color_queue = Array[int]([0, 2])
 [node name="Sprite2D" parent="Small Monster2" index="1" unique_id=1482003679]
 material = SubResource("ShaderMaterial_e08e2")
 
+[node name="ChompSFX" type="FmodEventEmitter2D" parent="Small Monster2" unique_id=596503280]
+event_name = "event:/SFX/Enemy_Chomp"
+event_guid = "{0ea14f92-91a1-4bab-86c7-61fb239c370e}"
+
+[node name="JumpSFX" type="FmodEventEmitter2D" parent="Small Monster2" unique_id=240236068]
+event_name = "event:/SFX/Enemy_Jump"
+event_guid = "{c9d282c7-7abb-4191-b845-d21f39a7550c}"
+
+[node name="HurtSFX" type="FmodEventEmitter2D" parent="Small Monster2" unique_id=941551965]
+event_name = "event:/SFX/Enemy_Hurt"
+event_guid = "{b1b0a3c9-df84-49ce-95c2-852eac409b5a}"
+
+[node name="FootstepSFX" type="FmodEventEmitter2D" parent="Small Monster2" unique_id=1708742056]
+event_name = "event:/SFX/Enemy_Footsteps"
+event_guid = "{647b6c33-340e-43d5-93b9-65967ec3c77d}"
+"fmod_parameters/Surface Material/id" = 5666494123659064376
+"fmod_parameters/Surface Material" = "Grass"
+"fmod_parameters/Surface Material/labels" = PackedStringArray("Grass", "Concrete", "Rock")
+"fmod_parameters/Surface Material/variant_type" = 4
+
 [node name="Checkpoint2" parent="." unique_id=1374249952 instance=ExtResource("24_3pmx8")]
 position = Vector2(3106, 135)
 
 [node name="Small Monster3" parent="." unique_id=1297150930 instance=ExtResource("7_6bp64")]
 position = Vector2(4700, 83)
 color_queue = Array[int]([2, 1])
+
+[node name="ChompSFX" type="FmodEventEmitter2D" parent="Small Monster3" unique_id=2112787699]
+event_name = "event:/SFX/Enemy_Chomp"
+event_guid = "{0ea14f92-91a1-4bab-86c7-61fb239c370e}"
+
+[node name="JumpSFX" type="FmodEventEmitter2D" parent="Small Monster3" unique_id=307423341]
+event_name = "event:/SFX/Enemy_Jump"
+event_guid = "{c9d282c7-7abb-4191-b845-d21f39a7550c}"
+
+[node name="HurtSFX" type="FmodEventEmitter2D" parent="Small Monster3" unique_id=1837709868]
+event_name = "event:/SFX/Enemy_Hurt"
+event_guid = "{b1b0a3c9-df84-49ce-95c2-852eac409b5a}"
+
+[node name="FootstepSFX" type="FmodEventEmitter2D" parent="Small Monster3" unique_id=507174695]
+event_name = "event:/SFX/Enemy_Footsteps"
+event_guid = "{647b6c33-340e-43d5-93b9-65967ec3c77d}"
+"fmod_parameters/Surface Material/id" = 5666494123659064376
+"fmod_parameters/Surface Material" = "Grass"
+"fmod_parameters/Surface Material/labels" = PackedStringArray("Grass", "Concrete", "Rock")
+"fmod_parameters/Surface Material/variant_type" = 4
 
 [node name="BlueSpark" type="Sprite2D" parent="." unique_id=775598961 node_paths=PackedStringArray("label")]
 visible = false
@@ -649,12 +758,58 @@ color_queue = Array[int]([0, 4, 0, 3])
 [node name="Sprite2D" parent="Medium Monster4" index="0" unique_id=1482003679]
 material = SubResource("ShaderMaterial_ueoa1")
 
+[node name="ChompSFX" type="FmodEventEmitter2D" parent="Medium Monster4" unique_id=1558159434]
+event_name = "event:/SFX/Enemy_Chomp"
+event_guid = "{0ea14f92-91a1-4bab-86c7-61fb239c370e}"
+
+[node name="JumpSFX" type="FmodEventEmitter2D" parent="Medium Monster4" unique_id=961712458]
+event_name = "event:/SFX/Enemy_Jump"
+event_guid = "{c9d282c7-7abb-4191-b845-d21f39a7550c}"
+
+[node name="HurtSFX" type="FmodEventEmitter2D" parent="Medium Monster4" unique_id=1504854555]
+event_name = "event:/SFX/Enemy_Hurt"
+event_guid = "{b1b0a3c9-df84-49ce-95c2-852eac409b5a}"
+
+[node name="FootstepSFX" type="FmodEventEmitter2D" parent="Medium Monster4" unique_id=1570173205]
+event_name = "event:/SFX/Enemy_Footsteps"
+event_guid = "{647b6c33-340e-43d5-93b9-65967ec3c77d}"
+"fmod_parameters/Surface Material/id" = 5666494123659064376
+"fmod_parameters/Surface Material" = "Grass"
+"fmod_parameters/Surface Material/labels" = PackedStringArray("Grass", "Concrete", "Rock")
+"fmod_parameters/Surface Material/variant_type" = 4
+
+[node name="RayCast2D" type="RayCast2D" parent="Medium Monster4" unique_id=1457676956]
+target_position = Vector2(0, 30)
+
 [node name="Medium Monster5" parent="." unique_id=936516966 instance=ExtResource("25_1w6v2")]
 position = Vector2(6410, 360)
 color_queue = Array[int]([2, 5, 2, 5])
 
 [node name="Sprite2D" parent="Medium Monster5" index="0" unique_id=1482003679]
 material = SubResource("ShaderMaterial_6vcvc")
+
+[node name="ChompSFX" type="FmodEventEmitter2D" parent="Medium Monster5" unique_id=151430121]
+event_name = "event:/SFX/Enemy_Chomp"
+event_guid = "{0ea14f92-91a1-4bab-86c7-61fb239c370e}"
+
+[node name="JumpSFX" type="FmodEventEmitter2D" parent="Medium Monster5" unique_id=1380814200]
+event_name = "event:/SFX/Enemy_Jump"
+event_guid = "{c9d282c7-7abb-4191-b845-d21f39a7550c}"
+
+[node name="HurtSFX" type="FmodEventEmitter2D" parent="Medium Monster5" unique_id=379164831]
+event_name = "event:/SFX/Enemy_Hurt"
+event_guid = "{b1b0a3c9-df84-49ce-95c2-852eac409b5a}"
+
+[node name="FootstepSFX" type="FmodEventEmitter2D" parent="Medium Monster5" unique_id=1822531951]
+event_name = "event:/SFX/Enemy_Footsteps"
+event_guid = "{647b6c33-340e-43d5-93b9-65967ec3c77d}"
+"fmod_parameters/Surface Material/id" = 5666494123659064376
+"fmod_parameters/Surface Material" = "Grass"
+"fmod_parameters/Surface Material/labels" = PackedStringArray("Grass", "Concrete", "Rock")
+"fmod_parameters/Surface Material/variant_type" = 4
+
+[node name="RayCast2D" type="RayCast2D" parent="Medium Monster5" unique_id=701809801]
+target_position = Vector2(0, 30)
 
 [node name="Small Monster4" parent="." unique_id=1726061653 instance=ExtResource("7_6bp64")]
 position = Vector2(6253, 369)
@@ -663,12 +818,52 @@ color_queue = Array[int]([3, 0])
 [node name="Sprite2D" parent="Small Monster4" index="1" unique_id=1482003679]
 material = SubResource("ShaderMaterial_neg2b")
 
+[node name="ChompSFX" type="FmodEventEmitter2D" parent="Small Monster4" unique_id=556537209]
+event_name = "event:/SFX/Enemy_Chomp"
+event_guid = "{0ea14f92-91a1-4bab-86c7-61fb239c370e}"
+
+[node name="JumpSFX" type="FmodEventEmitter2D" parent="Small Monster4" unique_id=332680632]
+event_name = "event:/SFX/Enemy_Jump"
+event_guid = "{c9d282c7-7abb-4191-b845-d21f39a7550c}"
+
+[node name="HurtSFX" type="FmodEventEmitter2D" parent="Small Monster4" unique_id=1767809896]
+event_name = "event:/SFX/Enemy_Hurt"
+event_guid = "{b1b0a3c9-df84-49ce-95c2-852eac409b5a}"
+
+[node name="FootstepSFX" type="FmodEventEmitter2D" parent="Small Monster4" unique_id=546299974]
+event_name = "event:/SFX/Enemy_Footsteps"
+event_guid = "{647b6c33-340e-43d5-93b9-65967ec3c77d}"
+"fmod_parameters/Surface Material/id" = 5666494123659064376
+"fmod_parameters/Surface Material" = "Grass"
+"fmod_parameters/Surface Material/labels" = PackedStringArray("Grass", "Concrete", "Rock")
+"fmod_parameters/Surface Material/variant_type" = 4
+
 [node name="Small Monster5" parent="." unique_id=1890361488 instance=ExtResource("7_6bp64")]
 position = Vector2(6189, 371)
 color_queue = Array[int]([1, 5])
 
 [node name="Sprite2D" parent="Small Monster5" index="1" unique_id=1482003679]
 material = SubResource("ShaderMaterial_r33sp")
+
+[node name="ChompSFX" type="FmodEventEmitter2D" parent="Small Monster5" unique_id=125232301]
+event_name = "event:/SFX/Enemy_Chomp"
+event_guid = "{0ea14f92-91a1-4bab-86c7-61fb239c370e}"
+
+[node name="JumpSFX" type="FmodEventEmitter2D" parent="Small Monster5" unique_id=651121560]
+event_name = "event:/SFX/Enemy_Jump"
+event_guid = "{c9d282c7-7abb-4191-b845-d21f39a7550c}"
+
+[node name="HurtSFX" type="FmodEventEmitter2D" parent="Small Monster5" unique_id=265669712]
+event_name = "event:/SFX/Enemy_Hurt"
+event_guid = "{b1b0a3c9-df84-49ce-95c2-852eac409b5a}"
+
+[node name="FootstepSFX" type="FmodEventEmitter2D" parent="Small Monster5" unique_id=1210861029]
+event_name = "event:/SFX/Enemy_Footsteps"
+event_guid = "{647b6c33-340e-43d5-93b9-65967ec3c77d}"
+"fmod_parameters/Surface Material/id" = 5666494123659064376
+"fmod_parameters/Surface Material" = "Grass"
+"fmod_parameters/Surface Material/labels" = PackedStringArray("Grass", "Concrete", "Rock")
+"fmod_parameters/Surface Material/variant_type" = 4
 
 [node name="Small Monster6" parent="." unique_id=184993701 instance=ExtResource("7_6bp64")]
 position = Vector2(7303, 363)
@@ -677,6 +872,26 @@ color_queue = Array[int]([4, 0])
 [node name="Sprite2D" parent="Small Monster6" index="1" unique_id=1482003679]
 material = SubResource("ShaderMaterial_hdf80")
 
+[node name="ChompSFX" type="FmodEventEmitter2D" parent="Small Monster6" unique_id=674295312]
+event_name = "event:/SFX/Enemy_Chomp"
+event_guid = "{0ea14f92-91a1-4bab-86c7-61fb239c370e}"
+
+[node name="JumpSFX" type="FmodEventEmitter2D" parent="Small Monster6" unique_id=1550268681]
+event_name = "event:/SFX/Enemy_Jump"
+event_guid = "{c9d282c7-7abb-4191-b845-d21f39a7550c}"
+
+[node name="HurtSFX" type="FmodEventEmitter2D" parent="Small Monster6" unique_id=1081736755]
+event_name = "event:/SFX/Enemy_Hurt"
+event_guid = "{b1b0a3c9-df84-49ce-95c2-852eac409b5a}"
+
+[node name="FootstepSFX" type="FmodEventEmitter2D" parent="Small Monster6" unique_id=592007247]
+event_name = "event:/SFX/Enemy_Footsteps"
+event_guid = "{647b6c33-340e-43d5-93b9-65967ec3c77d}"
+"fmod_parameters/Surface Material/id" = 5666494123659064376
+"fmod_parameters/Surface Material" = "Grass"
+"fmod_parameters/Surface Material/labels" = PackedStringArray("Grass", "Concrete", "Rock")
+"fmod_parameters/Surface Material/variant_type" = 4
+
 [node name="Medium Monster6" parent="." unique_id=645565174 instance=ExtResource("25_1w6v2")]
 position = Vector2(7052, 354)
 color_queue = Array[int]([4, 0, 3, 2])
@@ -684,12 +899,55 @@ color_queue = Array[int]([4, 0, 3, 2])
 [node name="Sprite2D" parent="Medium Monster6" index="0" unique_id=1482003679]
 material = SubResource("ShaderMaterial_jwpg7")
 
+[node name="ChompSFX" type="FmodEventEmitter2D" parent="Medium Monster6" unique_id=1652533842]
+event_name = "event:/SFX/Enemy_Chomp"
+event_guid = "{0ea14f92-91a1-4bab-86c7-61fb239c370e}"
+
+[node name="JumpSFX" type="FmodEventEmitter2D" parent="Medium Monster6" unique_id=567624100]
+event_name = "event:/SFX/Enemy_Jump"
+event_guid = "{c9d282c7-7abb-4191-b845-d21f39a7550c}"
+
+[node name="HurtSFX" type="FmodEventEmitter2D" parent="Medium Monster6" unique_id=1903033080]
+event_name = "event:/SFX/Enemy_Hurt"
+event_guid = "{b1b0a3c9-df84-49ce-95c2-852eac409b5a}"
+
+[node name="FootstepSFX" type="FmodEventEmitter2D" parent="Medium Monster6" unique_id=749191063]
+event_name = "event:/SFX/Enemy_Footsteps"
+event_guid = "{647b6c33-340e-43d5-93b9-65967ec3c77d}"
+"fmod_parameters/Surface Material/id" = 5666494123659064376
+"fmod_parameters/Surface Material" = "Grass"
+"fmod_parameters/Surface Material/labels" = PackedStringArray("Grass", "Concrete", "Rock")
+"fmod_parameters/Surface Material/variant_type" = 4
+
+[node name="RayCast2D" type="RayCast2D" parent="Medium Monster6" unique_id=1247181435]
+target_position = Vector2(0, 30)
+
 [node name="Small Monster7" parent="." unique_id=1361588114 instance=ExtResource("7_6bp64")]
 position = Vector2(8543, 28)
 color_queue = Array[int]([2, 1])
 
 [node name="Sprite2D" parent="Small Monster7" index="1" unique_id=1482003679]
 material = SubResource("ShaderMaterial_k2e45")
+
+[node name="ChompSFX" type="FmodEventEmitter2D" parent="Small Monster7" unique_id=1116546903]
+event_name = "event:/SFX/Enemy_Chomp"
+event_guid = "{0ea14f92-91a1-4bab-86c7-61fb239c370e}"
+
+[node name="JumpSFX" type="FmodEventEmitter2D" parent="Small Monster7" unique_id=1507958298]
+event_name = "event:/SFX/Enemy_Jump"
+event_guid = "{c9d282c7-7abb-4191-b845-d21f39a7550c}"
+
+[node name="HurtSFX" type="FmodEventEmitter2D" parent="Small Monster7" unique_id=352971407]
+event_name = "event:/SFX/Enemy_Hurt"
+event_guid = "{b1b0a3c9-df84-49ce-95c2-852eac409b5a}"
+
+[node name="FootstepSFX" type="FmodEventEmitter2D" parent="Small Monster7" unique_id=1352024855]
+event_name = "event:/SFX/Enemy_Footsteps"
+event_guid = "{647b6c33-340e-43d5-93b9-65967ec3c77d}"
+"fmod_parameters/Surface Material/id" = 5666494123659064376
+"fmod_parameters/Surface Material" = "Grass"
+"fmod_parameters/Surface Material/labels" = PackedStringArray("Grass", "Concrete", "Rock")
+"fmod_parameters/Surface Material/variant_type" = 4
 
 [node name="Large Monster2" parent="." unique_id=262799659 instance=ExtResource("27_6vcvc")]
 position = Vector2(9497, 347)
@@ -703,6 +961,29 @@ material = SubResource("ShaderMaterial_536cc")
 position = Vector2(6.5, 5)
 shape = SubResource("RectangleShape2D_u8m4d")
 
+[node name="ChompSFX" type="FmodEventEmitter2D" parent="Large Monster2" unique_id=78977854]
+event_name = "event:/SFX/Enemy_Chomp"
+event_guid = "{0ea14f92-91a1-4bab-86c7-61fb239c370e}"
+
+[node name="JumpSFX" type="FmodEventEmitter2D" parent="Large Monster2" unique_id=130814952]
+event_name = "event:/SFX/Enemy_Jump"
+event_guid = "{c9d282c7-7abb-4191-b845-d21f39a7550c}"
+
+[node name="HurtSFX" type="FmodEventEmitter2D" parent="Large Monster2" unique_id=1159351021]
+event_name = "event:/SFX/Enemy_Hurt"
+event_guid = "{b1b0a3c9-df84-49ce-95c2-852eac409b5a}"
+
+[node name="FootstepSFX" type="FmodEventEmitter2D" parent="Large Monster2" unique_id=2070986224]
+event_name = "event:/SFX/Enemy_Footsteps"
+event_guid = "{647b6c33-340e-43d5-93b9-65967ec3c77d}"
+"fmod_parameters/Surface Material/id" = 5666494123659064376
+"fmod_parameters/Surface Material" = "Grass"
+"fmod_parameters/Surface Material/labels" = PackedStringArray("Grass", "Concrete", "Rock")
+"fmod_parameters/Surface Material/variant_type" = 4
+
+[node name="RayCast2D" type="RayCast2D" parent="Large Monster2" unique_id=1653996899]
+target_position = Vector2(0, 30)
+
 [node name="Medium Monster7" parent="." unique_id=165728020 instance=ExtResource("25_1w6v2")]
 position = Vector2(5221, 350)
 color_queue = Array[int]([0, 0, 2, 1, 2, 1])
@@ -710,6 +991,29 @@ blue_boss = true
 
 [node name="Sprite2D" parent="Medium Monster7" index="0" unique_id=1482003679]
 material = SubResource("ShaderMaterial_aqgau")
+
+[node name="ChompSFX" type="FmodEventEmitter2D" parent="Medium Monster7" unique_id=1505428793]
+event_name = "event:/SFX/Enemy_Chomp"
+event_guid = "{0ea14f92-91a1-4bab-86c7-61fb239c370e}"
+
+[node name="JumpSFX" type="FmodEventEmitter2D" parent="Medium Monster7" unique_id=900698138]
+event_name = "event:/SFX/Enemy_Jump"
+event_guid = "{c9d282c7-7abb-4191-b845-d21f39a7550c}"
+
+[node name="HurtSFX" type="FmodEventEmitter2D" parent="Medium Monster7" unique_id=1687357396]
+event_name = "event:/SFX/Enemy_Hurt"
+event_guid = "{b1b0a3c9-df84-49ce-95c2-852eac409b5a}"
+
+[node name="FootstepSFX" type="FmodEventEmitter2D" parent="Medium Monster7" unique_id=1844763500]
+event_name = "event:/SFX/Enemy_Footsteps"
+event_guid = "{647b6c33-340e-43d5-93b9-65967ec3c77d}"
+"fmod_parameters/Surface Material/id" = 5666494123659064376
+"fmod_parameters/Surface Material" = "Grass"
+"fmod_parameters/Surface Material/labels" = PackedStringArray("Grass", "Concrete", "Rock")
+"fmod_parameters/Surface Material/variant_type" = 4
+
+[node name="RayCast2D" type="RayCast2D" parent="Medium Monster7" unique_id=42314426]
+target_position = Vector2(0, 30)
 
 [node name="FinalSpark" type="Sprite2D" parent="." unique_id=327072442 node_paths=PackedStringArray("label")]
 visible = false
