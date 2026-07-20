@@ -589,8 +589,8 @@ material = SubResource("ShaderMaterial_7k868")
 target_position = Vector2(0, 30)
 
 [node name="ChompSFX" type="FmodEventEmitter2D" parent="Medium Monster" unique_id=1265510229]
-event_name = "event:/SFX/Enemy_Chomp"
-event_guid = "{0ea14f92-91a1-4bab-86c7-61fb239c370e}"
+event_name = "event:/SFX/Enemy_Slam"
+event_guid = "{0d007e33-c5f2-455e-b09e-930c4dbb5d30}"
 
 [node name="JumpSFX" type="FmodEventEmitter2D" parent="Medium Monster" unique_id=1077388927]
 event_name = "event:/SFX/Enemy_Jump"
@@ -619,8 +619,8 @@ material = SubResource("ShaderMaterial_hpc6h")
 target_position = Vector2(0, 30)
 
 [node name="ChompSFX" type="FmodEventEmitter2D" parent="Medium Monster2" unique_id=1695657781]
-event_name = "event:/SFX/Enemy_Chomp"
-event_guid = "{0ea14f92-91a1-4bab-86c7-61fb239c370e}"
+event_name = "event:/SFX/Enemy_Slam"
+event_guid = "{0d007e33-c5f2-455e-b09e-930c4dbb5d30}"
 
 [node name="JumpSFX" type="FmodEventEmitter2D" parent="Medium Monster2" unique_id=420933392]
 event_name = "event:/SFX/Enemy_Jump"
@@ -649,8 +649,8 @@ material = SubResource("ShaderMaterial_kltya")
 target_position = Vector2(0, 30)
 
 [node name="ChompSFX" type="FmodEventEmitter2D" parent="Medium Monster3" unique_id=180737123]
-event_name = "event:/SFX/Enemy_Chomp"
-event_guid = "{0ea14f92-91a1-4bab-86c7-61fb239c370e}"
+event_name = "event:/SFX/Enemy_Slam"
+event_guid = "{0d007e33-c5f2-455e-b09e-930c4dbb5d30}"
 
 [node name="JumpSFX" type="FmodEventEmitter2D" parent="Medium Monster3" unique_id=1991338347]
 event_name = "event:/SFX/Enemy_Jump"
@@ -759,8 +759,8 @@ color_queue = Array[int]([0, 4, 0, 3])
 material = SubResource("ShaderMaterial_ueoa1")
 
 [node name="ChompSFX" type="FmodEventEmitter2D" parent="Medium Monster4" unique_id=1558159434]
-event_name = "event:/SFX/Enemy_Chomp"
-event_guid = "{0ea14f92-91a1-4bab-86c7-61fb239c370e}"
+event_name = "event:/SFX/Enemy_Slam"
+event_guid = "{0d007e33-c5f2-455e-b09e-930c4dbb5d30}"
 
 [node name="JumpSFX" type="FmodEventEmitter2D" parent="Medium Monster4" unique_id=961712458]
 event_name = "event:/SFX/Enemy_Jump"
@@ -789,8 +789,8 @@ color_queue = Array[int]([2, 5, 2, 5])
 material = SubResource("ShaderMaterial_6vcvc")
 
 [node name="ChompSFX" type="FmodEventEmitter2D" parent="Medium Monster5" unique_id=151430121]
-event_name = "event:/SFX/Enemy_Chomp"
-event_guid = "{0ea14f92-91a1-4bab-86c7-61fb239c370e}"
+event_name = "event:/SFX/Enemy_Slam"
+event_guid = "{0d007e33-c5f2-455e-b09e-930c4dbb5d30}"
 
 [node name="JumpSFX" type="FmodEventEmitter2D" parent="Medium Monster5" unique_id=1380814200]
 event_name = "event:/SFX/Enemy_Jump"
@@ -900,8 +900,8 @@ color_queue = Array[int]([4, 0, 3, 2])
 material = SubResource("ShaderMaterial_jwpg7")
 
 [node name="ChompSFX" type="FmodEventEmitter2D" parent="Medium Monster6" unique_id=1652533842]
-event_name = "event:/SFX/Enemy_Chomp"
-event_guid = "{0ea14f92-91a1-4bab-86c7-61fb239c370e}"
+event_name = "event:/SFX/Enemy_Slam"
+event_guid = "{0d007e33-c5f2-455e-b09e-930c4dbb5d30}"
 
 [node name="JumpSFX" type="FmodEventEmitter2D" parent="Medium Monster6" unique_id=567624100]
 event_name = "event:/SFX/Enemy_Jump"
@@ -962,8 +962,8 @@ position = Vector2(6.5, 5)
 shape = SubResource("RectangleShape2D_u8m4d")
 
 [node name="ChompSFX" type="FmodEventEmitter2D" parent="Large Monster2" unique_id=78977854]
-event_name = "event:/SFX/Enemy_Chomp"
-event_guid = "{0ea14f92-91a1-4bab-86c7-61fb239c370e}"
+event_name = "event:/SFX/Enemy_Slam"
+event_guid = "{0d007e33-c5f2-455e-b09e-930c4dbb5d30}"
 
 [node name="JumpSFX" type="FmodEventEmitter2D" parent="Large Monster2" unique_id=130814952]
 event_name = "event:/SFX/Enemy_Jump"
@@ -993,8 +993,8 @@ blue_boss = true
 material = SubResource("ShaderMaterial_aqgau")
 
 [node name="ChompSFX" type="FmodEventEmitter2D" parent="Medium Monster7" unique_id=1505428793]
-event_name = "event:/SFX/Enemy_Chomp"
-event_guid = "{0ea14f92-91a1-4bab-86c7-61fb239c370e}"
+event_name = "event:/SFX/Enemy_Slam"
+event_guid = "{0d007e33-c5f2-455e-b09e-930c4dbb5d30}"
 
 [node name="JumpSFX" type="FmodEventEmitter2D" parent="Medium Monster7" unique_id=900698138]
 event_name = "event:/SFX/Enemy_Jump"

@@ -49,10 +49,13 @@ func collect():
 	match spark_type:
 		"red":
 			GameManager.red_unlocked = true
+			FmodServer.play_one_shot("event:/SFX/PickUp_Star")
 		"yellow":
 			GameManager.yellow_unlocked = true
+			FmodServer.play_one_shot("event:/SFX/PickUp_Star")
 		"blue":
 			GameManager.blue_unlocked = true
+			FmodServer.play_one_shot("event:/SFX/PickUp_Star")
 		"final":
 			GameManager.end()
 		_:
