@@ -164,6 +164,29 @@ tile_set = SubResource("TileSet_u8m4d")
 [node name="Small Monster" parent="." unique_id=1814088890 instance=ExtResource("7_6bp64")]
 position = Vector2(440, 125)
 color_queue = Array[int]([0, 0, 1, 1])
+target_radius_size = null
+speed = null
+dash_multiplier = null
+
+[node name="ChompSFX" type="FmodEventEmitter2D" parent="Small Monster" unique_id=1788979305]
+event_name = "event:/SFX/Enemy_Chomp"
+event_guid = "{0ea14f92-91a1-4bab-86c7-61fb239c370e}"
+
+[node name="JumpSFX" type="FmodEventEmitter2D" parent="Small Monster" unique_id=1768595809]
+event_name = "event:/SFX/Enemy_Jump"
+event_guid = "{c9d282c7-7abb-4191-b845-d21f39a7550c}"
+
+[node name="HurtSFX" type="FmodEventEmitter2D" parent="Small Monster" unique_id=679351655]
+event_name = "event:/SFX/Enemy_Hurt"
+event_guid = "{b1b0a3c9-df84-49ce-95c2-852eac409b5a}"
+
+[node name="FootstepSFX" type="FmodEventEmitter2D" parent="Small Monster" unique_id=317666056]
+event_name = "event:/SFX/Enemy_Footsteps"
+event_guid = "{647b6c33-340e-43d5-93b9-65967ec3c77d}"
+"fmod_parameters/Surface Material/id" = 5666494123659064376
+"fmod_parameters/Surface Material" = "Grass"
+"fmod_parameters/Surface Material/labels" = PackedStringArray("Grass", "Concrete", "Rock")
+"fmod_parameters/Surface Material/variant_type" = 4
 
 [node name="Player" parent="." unique_id=1479473842 instance=ExtResource("1_jjgbg")]
 position = Vector2(105, 321)

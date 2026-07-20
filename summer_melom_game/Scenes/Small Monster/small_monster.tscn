@@ -169,6 +169,20 @@ tracks/5/keys = {
 "update": 1,
 "values": [Vector2(0, 0), Vector2(0.44, 0), Vector2(0, 0), Vector2(-3.215, 0), Vector2(-4, 0), Vector2(-0.14, 0), Vector2(0, 0)]
 }
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath(".")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.083333336),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_atk_sfx"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_h0atr"]
 resource_name = "idle"
@@ -301,6 +315,20 @@ tracks/4/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_hurt_sfx"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_b0e82"]
 resource_name = "walk"
@@ -367,6 +395,23 @@ tracks/4/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.16666667, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"_play_footstep"
+}, {
+"args": [],
+"method": &"_play_footstep"
+}]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_i7808"]
 _data = {
@@ -385,7 +430,11 @@ size = Vector2(33, 23)
 
 [node name="Small Monster" unique_id=1814088890 instance=ExtResource("1_b0e82")]
 
-[node name="Sprite2D" parent="." index="0" unique_id=1482003679]
+[node name="RayCast2D" type="RayCast2D" parent="." index="0" unique_id=1735753768]
+position = Vector2(-4.768165, 0)
+target_position = Vector2(0, 25)
+
+[node name="Sprite2D" parent="." index="1" unique_id=1482003679]
 material = SubResource("ShaderMaterial_y54nl")
 position = Vector2(-4.768165, 0)
 texture = ExtResource("2_yjqat")
@@ -397,10 +446,10 @@ frame = 0
 collision_layer = 0
 collision_mask = 9
 
-[node name="AnimationPlayer" parent="." index="1" unique_id=158364619]
+[node name="AnimationPlayer" parent="." index="2" unique_id=158364619]
 libraries/ = SubResource("AnimationLibrary_i7808")
 
-[node name="Hitbox" parent="." index="2" unique_id=1407554946]
+[node name="Hitbox" parent="." index="3" unique_id=1407554946]
 position = Vector2(0, 0)
 collision_mask = 0
 
@@ -411,11 +460,11 @@ disabled = true
 [node name="Target Radius Collider" parent="Targeting Radius" parent_id_path=PackedInt32Array(333162743) index="0" unique_id=1064513069]
 position = Vector2(-6, 0)
 
-[node name="Collision" type="CollisionShape2D" parent="." index="7" unique_id=2090406589]
+[node name="Collision" type="CollisionShape2D" parent="." index="8" unique_id=2090406589]
 position = Vector2(-4.5, 3.5)
 shape = SubResource("RectangleShape2D_u8m4d")
 
-[node name="Palette Swapper" parent="." index="8" unique_id=242073123 node_paths=PackedStringArray("sprite") instance=ExtResource("3_pd5ug")]
+[node name="Palette Swapper" parent="." index="9" unique_id=242073123 node_paths=PackedStringArray("sprite") instance=ExtResource("3_pd5ug")]
 red = ExtResource("4_qhlp5")
 orange = ExtResource("5_aax1n")
 yellow = ExtResource("6_oyrhm")

@@ -12,8 +12,7 @@ enum EnemyAction{IDLE, FOLLOW, JUMP, ATTACK, KNOCKED_BACK, STUNNED}
 @onready var hitbox: Area2D = $Hitbox
 @onready var symbol_grid: Node2D = $SymbolGrid
 @onready var swapper: PaletteSwapper = $"Palette Swapper"
-
-
+@onready var footstep_emitter = $FootstepSFX
 
 
 @export var color_queue: Array[ColorManager.ColorState]
@@ -105,6 +104,7 @@ func jump(is_top: bool) -> void:
 
 	velocity.y = height
 	current_action = EnemyAction.JUMP
+	_jump_sfx()
 
 
 
@@ -168,6 +168,7 @@ func hit_check() -> void:
 
 func get_hit() -> void:
 	current_action = EnemyAction.KNOCKED_BACK
+	_hurt_sfx()
 	knockback()
 	swapper.flash()
 	color_queue.erase(color_queue.front())
@@ -217,3 +218,17 @@ func _on_navigation_agent_2d_link_reached(details: Dictionary) -> void:
 	var is_at_top: bool = distance_to_top < distance_to_bottom
 	if is_on_floor():
 		jump(is_at_top)
+
+func _atk_sfx():
+	$ChompSFX.play()
+	
+func _jump_sfx():
+	$JumpSFX.play()
+
+func _hurt_sfx():
+	$HurtSFX.play()
+
+func _play_footstep():
+	if $RayCast2D.is_colliding():
+			var raycast_position = $RayCast2D.get_collision_point()
+			FootstepManager.play_footstep(raycast_position, footstep_emitter)

@@ -59,7 +59,11 @@
 			<destination>{cd383ab2-1eb5-4cfd-abe8-cdf4ad9dc09c}</destination>
 		</relationship>
 	</object>
-	<object class="EventAutomatableProperties" id="{74b218fa-1613-4816-b656-209d544ebb5a}" />
+	<object class="EventAutomatableProperties" id="{74b218fa-1613-4816-b656-209d544ebb5a}">
+		<property name="dopplerEnabled">
+			<value>true</value>
+		</property>
+	</object>
 	<object class="MarkerTrack" id="{43a29527-dd91-48ba-ae6b-9f605fdf3bea}" />
 	<object class="Timeline" id="{a1b3b0fb-1b7f-4510-ad5d-ee5daf6b266e}">
 		<property name="isProxyEnabled">
@@ -100,6 +104,9 @@
 	</object>
 	<object class="MixerBusPanner" id="{35589d64-2008-48db-9801-157b17cf82e6}" />
 	<object class="MultiSound" id="{c4327f50-7e84-4df4-a7d0-35b96263b814}">
+		<property name="volume">
+			<value>-13.5</value>
+		</property>
 		<relationship name="sounds">
 			<destination>{0a857c49-ffc2-4650-bd05-24574e9ad249}</destination>
 			<destination>{1ffcd34d-241c-47c4-a4eb-1f9574985226}</destination>

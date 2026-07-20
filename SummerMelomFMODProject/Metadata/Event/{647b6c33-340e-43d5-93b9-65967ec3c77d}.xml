@@ -64,7 +64,11 @@
 			<destination>{cd383ab2-1eb5-4cfd-abe8-cdf4ad9dc09c}</destination>
 		</relationship>
 	</object>
-	<object class="EventAutomatableProperties" id="{73559987-af96-43f6-bbd5-e94ba15c214d}" />
+	<object class="EventAutomatableProperties" id="{73559987-af96-43f6-bbd5-e94ba15c214d}">
+		<property name="dopplerEnabled">
+			<value>true</value>
+		</property>
+	</object>
 	<object class="MarkerTrack" id="{05e87a97-1d8e-4d45-8f54-04ab260dcd9d}" />
 	<object class="GroupTrack" id="{3154697c-85bd-4222-9b5f-40ac2aad4fa9}">
 		<relationship name="modules">
@@ -96,7 +100,7 @@
 	</object>
 	<object class="EventMixerMaster" id="{cb659392-bf8a-4eed-9f2a-c06096ef19cd}">
 		<property name="volume">
-			<value>-9</value>
+			<value>-19</value>
 		</property>
 		<relationship name="effectChain">
 			<destination>{739c19b6-bc71-430a-bf92-2c46771be743}</destination>

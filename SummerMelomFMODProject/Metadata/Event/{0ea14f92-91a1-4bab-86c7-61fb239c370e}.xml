@@ -59,7 +59,11 @@
 			<destination>{cd383ab2-1eb5-4cfd-abe8-cdf4ad9dc09c}</destination>
 		</relationship>
 	</object>
-	<object class="EventAutomatableProperties" id="{f7ac1f0f-453a-445d-b73c-ef47f74ef42f}" />
+	<object class="EventAutomatableProperties" id="{f7ac1f0f-453a-445d-b73c-ef47f74ef42f}">
+		<property name="dopplerEnabled">
+			<value>true</value>
+		</property>
+	</object>
 	<object class="MarkerTrack" id="{b357fd8c-fcf2-4cb3-abdd-c6aa02a0ab5f}" />
 	<object class="Timeline" id="{a58130fa-9573-4142-979e-d320270f6441}">
 		<property name="isProxyEnabled">
@@ -95,6 +99,7 @@
 	<object class="MixerBusPanner" id="{204000d4-8c06-4abd-a704-af5c13e9698d}" />
 	<object class="MixerBusEffectChain" id="{b61e661d-ee0b-484e-872b-dc98eb463cb7}">
 		<relationship name="effects">
+			<destination>{92f7601a-c4b8-4d9a-8260-816b1bf78772}</destination>
 			<destination>{3c39cfab-97c9-4064-88fb-35efda023b5c}</destination>
 			<destination>{317ba5c1-f044-4e50-86ce-4203eed58a41}</destination>
 		</relationship>
@@ -102,7 +107,7 @@
 	<object class="MixerBusPanner" id="{30666590-03ad-4799-9960-e54a1fb08278}" />
 	<object class="MultiSound" id="{3acca428-750f-4d76-9dd8-5df5f96109d3}">
 		<property name="volume">
-			<value>-9</value>
+			<value>-14</value>
 		</property>
 		<relationship name="sounds">
 			<destination>{d89ca5a6-020b-49da-9777-54a5dc2a5f91}</destination>
@@ -111,6 +116,11 @@
 		</relationship>
 	</object>
 	<object class="MixerBusFader" id="{b88cb22c-59a0-476c-aa5b-4b15cd64549b}" />
+	<object class="ThreeEQEffect" id="{92f7601a-c4b8-4d9a-8260-816b1bf78772}">
+		<property name="midGain">
+			<value>-31</value>
+		</property>
+	</object>
 	<object class="MixerBusFader" id="{3c39cfab-97c9-4064-88fb-35efda023b5c}" />
 	<object class="LoudnessMeter" id="{317ba5c1-f044-4e50-86ce-4203eed58a41}" />
 	<object class="SingleSound" id="{d89ca5a6-020b-49da-9777-54a5dc2a5f91}">
