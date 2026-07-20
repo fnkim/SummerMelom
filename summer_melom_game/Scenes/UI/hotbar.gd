@@ -92,4 +92,5 @@ func death():
 
 func end():
 	anim.play("fade_end")
+	await anim.animation_finished
 	get_tree().quit()

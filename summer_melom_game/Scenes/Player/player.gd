@@ -57,6 +57,8 @@ func toggle_color():
 	
 
 func _physics_process(delta: float) -> void:
+	if current_state == PlayerState.STOPPED:
+		return
 	attack()
 	match current_state:
 		PlayerState.IDLE:

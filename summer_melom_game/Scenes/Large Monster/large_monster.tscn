@@ -19,6 +19,9 @@ shader_parameter/original_palette = ExtResource("3_swfja")
 shader_parameter/new_palette = ExtResource("3_swfja")
 shader_parameter/colors_count = 14
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_n2ovt"]
+radius = 55.145264
+
 [sub_resource type="Animation" id="Animation_1ow5e"]
 length = 0.001
 tracks/0/type = "value"
@@ -447,6 +450,9 @@ frame = 0
 [node name="HurtBox" parent="Sprite2D" index="0" unique_id=1214907404]
 collision_layer = 2
 collision_mask = 4
+
+[node name="CollisionShape2D" parent="Sprite2D/HurtBox" index="0" unique_id=643306539]
+shape = SubResource("CircleShape2D_n2ovt")
 
 [node name="AnimationPlayer" parent="." index="1" unique_id=158364619]
 libraries/ = SubResource("AnimationLibrary_xh5ci")
