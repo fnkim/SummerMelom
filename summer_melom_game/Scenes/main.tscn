@@ -728,7 +728,6 @@ event_guid = "{647b6c33-340e-43d5-93b9-65967ec3c77d}"
 "fmod_parameters/Surface Material/variant_type" = 4
 
 [node name="BlueSpark" type="Sprite2D" parent="." unique_id=775598961 node_paths=PackedStringArray("label")]
-visible = false
 position = Vector2(5554, 361)
 texture = ExtResource("28_ueoa1")
 script = ExtResource("21_ee4r6")

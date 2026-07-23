@@ -6,11 +6,10 @@ extends Sprite2D
 
 var can_collect: bool
 var final_unlocked: bool
-var blue_unlocked: bool
+var blue_unlocked: bool = true
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	
-	GameManager.drop_blue_spark.connect(show_blue)
+
 	GameManager.drop_final_spark.connect(show_final)
 
 func show_final():
